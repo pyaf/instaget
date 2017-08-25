@@ -10,5 +10,15 @@ curl -F 'client_id=d5d6412c51094511aee087b371ecc91a' -F 'client_secret=464cd4b6a
 
 {"access_token": "2233742119.d5d6412.168b353126d7495fb4d9af3bb741f290", "user": {"id": "2233742119", "username": "agga_daku", "profile_picture": "https://scontent-lga3-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg", "full_name": "Gumnaam", "bio": "DON'T FOLLOW ME.", "website": "", "is_business": false}}
 
-access_token =
-2233742119.d5d6412.168b353126d7495fb4d9af3bb741f290
+access_token =2233742119.d5d6412.168b353126d7495fb4d9af3bb741f290
+
+https://api.instagram.com/v1/media/1585476590274426105_17644112?access_token=2233742119.d5d6412.168b353126d7495fb4d9af3bb741f290
+
+https://api.instagram.com/v1/media/1518552923897125257_2233742119?access_token=2233742119.d5d6412.168b353126d7495fb4d9af3bb741f290
+""
+
+
+
+https://api.instagram.com/v1/media/BYAvo8DATT5/D?access_token=2233742119.d5d6412.168b353126d7495fb4d9af3bb741f290
+
+""

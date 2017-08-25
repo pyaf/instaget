@@ -10,3 +10,7 @@ def IndexView(request):
         print(post_link)
         url = 'https://api.instagram.com/oembed/?callback=&url=https://www.instagram.com/p/BYM5yatg17A/'
     return render(request, template, context)
+
+def PrivacyPolicy(request):
+    template = 'privacy-policy.html'
+    return render(request, template, {})

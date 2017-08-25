@@ -4,4 +4,5 @@ from insta.views import *
 
 urlpatterns = [
     url(r'^$', IndexView),
+    url(r'^privacy-policy$', PrivacyPolicy),
 ]
