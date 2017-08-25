@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Home</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container" >
+        <div class="row">
+            <div class="col-sm-6">
+                <form action="">
+                  <div class="form-group">
+                      <label>Enter Instagram Post link</label>
+                    <input type="text" id = "post_link" class="form-control input-lg" name="post_link" placeholder="Post link">
+                  </div>
+                  <button type="submit" id="submit" class="btn btn-default">GO</button>
+              </form>
+              <br>
+              <div id="results">
+
+              </div>
+            </div>
+
+      </div>
+
+    </div>
+  </div>
+<script src="/static/js/jquery.min.js" charset="utf-8"></script>
+<script src="/static/js/bootstrap.min.js" charset="utf-8"></script>
+<script async="" defer="" src="//platform.instagram.com/en_US/embeds.js"></script>
+<script>
+$('#submit').click( function(e) {
+    e.preventDefault();
+    var post_link = $('#post_link').val();
+    console.log(post_link);
+    $.ajax({
+        url: 'https://api.instagram.com/oembed/?callback=&url=' + post_link,
+        type: 'GET',
+        crossDomain: true,
+        dataType:'jsonp',
+        success: function(data) {
+            console.log(data);
+            $('#results').html('');
+            var download = '<br><a href="' + data["thumbnail_url"] + '" download class="btn btn-success">Download</a>';
+            console.log(download);
+            $('#results').html(data['html'] + download);
+                 window.instgrm.Embeds.process()
+             }
+
+
+    });
+});
+
+</script>
+</body>
+</html>

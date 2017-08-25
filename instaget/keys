@@ -1,0 +1,14 @@
+cliend id: d5d6412c51094511aee087b371ecc91a
+cliend secret: 464cd4b6ab86466f9e29f573c54638d0
+
+need to get permissions for public access
+https://api.instagram.com/oauth/authorize/?client_id=d5d6412c51094511aee087b371ecc91a&redirect_uri=https://lirocks.herokuapp.com&response_type=code&scope=public_content
+
+code for agga_daku : 697d48c92411413ea5dfa79862a5a29c
+
+curl -F 'client_id=d5d6412c51094511aee087b371ecc91a' -F 'client_secret=464cd4b6ab86466f9e29f573c54638d0' -F 'grant_type=authorization_code' -F 'redirect_uri=https://lirocks.herokuapp.com' -F 'code=697d48c92411413ea5dfa79862a5a29c' https://api.instagram.com/oauth/access_token
+
+{"access_token": "2233742119.d5d6412.168b353126d7495fb4d9af3bb741f290", "user": {"id": "2233742119", "username": "agga_daku", "profile_picture": "https://scontent-lga3-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg", "full_name": "Gumnaam", "bio": "DON'T FOLLOW ME.", "website": "", "is_business": false}}
+
+access_token =
+2233742119.d5d6412.168b353126d7495fb4d9af3bb741f290
