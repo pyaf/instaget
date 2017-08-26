@@ -5,6 +5,8 @@ from insta.views import *
 urlpatterns = [
     url(r'^$', IndexView),
     url(r'^video/$', VideoView),
-    url(r'^getVideoLink/$', getVideoLink),
+    url(r'^backup/$', BackupView),
+    url(r'^getVideoLink/$', GetVideoLink),
+    url(r'^getUserData/$', GetUserData),
     url(r'^privacy-policy/$', PrivacyPolicy),
 ]
