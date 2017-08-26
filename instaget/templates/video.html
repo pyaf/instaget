@@ -59,7 +59,7 @@ function getVideoLink(data){
     $('#downloadButton').attr('disabled','disabled');
     $('#downloadButton').html("<img src='/static/ajax-loader.gif'> Download");
     $.ajax({
-        url: '/getVideoLink',
+        url: '/getVideoLink/',
         type: 'POST',
         data: { 'media_id': data['media_id'],
                 'author_name': data['author_name']
