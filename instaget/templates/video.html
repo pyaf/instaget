@@ -8,6 +8,15 @@
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
   <title>Home</title>
+  <system.webServer>
+ <httpProtocol>
+    <customHeaders>
+     <add name="Access-Control-Allow-Origin" value="*" />
+     <add name="Access-Control-Allow-Headers" value="Content-Type" />
+     <add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS" />
+    </customHeaders>
+  </httpProtocol>
+</system.webServer>
   <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 
 </head>
@@ -15,11 +24,10 @@
   <div class="jumbotron">
     <div class="container" >
         <div class="row">
-        <a href="/" class="btn btn-default active">Download Image</a>
-        <a href="/video" class="btn btn-default">Download Video</a>
+        <a href="/" class="btn btn-default">Download Image</a>
+        <a href="/video" class="btn btn-default active">Download Video</a>
         </div><br>
         <div class="row">
-
             <div class="col-sm-6">
                 <form action="">
                   <div class="form-group">
@@ -32,6 +40,9 @@
               <div id="results">
 
               </div>
+              <div id="download">
+
+              </div>
             </div>
 
       </div>
@@ -42,10 +53,31 @@
 <script src="/static/js/bootstrap.min.js" charset="utf-8"></script>
 <script async="" defer="" src="//platform.instagram.com/en_US/embeds.js"></script>
 <script>
+
+function getVideoLink(data){
+    console.log("Ajax 2");
+    $('#downloadButton').attr('disabled','disabled');
+    $('#downloadButton').html("<img src='/static/ajax-loader.gif'> Download");
+    $.ajax({
+        url: '/getVideoLink/',
+        type: 'POST',
+        data: { 'media_id': data['media_id'],
+                'author_name': data['author_name']
+            },
+        success: function(response) {
+            console.log(response);
+            $('#downloadButton').removeAttr('disabled');
+            $('#downloadButton').attr('href', response);
+            $('#downloadButton').html("Download Now");
+
+        },
+
+    });
+}
+
 $('#submit').click( function(e) {
     e.preventDefault();
     var post_link = $('#post_link').val();
-    console.log(post_link);
     $.ajax({
         url: 'https://api.instagram.com/oembed/?callback=&url=' + post_link,
         type: 'GET',
@@ -53,17 +85,15 @@ $('#submit').click( function(e) {
         dataType:'jsonp',
         success: function(data) {
             console.log(data);
-            $('#results').html('');
-            var download = '<br><a href="' + data["thumbnail_url"] + '" download class="btn btn-success">Download</a>';
-            console.log(download);
-            $('#results').html(data['html'] + download);
-                 window.instgrm.Embeds.process()
-             }
+            $('#results').html(data['html']);
+            var download = '<br><a download id="downloadButton" class="btn btn-success"></a>';
+            $('#download').html(download);
+            getVideoLink(data);
+            window.instgrm.Embeds.process()
+        }
 
     });
 });
-
-
 </script>
 </body>
 </html>
