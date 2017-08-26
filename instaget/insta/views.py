@@ -39,7 +39,7 @@ def GetVideoLink(request):
                     videoLink = post['alt_media_url']
                     foundLink = True
             max_id = posts[-1]['id']
-            print(max_id)
+            # print(max_id)
         print('foundLink: ', foundLink)
         print('videoLink: ', videoLink )
         return HttpResponse(videoLink)
@@ -60,8 +60,6 @@ def GetUserData(request):
         response_data = {}
         response_data['posts'] = posts
         response_data['more_available'] = more_available
-        for post in posts:
-            print(post['alt_media_url'])
         return HttpResponse(
             json.dumps(response_data),
             content_type = "application/json"
