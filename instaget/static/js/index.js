@@ -11,8 +11,10 @@ $('#submit').click( function(e) {
         success: function(data) {
             console.log(data);
             $('#results').html('');
-            var download = '<br><a href="' + data["thumbnail_url"] + '" download class="btn btn-success">Download</a>';
-            $('#results').html(data['html'] + download);
+            // var download = '<br><a href="' + data["thumbnail_url"] + '" download class="btn btn-success">Download</a>';
+            $('#download').attr('href',data['thumbnail_url']);
+            $('#download').show();
+            $('#results').html(data['html']);
             window.instgrm.Embeds.process() // Note: no semi colon
         },
         error: function(request, status, error){

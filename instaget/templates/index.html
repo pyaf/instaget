@@ -2,62 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="Cache-Control" content="no-siteapp">
   <meta http-equiv="Cache-Control" content="no-transform">
-  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+
   <title>Home</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css" media="screen">
-    .times{
-      cursor:pointer;
-    }
-   p{
-    margin-bottom: 0;
-  }
-  </style>
+  <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 </head>
-<body>
-  <div class="jumbotron">
+<body style="background: url(/static/1.jpg) no-repeat  fixed;">
     <div class="container" >
         <div class="row">
-        <a href="/" class="btn btn-default active">Download Image</a>
-        <a href="/video" class="btn btn-default">Download Video</a>
-        <a href="/backup" class="btn btn-default">Backup your Instagram</a>
-
-        </div><br>
+        <div class="col-md-2 ">
+          
+        </div>
+          <div class="col-md-2">
+          <a href="/" class="btn btn-default active navb">Download Image</a>
+          </div>
+          <div class="col-md-2">
+          <a href="/video" class="btn btn-default navb">Download Video</a>
+            
+          </div>
+          <div class="col-md-2">
+          <a href="/backup" class="btn btn-default navb">Download Account</a>
+            
+          </div>
+          <div class="col-md-2" id="fa-instagram">
+            <i class="fa fa-instagram"></i>
+          </div>
+        </div>
+<hr size="50">
+        <br>
         <div class="row">
-
-            <div class="col-sm-6">
+        <div class="col-md-2"></div>
+            <div class="col-md-8 ">
               <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
                 <button type="button" class="close" aria-label="Close" onclick="closeAlert()">
                   <span aria-hidden="true" class="times">&times;</span>
                 </button>
                   <p id="error-msg"></p>
               </div>
-              <form action="">
+              <form action="" class="">
                 <div class="form-group">
-                  <label>Enter Instagram Post link</label>
-                  <input type="text" id = "post_link" class="form-control input-lg" name="post_link" placeholder="Post link">
+                  <label>Download Image</label>
+                  <input type="text" id = "post_link" required="true" class="form-control input-lg" name="post_link" placeholder="Example: https://www.instagram.com/p/BYIPmEFAIIn/">
                 </div>
-                <button type="submit" id="submit" class="btn btn-default">GO</button>
+                <div class="row">
+                  <div class="col">
+                <button type="submit" id="submit" class="btn btn-default submit">Get it!</button>
+                <a href="" id="download" download class="btn btn-default" style="display: none;width:20%">Download</a>
+                  </div>
+                </div>
               </form>
               <br>
-              <div id="results">
-
+              <div id="results" style="text-align:center;">
               </div>
             </div>
-
       </div>
 
     </div>
-  </div>
   <script src="/static/js/jquery-3.2.1.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
   <script async="" defer="" src="//platform.instagram.com/en_US/embeds.js"></script>
   <script src="/static/js/index.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
