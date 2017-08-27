@@ -10,6 +10,14 @@
   <title>Home</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css" media="screen">
+    .times{
+      cursor:pointer;
+    }
+   p{
+    margin-bottom: 0;
+  }
+  </style>
 </head>
 <body>
   <div class="jumbotron">
@@ -23,12 +31,18 @@
         <div class="row">
 
             <div class="col-sm-6">
-                <form action="">
-                  <div class="form-group">
-                      <label>Enter Instagram Post link</label>
-                    <input type="text" id = "post_link" class="form-control input-lg" name="post_link" placeholder="Post link">
-                  </div>
-                  <button type="submit" id="submit" class="btn btn-default">GO</button>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
+                <button type="button" class="close" aria-label="Close" onclick="closeAlert()">
+                  <span aria-hidden="true" class="times">&times;</span>
+                </button>
+                  <p id="error-msg"></p>
+              </div>
+              <form action="">
+                <div class="form-group">
+                  <label>Enter Instagram Post link</label>
+                  <input type="text" id = "post_link" class="form-control input-lg" name="post_link" placeholder="Post link">
+                </div>
+                <button type="submit" id="submit" class="btn btn-default">GO</button>
               </form>
               <br>
               <div id="results">
@@ -41,34 +55,10 @@
     </div>
   </div>
   <script src="/static/js/jquery-3.2.1.min.js" charset="utf-8"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-<script async="" defer="" src="//platform.instagram.com/en_US/embeds.js"></script>
-<script>
-$('#submit').click( function(e) {
-    e.preventDefault();
-    var post_link = $('#post_link').val();
-    console.log(post_link);
-    $.ajax({
-        url: 'https://api.instagram.com/oembed/?callback=&url=' + post_link,
-        type: 'GET',
-        crossDomain: true,
-        dataType:'jsonp',
-        success: function(data) {
-            console.log(data);
-            $('#results').html('');
-            var download = '<br><a href="' + data["thumbnail_url"] + '" download class="btn btn-success">Download</a>';
-            console.log(download);
-            $('#results').html(data['html'] + download);
-                 window.instgrm.Embeds.process()
-             }
-
-    });
-});
-
-
-</script>
+  <script async="" defer="" src="//platform.instagram.com/en_US/embeds.js"></script>
+  <script src="/static/js/index.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>

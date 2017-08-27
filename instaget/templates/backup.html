@@ -36,6 +36,9 @@
     .card{
         cursor: pointer;
     }
+   p{
+    margin-bottom: 0;
+  }
     </style>
 </head>
 <body>
@@ -48,36 +51,43 @@
 
         </div><br>
         <div class="row">
-
             <div class="col-sm-6">
-                <form action="">
-
-                  <div class="form-group">
-                      <label>Enter Instagram Username</label>
-                    <input type="text" id = "username" class="form-control input-lg" name="username" placeholder="Instagram Username">
-                  </div>
-                  <button type="submit" id="submit" class="btn btn-default">GO</button>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
+                <button type="button" class="close" aria-label="Close" onclick="closeAlert()">
+                  <span aria-hidden="true" class="times">&times;</span>
+                </button>
+                  <p id="error-msg"></p>
+              </div>
+              <form action="">
+                <div class="form-group">
+                  <label>Enter Instagram Username</label>
+                  <input type="text" id = "username" class="form-control input-lg" name="username" placeholder="Instagram Username">
+                </div>
+                <button type="submit" id="submit" class="btn btn-default">GO</button>
               </form>
               <br>
             </div>
-
       </div>
 
 
       <div class="pull-right" id="function-buttons"style="display:none;">
-          <button class="btn btn-info" onclick="toggleAllCards(this, 'jpg')"> Select all Images </button>
-          <button class="btn btn-info" onclick="toggleAllCards(this, 'mp4')"> Select all Videos </button>
-          <button class="btn btn-success"  onclick="downloadZIP()"> Download Zip </button>
+        <button class="btn btn-info" onclick="toggleAllCards(this, 'jpg')"> Select all Images </button>
+        <button class="btn btn-info" onclick="toggleAllCards(this, 'mp4')"> Select all Videos </button>
+        <button class="btn btn-success"  onclick="downloadZIP()"> Download Zip </button>
       </div>
-     <br><br>
+      <br><br>
       <div class="row" >
-        <div class="card-columns" id="results" >
-
-        </div>
+        <div class="card-columns" id="results" ></div>
+    </div>
+      <div id="loadMoreButtonDiv" style="text-align: center;display: none;">
+      <button class="btn btn-info" id="loadMoreButton" onclick="loadMore()">Load More</button>
+      </div>
+    <div class="row">
     </div>
 
 </div>
 </div>
+
 <script>
 var csrf_token = '{{ csrf_token }}';
 </script>
