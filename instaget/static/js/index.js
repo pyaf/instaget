@@ -2,6 +2,9 @@
 $('#submit').click( function(e) {
     e.preventDefault();
     var post_link = $('#post_link').val();
+    $('.alert').hide();
+    $('#results').html('');
+    $('#download').hide();
     console.log(post_link);
     $.ajax({
         url: 'https://api.instagram.com/oembed/?callback=&url=' + post_link,
@@ -11,7 +14,6 @@ $('#submit').click( function(e) {
         success: function(data) {
             console.log(data);
             $('#results').html('');
-            // var download = '<br><a href="' + data["thumbnail_url"] + '" download class="btn btn-success">Download</a>';
             $('#download').attr('href',data['thumbnail_url']);
             $('#download').show();
             $('#results').html(data['html']);
