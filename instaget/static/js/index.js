@@ -7,7 +7,7 @@ $('#submit').click( function(e) {
     $('#download').hide();
     console.log(post_link);
     $.ajax({
-        url: 'https://api.instagram.com/oembed/?callback=&url=' + post_link,
+        url: 'https://api.instagram.com/oembed/?url=' + post_link,
         type: 'GET',
         crossDomain: true,
         dataType:'jsonp',
@@ -30,7 +30,7 @@ $('#submit').click( function(e) {
         }
 
     });
-}); 
+});
 
 function closeAlert(){
     $('.alert').hide();

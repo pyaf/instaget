@@ -29,10 +29,18 @@
   <div class="jumbotron">
     <div class="container" >
         <div class="row">
-        <a href="/" class="btn btn-default">Download Image</a>
-        <a href="/video" class="btn btn-default active">Download Video</a>
-        <a href="/backup" class="btn btn-default">Backup your Instagram</a>
-
+            <div class="col-md-2">
+            <a href="/" class="btn btn-default navb">Download Image</a>
+            </div>
+            <div class="col-md-2">
+            <a href="/multi" class="btn btn-default navb">Multiple Download</a>
+            </div>
+            <div class="col-md-2">
+            <a href="/video" class="btn btn-default navb">Download Video</a>
+            </div>
+            <div class="col-md-2">
+            <a href="/backup" class="btn btn-default navb">Download Account</a>
+            </div>
         </div><br>
         <div class="row">
             <div class="col-sm-6">
@@ -67,7 +75,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
 <script async="" defer="" src="//platform.instagram.com/en_US/embeds.js"></script>
+<script type="text/javascript">
+    var csrf_token = '{{ csrf_token }}';
+</script>
 <script src="/static/js/video.js" type="text/javascript" charset="utf-8" async defer></script>
-
 </body>
 </html>

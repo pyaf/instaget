@@ -8,7 +8,7 @@ function getVideoLink(data){
         type: 'POST',
         data: { 'media_id': data['media_id'],
                 'author_name': data['author_name'],
-                csrfmiddlewaretoken: '{{ csrf_token }}',
+                csrfmiddlewaretoken: csrf_token,
             },
         success: function(response) {
             console.log(response);
@@ -25,7 +25,7 @@ $('#submit').click( function(e) {
     e.preventDefault();
     var post_link = $('#post_link').val();
     $.ajax({
-        url: 'https://api.instagram.com/oembed/?callback=&url=' + post_link,
+        url: 'https://api.instagram.com/oembed/?url=' + post_link,
         type: 'GET',
         crossDomain: true,
         dataType:'jsonp',
@@ -38,13 +38,13 @@ $('#submit').click( function(e) {
             window.instgrm.Embeds.process()
         },
         error: function(request, status, error){
-          console.log(request['status']);
-          if(request['status']==500){
-            $('#error-msg').html('Internal Server Error! please try after some time.');
-          }else{
-          $('#error-msg').html('Post not found!, please enter a valid link.');
-          }
-          $('.alert').show();
+            console.log(request['status']);
+            if(request['status']==500){
+                $('#error-msg').html('Internal Server Error! please try after some time.');
+            }else{
+                $('#error-msg').html('Post not found!, please enter a valid link.');
+            }
+            $('.alert').show();
         }
 
     });
@@ -53,4 +53,10 @@ $('#submit').click( function(e) {
 function closeAlert(){
     $('.alert').hide();
     $('#error-msg').html('');
+}
+
+function getShortcode(post_link){
+    var i = post_link.indexOf('/p/') + 3;
+    var j = i + post_link.slice(i).indexOf('/');
+    return post_link.slice(i,j);
 }
