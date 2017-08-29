@@ -66,10 +66,12 @@ function downloadZIP(){
 
 
 function updateProgressBar(count, total){
-    current = $('#progress-bar').text().split('%')[0];
+    progress_bar = $('#progress-bar');
+    current = progress_bar.text().split('%')[0];
     current = parseInt(current);
     new_per = (count / total) * 100;
     for(var i=current; i<new_per; i++){
-        $('#progress-bar').html(i+'%');
+        progress_bar.html(i+'%');
+        progress_bar.css('width', i + '%');
     }
 }
