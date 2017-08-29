@@ -13,7 +13,7 @@ function embed(type, post){
     var html = `<div class="card" id="`+post['code']+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`
     if(type == 'mp4'){
         html += `
-        <video controls="controls" style="width:364px;">
+        <video controls="controls" style="width:250px;">
         <source src="`+post['alt_media_url']+`" type="video/mp4" />
         </video>
         `

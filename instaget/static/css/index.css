@@ -9,6 +9,7 @@
     font-weight: bold;
 
   }
+
   .navb{
 
   margin-top: 16%;
@@ -26,6 +27,11 @@
   border:2px solid white;
   color:white;
 
+}
+.card-body{
+     color: #5c5b5b;
+    font-size: 12px;
+￼    font-family: inherit;
 }
     .times{
       cursor:pointer;
