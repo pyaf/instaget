@@ -1,4 +1,4 @@
-var bufferArray = {};
+var bufferArray = [];
 var count = 0;
 
 function ajaxFile(url, arr, total){
@@ -11,7 +11,7 @@ function ajaxFile(url, arr, total){
         var arrayBuffer = oReq.response; // Note: not oReq.responseText
         console.log(url, arrayBuffer);
         if (arrayBuffer) {
-            arr[url] = arrayBuffer;
+            arr.push(arrayBuffer);
             count++;
             if(count==total){
                 loadEnd();
@@ -29,8 +29,8 @@ function loadEnd(){
     console.log(bufferArray);
     $.each(selected_media, function(i,n) {
         var filename = getFileName(selected_media[i]);
-        console.log(selected_media[i], bufferArray[selected_media[i]], filename);
-        zip.folder("instagram").file(filename, bufferArray[selected_media[i]]);
+        console.log(selected_media[i], bufferArray[i], filename);
+        zip.folder("instagram").file(filename, bufferArray[i]);
     });
 
     zip.generateAsync({type:"blob"}).then(function(content) {
