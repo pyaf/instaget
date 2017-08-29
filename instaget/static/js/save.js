@@ -23,7 +23,8 @@ function ajaxFile(url, arr, total){
 };
 
 function loadEnd(){
-
+    $('#progress-bar').html('100%');
+    $('#progress-bar').css('width', '100%'); 
     var zip = new JSZip();
     console.log('inside loadEnd');
     console.log(selected_media);
@@ -36,6 +37,7 @@ function loadEnd(){
 
     zip.generateAsync({type:"blob"}).then(function(content) {
         console.log(content);
+
         saveAs(content, "instagram_" + new Date().getTime() + ".zip");
         count = 0;
         bufferArr = [];
@@ -49,14 +51,9 @@ function getFileName(link)
 }
 
 function downloadZIP(){
-    $('#progress-bar').show();
     console.log('Downloading zip');
-    if(selected_media.length <= 0)
-    {
-        alert('No media selected!');
-        return false;
-    }
-    var count =selected_media.length;
+    $('#progress-bar').show();
+    var count = selected_media.length;
     console.log('selected_media', selected_media);
     $.each(selected_media, function (i, n) {
         console.log(i, selected_media[i]);

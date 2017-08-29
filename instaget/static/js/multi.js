@@ -83,7 +83,17 @@ function setMediaLinks(){
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
             $('#submit').html("Go");
-            $('#downloadButton').show();
+            if(selected_media.length==0){
+                $('#error-msg').html('No media found!');
+                return;
+            }else if (selected_media.length==1){
+                $('#downloadButton').html('Download');
+                $('#downloadButton').attr('href', selected_media[0]);
+                $('#downloadButton').attr('download', '');
+                $('#downloadButton').removeAttr('onclick');
+                $('#downloadButton').show();
+                return;
+            }
         },
         error: function(request, status, error){
           console.log(request['status']);
