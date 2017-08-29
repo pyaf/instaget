@@ -13,6 +13,7 @@ function ajaxFile(url, arr, total){
         if (arrayBuffer) {
             arr[url] = arrayBuffer;
             count++;
+            updateProgressBar(count, total);
             if(count==total){
                 loadEnd();
             }
@@ -48,6 +49,7 @@ function getFileName(link)
 }
 
 function downloadZIP(){
+    $('#progress-bar').show();
     console.log('Downloading zip');
     if(selected_media.length <= 0)
     {
@@ -60,4 +62,14 @@ function downloadZIP(){
         console.log(i, selected_media[i]);
         ajaxFile(selected_media[i], bufferArray, count);
     });
+}
+
+
+function updateProgressBar(count, total){
+    current = $('#progress-bar').text().split('%')[0];
+    current = parseInt(current);
+    new_per = (count / total) * 100;
+    for(var i=current; i<new_per; i++){
+        $('#progress-bar').html(i+'%');
+    }
 }

@@ -132,6 +132,9 @@ $('#submit').click( function(e) {
         users_posts_dict = {};
         $('#results').html('');
         $('#downloadButton').hide();
+        $('#progress-bar').html('0%');
+        $('#progress-bar').hide();
+
     }
     $('.alert').hide(); // there may be some initial alert, even though requests!=0
     links = $('#multi_post_links').val();
