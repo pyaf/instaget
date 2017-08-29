@@ -45,8 +45,8 @@ def GetVideoLink(request):
                     foundLink = True
             max_id = posts[-1]['id']
             # print(max_id)
-        print('foundLink: ', foundLink)
-        print('videoLink: ', videoLink )
+        # print('foundLink: ', foundLink)
+        # print('videoLink: ', videoLink )
         return HttpResponse(videoLink)
     else:
         return HttpResponse("Bad Request")
@@ -74,17 +74,17 @@ def _GetAllMediaLinks(users_posts_dict): # irrespective of img or video
 # ajax response funtion
 def GetMultiPosts(request):
     if request.method == 'POST':
-        print('requests', request.POST)
+        # print('requests', request.POST)
         users_posts_dict = json.loads(request.POST.get('users_posts_dict'))
-        print(users_posts_dict)
+        # print(users_posts_dict)
         media_data = _GetAllMediaLinks(users_posts_dict)
         return HttpResponse(json.dumps(media_data),
                     content_type = "application/json")
     else:
         return HttpResponse("Not allowed")
 
-def BackupView(request):
-    template = 'backup.html'
+def AccountView(request):
+    template = 'account.html'
     return render(request, template, {})
 
 

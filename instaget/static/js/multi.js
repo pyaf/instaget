@@ -57,19 +57,19 @@ function setMediaLinks(){
                 for(var i in posts){ // i is shortcode
                     // console.log(posts[i]['type']);
                     if (posts[i]['type']=="image"){
-                        selected_media.push(posts[i]['images']['low_resolution']['url']);
+                        selected_media.push(posts[i]['images']['standard_resolution']['url']);
                     }else if(posts[i]['type']=='video'){
-                        selected_media.push(posts[i]['videos']['low_resolution']['url']);
+                        selected_media.push(posts[i]['videos']['standard_resolution']['url']);
                     }else {//carousel
                         carousel = posts[i]['carousel_media'];
                         for(var j in carousel){
                             // console.log(carousel[j]['type']);
                             if(carousel[j]['type']=='image'){
-                                // console.log(carousel[j]['images']['low_resolution']['url']);
-                                tmp = carousel[j]['images']['low_resolution']['url'];
+                                // console.log(carousel[j]['images']['standard_resolution']['url']);
+                                tmp = carousel[j]['images']['standard_resolution']['url'];
                             }else{
-                                tmp = carousel[j]['videos']['low_resolution']['url'];
-                                // console.log(carousel[j]['videos']['low_resolution']['url']);
+                                tmp = carousel[j]['videos']['standard_resolution']['url'];
+                                // console.log(carousel[j]['videos']['standard_resolution']['url']);
                             }
                             // console.log(tmp);
                             selected_media.push(tmp);
@@ -93,6 +93,8 @@ function setMediaLinks(){
                 $('#downloadButton').removeAttr('onclick');
                 $('#downloadButton').show();
                 return;
+            }else{
+                $('#downloadButton').show();
             }
         },
         error: function(request, status, error){
@@ -109,17 +111,6 @@ function setMediaLinks(){
     });
 
 }
-function getMultiPosts(shortcodes){
-    $('#submit').attr('disabled','disabled');   
-    $('#submit').html("<img src='/static/ajax-loader.gif'> Go");
-    requests = true;
-    $('#results').html('');
-    var users_posts_dict = {};
-    for (var i in shortcodes){
-        IGembed(shortcodes[i]);
-    }
-}
-
 
 // when all ajax functions are done then.
 $(document).ajaxStop(function () {
@@ -147,10 +138,16 @@ $('#submit').click( function(e) {
 
     }
     $('.alert').hide(); // there may be some initial alert, even though requests!=0
+    requests = true;
     links = $('#multi_post_links').val();
     shortcodes = getShortCodes(links);
     console.log(shortcodes);
-    getMultiPosts(shortcodes);
+    $('#submit').attr('disabled','disabled');   
+    $('#submit').html("<img src='/static/ajax-loader.gif'> Go");
+    $('#results').html(''); 
+    for (var i in shortcodes){
+        IGembed(shortcodes[i]);
+    }
     return;
 });
 
@@ -173,4 +170,8 @@ function getShortCodes(links){
 function closeAlert(){
     $('.alert').hide();
     $('#error-msg').html('');
+}
+
+function downloadMulti(){
+    downloadZIP();
 }

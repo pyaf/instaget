@@ -1,24 +1,25 @@
+
 var total_posts = {};
 var requests = 0;
 var max_id = null;
 var username;
-var selected_media = []; // store links of selected cards
-var link_dict = {}; // key is card id, value is links it contains (more than one in case of corousel)
+var selected_cards = []; // store selected cards
+var card_data = {}; // key is card id i.e., shortcode, value is list of links of that card post
 
 
-function embed(link, post){
+function embed(type, post){
     var date = new Date(post['created_time'] * 1000);
-    // if(post['type']=='carousel')
-    var type = link.slice(-3);
-    var html = `<div class="card" link="`+link+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`
+    // var type = link.slice(-3);
+    var html = `<div class="card" id="`+post['code']+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`
     if(type == 'mp4'){
         html += `
         <video controls="controls" style="width:364px;">
-        <source src="`+link+`" type="video/mp4" />
+        <source src="`+post['alt_media_url']+`" type="video/mp4" />
         </video>
         `
     }else{
-        html += `<img class="card-img-top" src="`+link+`" alt="Card image cap">`
+        // console.log('type not mp4', post['type'], post)
+        html += `<img class="card-img-top" src="`+post['images']['low_resolution']['url']+`" alt="Card image cap">`
     }
     html += `
         <div class="card-body">
@@ -36,52 +37,66 @@ function embed(link, post){
     $('#results').append(html);
 }
 
-function getMultiPosts(shortcodes){
+function getUserMedia(username){
     console.log("Getting user media");
     $('#submit').attr('disabled','disabled');
     $('#submit').html("<img src='/static/ajax-loader.gif'> Go");
-    var i = 0; // card id
     $.ajax({
-        url: '/getMultiPosts/',
+        url: '/getUserData/',
         type: 'POST',
-        data: {'shortcodes': shortcodes,
+        data: {'username': username,
+                'max_id': max_id,
                 csrfmiddlewaretoken: csrf_token },
-        success: function(posts) {
-            console.log(posts);
-            if(posts.length==0){
+        success: function(data) {
+            console.log("Success");
+            total_posts[requests] = data['posts'];
+            console.log(total_posts[0].length)
+            if(total_posts[0].length==0){
                 $('#error-msg').html('User has not uploaded any media!');
                 $('.alert').show();
             }else{
                 requests++;
-                var link, corousel;
+                console.log(data);
+                var posts = data['posts'];
+                var tmp, carousel;
                 for(var i in posts){
+                    var links = [];
+                    var type = 'jpg'; // there's images field in every carousel, even if it doesn't contains only videos
                     max_id = posts[i]['id'];
-                    console.log(posts[i]['type']);
+                    // console.log(posts[i]['type']);
                     if (posts[i]['type']=="image"){
-                        link = posts[i]['images']['low_resolution']['url'];
+                        links.push(posts[i]['images']['standard_resolution']['url']);
                     }else if(posts[i]['type']=='video'){
-                        link = posts[i]['videos']['low_resolution']['url'];
-                    }else {//corousel
-                        link = posts[i]['alt_media_url'];
-                        corousel = posts[i]['corousel_media'];
-                        for(var j in corousel){
-                            if(corousel[j]['type']=='image'){
-                                link = corousel[j]['images']['low_resolution']['url'];
+                        type = 'mp4';
+                        links.push(posts[i]['videos']['standard_resolution']['url']);
+                    }else {//carousel
+                        carousel = posts[i]['carousel_media'];
+                        for(var j in carousel){
+                            if(carousel[j]['type']=='image'){
+                                tmp = carousel[j]['images']['standard_resolution']['url'];
                             }else{
-                                link = corousel[j]['videos']['low_resolution']['url'];
+                                tmp = carousel[j]['videos']['standard_resolution']['url'];
                             }
+                            links.push(tmp);
                         }
-                    }
-                    console.log(link);
-                    embed(link, posts[i]);
+                    }   card_data[posts[i]['code']] = links;
+                    embed(type, posts[i]);
                 }
                 console.log("Done");
                 $('#function-buttons').css('display','block');
+                if(data['more_available']==true){
+                    $('#loadMoreButtonDiv').css('display','block');
+                }else{ // if loaded more than one time, then it needs to be hidden false condn
+                    $('#loadMoreButtonDiv').css('display', 'none');
+                }
             }
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
             $('#submit').html("Go");
-            console.log(max_id);
+            //below 2 lines useful only after 1st time load more.
+            $('#loadMoreButton').removeAttr('disabled');
+            $('#loadMoreButton').html("Load More");
+            // console.log(max_id);
         },
         error: function(request, status, error){
           console.log(request['status']);
@@ -107,43 +122,32 @@ $('#submit').click( function(e) {
         selected_media = [];
         $('#results').html('');
         $('#function-buttons').css('display','none');
+        $('#loadMoreButtonDiv').css('display','none'); 
+        $('#progress-bar').html('0%');
+        $('#progress-bar').css('width', '0%');
+        $('#progress-bar').hide();
     }
     $('.alert').hide(); // there may be some initial alert, even though requests!=0
-    links = $('#multi_post_links').val();
-    shortcodes = getShortCodes(links);
-    console.log(shortcodes);
-    getMultiPosts(shortcodes);
+    username = $('#username').val();
+    getUserMedia(username);
     return;
 });
 
-function getShortCodes(links){
-    links = links.replace(/[\t\f\v]/g, '').split('\n');//remove any white space, split by \n
-    re = new RegExp('/p/(.*)/');
-    var link_list = [];
-    for(var i in links){
-        console.log(links[i]);
-        if(re.test(links[i])){
-            link_list.push(links[i].match(re)[1]);
-        }
-    }
-    return link_list;
-}
 
 function toggleCardSelection(card){
     // console.log('Toggling card');
-    var link = $(card).attr('link');
+    var code = $(card).attr('id');
     if($(card).hasClass('active')){
         $(card).removeClass('active');
         $(card).children('div.ticks').children('i.fa-check').removeClass('active');
-        selected_media.splice( $.inArray(link, selected_media), 1 );
+        selected_cards.splice( $.inArray(code, selected_cards), 1 );
         //removed link from selected_media
     }
     else{
         $(card).addClass('active');
         $(card).children('div.ticks').children('i.fa-check').addClass('active');
-        selected_media.push(link);
+        selected_cards.push(code);
     }
-    // console.log('Toggled');
  }
 
 function toggleAllCards(button, media_type){
@@ -173,3 +177,4 @@ function loadMore(){
     getUserMedia(username);
 
 }
+

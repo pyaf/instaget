@@ -1,15 +1,16 @@
 var bufferArray = {};
 var count = 0;
+var selected_media = [];
 
 function ajaxFile(url, arr, total){
-    console.log('Inside ajaxFile');
-    console.log(url, arr)
+    // console.log('Inside ajaxFile');
+    // console.log(url, arr)
     var oReq = new XMLHttpRequest();
     oReq.open("GET", url, true);
     oReq.responseType = "arraybuffer";
     oReq.onload = function (oEvent) {
         var arrayBuffer = oReq.response; // Note: not oReq.responseText
-        console.log(url, arrayBuffer);
+        // console.log(url, arrayBuffer);
         if (arrayBuffer) {
             arr[url] = arrayBuffer;
             count++;
@@ -27,8 +28,8 @@ function loadEnd(){
     $('#progress-bar').css('width', '100%'); 
     var zip = new JSZip();
     console.log('inside loadEnd');
-    console.log(selected_media);
-    console.log(bufferArray);
+    // console.log(selected_media);
+    // console.log(bufferArray);
     $.each(selected_media, function(i,n) {
         var filename = getFileName(selected_media[i]);
         console.log(selected_media[i], bufferArray[selected_media[i]], filename);
@@ -36,8 +37,7 @@ function loadEnd(){
     });
 
     zip.generateAsync({type:"blob"}).then(function(content) {
-        console.log(content);
-
+        // console.log(content);
         saveAs(content, "instagram_" + new Date().getTime() + ".zip");
         count = 0;
         bufferArr = [];
@@ -52,15 +52,26 @@ function getFileName(link)
 
 function downloadZIP(){
     console.log('Downloading zip');
+    console.log(selected_media);
     $('#progress-bar').show();
     var count = selected_media.length;
-    console.log('selected_media', selected_media);
+    // console.log('selected_media', selected_media);
     $.each(selected_media, function (i, n) {
-        console.log(i, selected_media[i]);
+        // console.log(i, selected_media[i]);
         ajaxFile(selected_media[i], bufferArray, count);
     });
+    console.log('hidding progress-bar');
 }
 
+function downloadUserMedia(){
+    for (var i in selected_cards){
+        for (var j in card_data[selected_cards[i]]){
+            // console.log(card_data[selected_cards[i]][j]);
+            selected_media.push(card_data[selected_cards[i]][j]);
+        }
+    }
+    downloadZIP();
+}
 
 function updateProgressBar(count, total){
     progress_bar = $('#progress-bar');

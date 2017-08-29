@@ -3,10 +3,10 @@ var total_posts = {};
 var requests = 0;
 var max_id = null;
 var username;
-var selected_media = []; // store links of selected cards
+var selected_cards = []; // store links of selected cards
 var card_data = {}; // key is card id, value is links it contains (more than one in case of carousel)
 var users_posts_dict = {}; // dict of dict, so as insertion, search and deltetion is of O(1) complexity
-
+// users_posts_dict will be used to get user wise post data, ajax to django view funtion
 
 function embed(link, post){
     var date = new Date(post['created_time'] * 1000);
@@ -46,7 +46,6 @@ function IGembed(shortcode){
         type: 'GET',
         crossDomain: true,
         dataType:'jsonp',
-        async: false,
         success: function(data) {
             console.log(data);
             if(users_posts_dict[data['author_name']] == undefined){
@@ -163,7 +162,7 @@ $('#submit').click( function(e) {
         requests = 0;
         max_id = null;
         total_posts = {};
-        selected_media = [];
+        selected_cards = [];
         $('#results').html('');
         $('#function-buttons').css('display','none');
     }
@@ -196,12 +195,12 @@ function toggleCardSelection(card){
     if($(card).hasClass('active')){
         $(card).removeClass('active');
         $(card).children('div.ticks').children('i.fa-check').removeClass('active');
-        selected_media.splice( $.inArray(card_id, selected_media), 1 );
+        selected_cards.splice( $.inArray(card_id, selected_cards), 1 );
     }
     else{
         $(card).addClass('active');
         $(card).children('div.ticks').children('i.fa-check').addClass('active');
-        selected_media.push(card_id);
+        selected_cards.push(card_id);
     }
     // console.log('Toggled');
 }
