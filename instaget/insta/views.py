@@ -13,7 +13,7 @@ def MultiView(request):
     template = 'multi.html'
     return render(request, template, {})
 
-    
+
 def VideoView(request):
     template = 'video.html'
     context = {}
@@ -52,38 +52,33 @@ def GetVideoLink(request):
         return HttpResponse("Bad Request")
 
 def _GetAllMediaLinks(users_posts_dict): # irrespective of img or video
-    media_data = []
+    media_data = defaultdict() # key is shortcode and value is post data (../username/media/) has all info
     max_id = None
     for author_name in users_posts_dict:
         while(True): # Will iterate till it finds all media links of this user
             posts, more_available = getPosts(author_name, max_id=max_id)
             for post in posts:
-                try:
-                    if users_posts_dict[author_name][post['id']]:
-                        media_data.append(post)
-                        del users_posts_dict[author_name][post['id']]
+                try: # 2
+                    if users_posts_dict[author_name][post['code']]: # post['code'] is shortcode of the post
+                        media_data[post['code']] = post
+                        del users_posts_dict[author_name][post['code']]
                         # will help in breaking the loop when value dict is empty
                 except Exception as e:
                     pass
-            if not users_posts_dict[author_name]: # all media links found
+            if not users_posts_dict[author_name]: # all media links found for this user
                 break
-            max_id = posts[-1]['id']
+            max_id = posts[-1]['id'] # not found in this iteration.
     return media_data
 
+# 1
 # ajax response funtion
 def GetMultiPosts(request):
     if request.method == 'POST':
-        shortcodes = request.POST.getlist('shortcodes[]', None)
-        # print(shortcodes)
-        users_posts_dict = defaultdict(dict)
-        api_url = 'https://api.instagram.com/oembed/?url=https://instagram.com/p/{}/'
-        for code in shortcodes:
-            url = api_url.format(code)
-            response = requests.get(url).json()
-            users_posts_dict[response['author_name']][response['media_id']] = True
-        # print(users_posts_dict)
-        media_links = _GetAllMediaLinks(users_posts_dict)
-        return HttpResponse(json.dumps(media_links),
+        print('requests', request.POST)
+        users_posts_dict = json.loads(request.POST.get('users_posts_dict'))
+        print(users_posts_dict)
+        media_data = _GetAllMediaLinks(users_posts_dict)
+        return HttpResponse(json.dumps(media_data),
                     content_type = "application/json")
     else:
         return HttpResponse("Not allowed")
@@ -107,3 +102,14 @@ def GetUserData(request):
             )
     else:
         return HttpResponse("Bad Request")
+
+'''
+# 1 : given a post's shortcode, we can know username, media_id etc..
+but not source (standard media links), so we have to request to another api at
+https://instagram.com/username/media which gives all the user posts and loop over
+all of them to get the required ones
+
+
+# 2 : here new key-value is not generated in value (a dict) of
+users_posts_dict[author_name], also helps in breaking the loop.
+'''

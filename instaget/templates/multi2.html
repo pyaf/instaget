@@ -12,6 +12,32 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/tipsy.css" type="text/css" />
     <style media="screen">
+    .ticks .fa-check{
+    border: thick solid cornflowerblue;
+    position: absolute;
+    left: -11px;
+    top: 0px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 30px;
+    padding-top: 4px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    }
+    .fa.fa-check.active {
+        background: #3f6df6;
+    }
+    .card.active{
+    opacity: .65;
+    }
+    /*.active {
+    opacity: .65;
+}*/
+    .card{
+        cursor: pointer;
+    }
    p{
     margin-bottom: 0;
   }
@@ -49,9 +75,15 @@
                 </div>
                 <button type="submit" id="submit" class="btn btn-default">GO</button>
               </form>
-                <button class="btn btn-success" style="display:none" id="downloadButton" onclick="downloadZIP()"> Download Zip </button>
               <br>
             </div>
+      </div>
+
+
+      <div class="pull-right" id="function-buttons"style="display:none;">
+        <button class="btn btn-info" onclick="toggleAllCards(this, 'jpg')"> Select all Images </button>
+        <button class="btn btn-info" onclick="toggleAllCards(this, 'mp4')"> Select all Videos </button>
+        <button class="btn btn-success"  onclick="downloadZIP()"> Download Zip </button>
       </div>
       <br><br>
       <div class="row" >
@@ -59,6 +91,9 @@
 
         </div>
     </div>
+    <div class="row">
+    </div>
+
 </div>
 </div>
 
@@ -74,6 +109,11 @@ var csrf_token = '{{ csrf_token }}';
 <script src="/static/js/FileSaver.js" charset="utf-8"></script>
 <script src="/static/js/multi.js" charset="utf-8"></script>
 <script src="/static/js/save.js" charset="utf-8"></script>
+<script type='text/javascript'>
+ $(function() {
+   $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
+ });
+</script>
 </body>
 
 </html>
