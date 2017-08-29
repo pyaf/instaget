@@ -11,31 +11,36 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/tipsy.css" type="text/css" />
+  <link rel="stylesheet" href="/static/css/index.css" type="text/css" />
+
     <style media="screen">
    p{
     margin-bottom: 0;
   }
     </style>
 </head>
-<body>
+<body style="background: url(/static/11.jpg) no-repeat  fixed;>
     <div class="jumbotron">
     <div class="container" >
         <div class="row">
             <div class="col-md-2">
-            <a href="/" class="btn btn-default  navb">Download Image</a>
             </div>
-            <div class="col-md-2">
-            <a href="/multi" class="btn btn-default active navb">Multiple Download</a>
+            <div class="col-md-3">
+            <a href="/multi" class="btn btn-default  active navb">Download Instagram Posts</a>
             </div>
-            <div class="col-md-2">
-            <a href="/video" class="btn btn-default navb">Download Video</a>
-            </div>
-            <div class="col-md-2">
+
+            <div class="col-md-3">
             <a href="/account" class="btn btn-default navb">Download Account</a>
             </div>
-        </div><br>
+            <div class="col-md-3" id="fa-instagram">
+            <i class="fa fa-instagram"></i>
+          </div>
+       </div><br>
+        <hr size="50">
         <div class="row">
-            <div class="col-sm-6">
+        <div class="col-md-2"></div>
+
+            <div class="col-sm-8">
               <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
                 <button type="button" class="close" aria-label="Close" onclick="closeAlert()">
                   <span aria-hidden="true" class="times">&times;</span>

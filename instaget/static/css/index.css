@@ -11,7 +11,7 @@
   }
   .navb{
 
-  margin-top: 20%;
+  margin-top: 16%;
   }
 .btn.btn-default.active{
   color:#a33385;
@@ -37,28 +37,28 @@
     background: transparent;
     border: 2px solid white;
   }
-  .form-control {
+/*  .form-control {
     color:#ffffff!important;
-  }
+  }*/
   hr{
     border: 1px solid;
   }
   label{
     font-size: 25px;
   }
-*::-webkit-input-placeholder {
+/**::-webkit-input-placeholder {
     color: white!important;
     opacity: 0.6!important;
-}
+}*/
 /**::-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     background-color: transparent!important;
     background-image: none!important;
     color:#ffffff!important;
 }*/
-input:-webkit-autofill {
+/*textarea:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px #db344e inset;
-    /*background:transparent;*/
-}
+    background:transparent;
+}*/
 .fa.fa-instagram{
   font-size: 6em;
 }
