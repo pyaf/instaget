@@ -13,19 +13,19 @@ function IGembed(shortcode){
         dataType:'jsonp',
         async: false,
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             if(users_posts_dict[data['author_name']] == undefined){
                 users_posts_dict[data['author_name']] = {};
             }
             users_posts_dict[data['author_name']][shortcode] = 1;
-            var html = `<div class="card" style="max-width: 20rem;">`
+            var html = `<div class="card">`
                         + data['html']
                     + `</div>`;
             $('#results').append(html);
             window.instgrm.Embeds.process() // Note: no semi colon
         },
         error: function(request, status, error){
-          console.log(request['status']);
+          //console.log(request['status']);
           if(request['status']==500){
             $('#error-msg').html('Internal Server Error! please try after some time.');
           }else{
@@ -40,15 +40,15 @@ function IGembed(shortcode){
 
 
 function setMediaLinks(){
-    console.log('Preparing selected_media, calling Ajax');
-    console.log(users_posts_dict);
+    //console.log('Preparing selected_media, calling Ajax');
+    //console.log(users_posts_dict);
     $.ajax({
         url: '/getMultiPosts/',
         type: 'POST',
         data: {'users_posts_dict': JSON.stringify(users_posts_dict),
                 csrfmiddlewaretoken: csrf_token },
         success: function(posts) {
-            console.log("Got ajax response from views", posts);
+            //console.log("Got ajax response from views", posts);
             if(posts.length==0){
                 $('#error-msg').html('Posts not found!');
                 $('.alert').show();
@@ -76,8 +76,8 @@ function setMediaLinks(){
                         }
                     }
                 }
-                console.log("media links set");
-                console.log(selected_media);
+                //console.log("media links set");
+                //console.log(selected_media);
                 // $('#function-buttons').css('display','block');
             }
             //below 2 lines useful only for initial search
@@ -87,10 +87,10 @@ function setMediaLinks(){
                 $('#error-msg').html('No media found!');
                 return;
             }else if (selected_media.length==1){
-                $('#downloadButton').html('Download');
-                $('#downloadButton').attr('href', selected_media[0]);
-                $('#downloadButton').attr('download', '');
-                $('#downloadButton').removeAttr('onclick');
+                // dbutton = '<a href="'+selected_media[0]+'" download class="btn btn-default">Download Now</a>';
+                // $('#function-buttons').append(dbutton);
+                $('#downloadButton').attr('onclick', 'singleDownload()');
+                $('#downloadButton').html('Download Now');
                 $('#downloadButton').show();
                 return;
             }else{
@@ -98,7 +98,7 @@ function setMediaLinks(){
             }
         },
         error: function(request, status, error){
-          console.log(request['status']);
+          //console.log(request['status']);
           if(request['status']==500){
             $('#error-msg').html('Internal Server Error! please try after some time.');
           }else{
@@ -118,7 +118,7 @@ $(document).ajaxStop(function () {
         setMediaLinks();
         selected_media_set = true;
     }
-    console.log('ajaxStop');
+    // console.log('ajaxStop');
     return;
 });
 
@@ -141,10 +141,10 @@ $('#submit').click( function(e) {
     requests = true;
     links = $('#multi_post_links').val();
     shortcodes = getShortCodes(links);
-    console.log(shortcodes);
-    $('#submit').attr('disabled','disabled');   
+    //console.log(shortcodes);
+    $('#submit').attr('disabled','disabled');
     $('#submit').html("<img src='/static/ajax-loader.gif'> Go");
-    $('#results').html(''); 
+    $('#results').html('');
     for (var i in shortcodes){
         IGembed(shortcodes[i]);
     }
@@ -172,6 +172,18 @@ function closeAlert(){
     $('#error-msg').html('');
 }
 
+function singleDownload(){
+    //console.log('single download');
+    $('#downloadButton').html("<img src='/static/ajax-loader.gif'> Downloading..")
+    $('#downloadButton').attr('disabled','disabled');
+    var link = document.createElement("a");
+    link.download = 'instagram';
+    link.href = selected_media[0];
+    link.click();
+    $('#downloadButton').html("Download");
+    $('#downloadButton').removeAttr('disabled');
+
+}
 function downloadMulti(){
     downloadZIP();
 }

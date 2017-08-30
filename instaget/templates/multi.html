@@ -18,7 +18,13 @@
     margin-bottom: 0;
   }
   #downloadButton{
-   display: none; 
+   display: none;
+  }
+  .card{
+      margin:auto;
+      /*margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 2%;*/
   }
     </style>
 </head>
@@ -57,18 +63,18 @@
           </form>
         </div>
       </div>
-      <div style="text-align:center;">
-        <button type="submit" id="submit" class="btn btn-default" > GO </button>
-        <button  class="btn btn-default" id="downloadButton" onclick="downloadMulti()"> Download Zip </button>
+      <div id="function-buttons" style="text-align:center;">
+        <button type="submit" id="submit" class="function btn btn-default" > GO </button>
+        <button  class="function btn btn-default" id="downloadButton" onclick="downloadMulti()"> Download Zip </button>
       </div>
       <br>
       <div class="progress">
         <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%; display:none">0%</div>
       </div>
       <br><br>
-      <div class="row" >
-        <div class="card-columns" id="results" >
-        </div>
+      <div class="row" id="results">
+        <!-- <div class="card-columns"  >
+        </div> -->
       </div>
     </div>
 

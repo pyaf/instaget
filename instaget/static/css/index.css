@@ -85,6 +85,13 @@
   width:100%;
 
 }
+  .function{
+
+      width:49%!important;
+  }
+  .card{
+      margin:auto;
+  }
 .btn.btn-default{
   margin-top: 3%;
   width:100%;
@@ -95,9 +102,9 @@
 
 }
 #results{
-  width: 70%;
+  width: 90%;
   margin: auto;
 }
  button{
-  width:20%!important;
+  width:20%;
  }
