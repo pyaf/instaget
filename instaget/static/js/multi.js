@@ -19,7 +19,7 @@ function IGembed(shortcode){
             }
             users_posts_dict[data['author_name']][shortcode] = 1;
             var html = `<div class="card">`
-                        + data['html']
+                        + data['html'].replace('data-instgrm-captioned','')
                     + `</div>`;
             $('#results').append(html);
             window.instgrm.Embeds.process() // Note: no semi colon
