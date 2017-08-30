@@ -64,6 +64,8 @@ function downloadZIP(){
 }
 
 function downloadUserMedia(){
+    $('#progress-bar').html('0%'); // reset in case of load more and then re download
+    $('#progress-bar').css('width', '0%'); 
     for (var i in selected_cards){
         for (var j in card_data[selected_cards[i]]){
             selected_media.push(card_data[selected_cards[i]][j]);

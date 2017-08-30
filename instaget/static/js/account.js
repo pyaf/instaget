@@ -151,18 +151,22 @@ function toggleCardSelection(card){
  }
 
 function toggleAllCards(button, media_type){
+    // console.log($(button).text().split(' '));
     if($(button).hasClass('active')){
+        
+        $(button).html('Select all ' + $(button).text().split(' ')[2]);
         $(button).removeClass('active');
         var was_active = true;
     }else{
         $(button).addClass('active');
+        $(button).html('Unselect all ' + $(button).text().split(' ')[2]);
         var was_active = false;
     }
     var cards = $('.card');
     for(var i=0; i<cards.length; i++){
         var type = $(cards[i]).attr('type');
         var selected = $(cards[i]).hasClass('active');
-        if(type==media_type && !(was_active ^ selected)){ // go crack it B) (made a truth table for that :P)
+        if(type==media_type && (was_active == selected)){ // go crack it B) (made a truth table for that :P)
             toggleCardSelection(cards[i]);
         }
     }
