@@ -153,13 +153,16 @@ function toggleCardSelection(card){
 function toggleAllCards(button, media_type){
     if($(button).hasClass('active')){
         $(button).removeClass('active');
+        var was_active = true;
     }else{
         $(button).addClass('active');
+        var was_active = false;
     }
     var cards = $('.card');
     for(var i=0; i<cards.length; i++){
         var type = $(cards[i]).attr('type');
-        if(type==media_type){
+        var selected = $(cards[i]).hasClass('active');
+        if(type==media_type && !(was_active ^ selected)){ // go crack it B) (made a truth table for that :P)
             toggleCardSelection(cards[i]);
         }
     }

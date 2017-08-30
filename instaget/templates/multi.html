@@ -57,14 +57,14 @@
           </div>
           <form action="">
             <div class="form-group">
-              <label>Enter Instagram Post Links</label>
-              <textarea type="text" style="height:100px" id = "multi_post_links" class="form-control input-lg" placeholder="Enter links"></textarea>
+              <label>Download Instagram Posts</label>
+              <textarea data-toggle="tooltip" title="You can enter multiple Instagram links seperated by new line." type="text" style="height:100px" id = "multi_post_links" class="form-control input-lg" placeholder="Enter Instagram Post links"></textarea>
             </div>
           </form>
         </div>
       </div>
       <div id="function-buttons" style="text-align:center;">
-        <button type="submit" id="submit" class="function btn btn-default" > GO </button>
+        <button type="submit" id="submit" data-toggle="tooltip" title="Click to preview the posts before download."class="function btn btn-default" > GO </button>
         <button  class="function btn btn-default" id="downloadButton" onclick="downloadMulti()"> Download Zip </button>
       </div>
       <br>
@@ -80,6 +80,9 @@
 
 <script>
 var csrf_token = '{{ csrf_token }}';
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
 </script>
 <script src="/static/js/jquery-3.2.1.min.js" charset="utf-8"></script>
 <script type='text/javascript' src='/static/js/jquery.tipsy.js'></script>

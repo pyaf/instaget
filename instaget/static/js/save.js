@@ -66,9 +66,12 @@ function downloadZIP(){
 function downloadUserMedia(){
     for (var i in selected_cards){
         for (var j in card_data[selected_cards[i]]){
-            // console.log(card_data[selected_cards[i]][j]);
             selected_media.push(card_data[selected_cards[i]][j]);
         }
+    }
+    if(selected_media.length==0){
+        alert("No media selected!");
+        return;
     }
     downloadZIP();
 }
