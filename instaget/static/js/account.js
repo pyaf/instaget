@@ -5,7 +5,8 @@ var max_id = null;
 var username;
 var selected_cards = []; // store selected cards
 var card_data = {}; // key is card id i.e., shortcode, value is list of links of that card post
-
+var videos_present = false;
+var images_present = false;
 
 function embed(type, post){
     var date = new Date(post['created_time'] * 1000);
@@ -38,9 +39,9 @@ function embed(type, post){
 }
 
 function getUserMedia(username){
-    console.log("Getting user media");
+    // console.log("Getting user media");
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/ajax-loader.gif'> Getting user..");
+    $('#submit').html("<img src='/static/ajax-loader.gif'> Wait..");
     $.ajax({
         url: '/getUserData/',
         type: 'POST',
@@ -48,47 +49,51 @@ function getUserMedia(username){
                 'max_id': max_id,
                 csrfmiddlewaretoken: csrf_token },
         success: function(data) {
-            console.log("Success");
+            // console.log("Success");
+            var status = data['status'];
+            if (status==404){
+                return logErr('User not found!');
+            }else if(status!=200){
+                return logErr('Error occured. Err Code: '+ status);
+            }
             total_posts[requests] = data['posts'];
-            console.log(total_posts[0].length)
             if(total_posts[0].length==0){
-                $('#error-msg').html('User has not uploaded any media!');
-                $('.alert').show();
-            }else{
-                requests++;
-                console.log(data);
-                var posts = data['posts'];
-                var tmp, carousel;
-                for(var i in posts){
-                    var links = [];
-                    var type = 'jpg'; // there's images field in every carousel, even if it doesn't contains only videos
-                    max_id = posts[i]['id'];
-                    // console.log(posts[i]['type']);
-                    if (posts[i]['type']=="image"){
-                        links.push(posts[i]['images']['standard_resolution']['url']);
-                    }else if(posts[i]['type']=='video'){
-                        type = 'mp4';
-                        links.push(posts[i]['videos']['standard_resolution']['url']);
-                    }else {//carousel
-                        carousel = posts[i]['carousel_media'];
-                        for(var j in carousel){
-                            if(carousel[j]['type']=='image'){
-                                tmp = carousel[j]['images']['standard_resolution']['url'];
-                            }else{
-                                tmp = carousel[j]['videos']['standard_resolution']['url'];
-                            }
-                            links.push(tmp);
+                return logErr('User has not uploaded any media!');
+            }
+            requests++;
+            // console.log(data);
+            var posts = data['posts'];
+            var tmp, carousel;
+            for(var i in posts){
+                var links = [];
+                var type = 'jpg'; // there's images field in every carousel, even if it doesn't contains only videos
+                max_id = posts[i]['id'];
+                // console.log(posts[i]['type']);
+                if (posts[i]['type']=="image"){
+                    // images_present = true;
+                    links.push(posts[i]['images']['standard_resolution']['url']);
+                }else if(posts[i]['type']=='video'){
+                    // videos_present = true;
+                    type = 'mp4';
+                    links.push(posts[i]['videos']['standard_resolution']['url']);
+                }else {//carousel
+                    carousel = posts[i]['carousel_media'];
+                    for(var j in carousel){
+                        if(carousel[j]['type']=='image'){
+                            tmp = carousel[j]['images']['standard_resolution']['url'];
+                        }else{
+                            tmp = carousel[j]['videos']['standard_resolution']['url'];
                         }
-                    }   card_data[posts[i]['code']] = links;
-                    embed(type, posts[i]);
-                }
-                console.log("Done");
-                $('#function-buttons').css('display','block');
-                if(data['more_available']==true){
-                    $('#loadMoreButtonDiv').css('display','block');
-                }else{ // if loaded more than one time, then it needs to be hidden false condn
-                    $('#loadMoreButtonDiv').css('display', 'none');
-                }
+                        links.push(tmp);
+                    }
+                }   card_data[posts[i]['code']] = links;
+                embed(type, posts[i]);
+            }
+            $('#function-buttons').css('display','block');
+            if(data['more_available']==true){
+                $('#loadMoreButtonDiv').css('display','block');
+            }else{ // if loaded more than one time, then it needs to be hidden false condn
+                $('#loadMoreButtonDiv').css('display', 'none');
             }
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
@@ -99,18 +104,14 @@ function getUserMedia(username){
             // console.log(max_id);
         },
         error: function(request, status, error){
-          console.log(request['status']);
-          if(request['status']==500){
-            $('#error-msg').html('Internal Server Error! please try after some time.');
-          }else{
-          $('#error-msg').html('User not found!, please enter a valid username.');
-          }
-          $('.alert').show();
-          $('#submit').removeAttr('disabled');
-          $('#submit').html("Get it!");
+            console.log(request['status']);
+                if(request['status']==500){
+                    return logErr('Internal Server Error! please try after some time.');
+                }else{
+                    return logErr('Error occured, Err code: ' + request['status']);
+                }
         },
     });
-
 }
 
 $('#submit').click( function(e) {
@@ -179,12 +180,19 @@ function closeAlert(){
 
 function loadMore(){
     $('#loadMoreButton').attr('disabled','disabled');
-    $('#loadMoreButton').html("<img src='/static/ajax-loader.gif'> Loading..");
+    $('#loadMoreButton').html("<img src='/static/ajax-loader.gif'>loading..");
     console.log("loading more")
     getUserMedia(username);
 
 }
 
+function logErr(error){
+    $('#error-msg').html(error);
+    $('.alert').show();
+    $('#submit').removeAttr('disabled');
+    $('#submit').html("Go");
+    return; 
+}
 
 
 

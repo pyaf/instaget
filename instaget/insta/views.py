@@ -24,6 +24,7 @@ def PrivacyPolicy(request):
     template = 'privacy-policy.html'
     return render(request, template, {})
 
+
 def GetUserStory(request):
     if request.method == "POST":
         response_data = {}
@@ -42,47 +43,32 @@ def GetUserStory(request):
         return HttpResponse(json.dumps(response_data),
                     content_type = "application/json")
     
+
 def getPosts(author_name, max_id = ''):
     url = 'https://www.instagram.com/%s/media/?max_id=%s' % (author_name, max_id)
-    response = requests.get(url).json()
-    return (response['items'], response['more_available'])
-
-
-def GetVideoLink(request):
-    if request.method == "POST":
-        media_id = request.POST['media_id']
-        author_name = request.POST['author_name']
-        foundLink = False
-        max_id = None
-        while(not foundLink):
-            print("Getting Posts..")
-            posts, more_available = getPosts(author_name, max_id=max_id)
-            for post in posts:
-                if post['id'] == media_id:
-                    videoLink = post['alt_media_url']
-                    foundLink = True
-            max_id = posts[-1]['id']
-            # print(max_id)
-        # print('foundLink: ', foundLink)
-        # print('videoLink: ', videoLink )
-        return HttpResponse(videoLink)
+    response = requests.get(url)
+    if response.status_code == 200:
+        return (response.status_code, response.json()['items'], 
+                response.json()['more_available'])
     else:
-        return HttpResponse("Bad Request")
+        return (response.status_code, {}, {})
+
 
 def _GetAllMediaLinks(users_posts_dict): # irrespective of img or video
     media_data = defaultdict() # key is shortcode and value is post data (../username/media/) has all info
     max_id = None
     for author_name in users_posts_dict:
         while(True): # Will iterate till it finds all media links of this user
-            posts, more_available = getPosts(author_name, max_id=max_id)
-            for post in posts:
-                try: # 2
-                    if users_posts_dict[author_name][post['code']]: # post['code'] is shortcode of the post
-                        media_data[post['code']] = post
-                        del users_posts_dict[author_name][post['code']]
-                        # will help in breaking the loop when value dict is empty
-                except Exception as e:
-                    pass
+            status, posts, more_available = getPosts(author_name, max_id=max_id)
+            if status==200: # else ?
+                for post in posts:
+                    try: # 2
+                        if users_posts_dict[author_name][post['code']]: # post['code'] is shortcode of the post
+                            media_data[post['code']] = post
+                            del users_posts_dict[author_name][post['code']]
+                            # will help in breaking the loop when value dict is empty
+                    except Exception as e:
+                        pass
             if not users_posts_dict[author_name]: # all media links found for this user
                 break
             max_id = posts[-1]['id'] # not found in this iteration.
@@ -110,8 +96,8 @@ def GetUserData(request):
     if request.method == "POST":
         username = request.POST['username']
         max_id = request.POST['max_id']
-        posts, more_available = getPosts(author_name=username, max_id=max_id)
-        response_data = {}
+        status, posts, more_available = getPosts(author_name=username, max_id=max_id)
+        response_data = {'status': status}
         response_data['posts'] = posts
         response_data['more_available'] = more_available
         return HttpResponse(
@@ -130,4 +116,27 @@ all of them to get the required ones
 
 # 2 : here new key-value is not generated in value (a dict) of
 users_posts_dict[author_name], also helps in breaking the loop.
+'''
+
+'''
+def GetVideoLink(request):
+    if request.method == "POST":
+        media_id = request.POST['media_id']
+        author_name = request.POST['author_name']
+        foundLink = False
+        max_id = None
+        while(not foundLink):
+            print("Getting Posts..")
+            status, posts, more_available = getPosts(author_name, max_id=max_id)
+            for post in posts:
+                if post['id'] == media_id:
+                    videoLink = post['alt_media_url']
+                    foundLink = True
+            max_id = posts[-1]['id']
+            # print(max_id)
+        # print('foundLink: ', foundLink)
+        # print('videoLink: ', videoLink )
+        return HttpResponse(videoLink)
+    else:
+        return HttpResponse("Bad Request")
 '''

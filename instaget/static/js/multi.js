@@ -5,7 +5,7 @@ var selected_media_set = false;
 
 // Embed all posts using IG oembed endpoint
 function IGembed(shortcode){
-    post_link = 'https://instagram.com/p/' + shortcode;
+    var post_link = 'https://instagram.com/p/' + shortcode;
     $.ajax({
         url: 'https://api.instagram.com/oembed/?url=' + post_link,
         type: 'GET',
@@ -29,7 +29,7 @@ function IGembed(shortcode){
           if(request['status']==500){
             $('#error-msg').html('Internal Server Error! please try after some time.');
           }else{
-          $('#error-msg').html('Post not found!, please enter a valid link.');
+          $('#error-msg').append(post_link + ' link not found!.<br>'); // append as there may be many unfound posts
           }
           $('.alert').show();
         }
@@ -82,7 +82,7 @@ function setMediaLinks(){
             }
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
-            $('#submit').html("Get it!");
+            $('#submit').html("Search again!");
             if(selected_media.length==0){
                 $('#error-msg').html('No media found!');
                 $('alert').show();
@@ -99,7 +99,7 @@ function setMediaLinks(){
           }
           $('.alert').show();
           $('#submit').removeAttr('disabled');
-          $('#submit').html("Get it!");
+          $('#submit').html("Search again!");
         },
     });
 
@@ -128,7 +128,7 @@ $('#submit').click( function(e) {
         $('#downloadButton').hide();
         $('#progress-bar').html('0%');
         $('#progress-bar').hide();
-
+        $('#error-msg').html('');
     }
     $('.alert').hide(); // there may be some initial alert, even though requests!=0
     requests = true;

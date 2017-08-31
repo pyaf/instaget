@@ -27,12 +27,12 @@ function loadEnd(){
     $('#progress-bar').html('100%');
     $('#progress-bar').css('width', '100%'); 
     var zip = new JSZip();
-    console.log('inside loadEnd');
+    // console.log('inside loadEnd');
     // console.log(selected_media);
     // console.log(bufferArray);
     $.each(selected_media, function(i,n) {
         var filename = getFileName(selected_media[i]);
-        console.log(selected_media[i], bufferArray[selected_media[i]], filename);
+        // console.log(selected_media[i], bufferArray[selected_media[i]], filename);
         zip.folder("instagram").file(filename, bufferArray[selected_media[i]]);
     });
 
@@ -42,6 +42,9 @@ function loadEnd(){
         count = 0;
         bufferArr = [];
     });
+    $('#progress-bar').html('0%');
+    $('#progress-bar').css('width', '0%');
+    $('#progress-bar').hide();
 }
 
 function getFileName(link)
@@ -51,8 +54,8 @@ function getFileName(link)
 }
 
 function downloadZIP(){
-    console.log('Downloading zip');
-    console.log(selected_media);
+    // console.log('Downloading zip');
+    // console.log(selected_media);
     $('#progress-bar').show();
     var count = selected_media.length;
     $.each(selected_media, function (i, n) {
@@ -63,14 +66,14 @@ function downloadZIP(){
 
 function singleDownload(){
     //console.log('single download');
-    $('#downloadButton').html("<img src='/static/ajax-loader.gif'> Downloading..")
-    $('#downloadButton').attr('disabled','disabled');
+    // $('#downloadButton').html("<img src='/static/ajax-loader.gif'> wait..")
+    // $('#downloadButton').attr('disabled','disabled');
     var link = document.createElement("a");
     link.download = 'instagram';
     link.href = selected_media[0];
-    link.click(); // no idea if it's sync or async
-    $('#downloadButton').html("Download");
-    $('#downloadButton').removeAttr('disabled');
+    link.click(); // it's async
+    // $('#downloadButton').html("Download");
+    // $('#downloadButton').removeAttr('disabled');
 }
 
 function downloadUserMedia(){
@@ -82,7 +85,7 @@ function downloadUserMedia(){
             selected_media.push(card_data[selected_cards[i]][j]);
         }
     }
-    console.log('length of selected_media', selected_media.length);
+    // console.log('length of selected_media', selected_media.length);
     if(selected_media.length==0){
         alert("No media selected!");
         return;
