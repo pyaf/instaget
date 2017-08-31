@@ -7,7 +7,7 @@
   <meta http-equiv="Cache-Control" content="no-siteapp">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <title>Home</title>
+  <title>Download Instagram Posts</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/tipsy.css" type="text/css" />
@@ -58,14 +58,14 @@
           <form action="">
             <div class="form-group">
               <label>Download Instagram Posts</label>
-              <textarea data-toggle="tooltip" title="You can enter multiple Instagram links seperated by new line." type="text" style="height:100px" id = "multi_post_links" class="form-control input-lg" placeholder="Enter Instagram Post links"></textarea>
+              <textarea required="true" data-toggle="tooltip" title="You can download multiple Instagram posts just by entering links seperated by new line." type="text" style="height:100px" id = "multi_post_links" data-placement="top" class="form-control input-lg" placeholder="Enter Instagram Post links"></textarea>
             </div>
           </form>
         </div>
       </div>
       <div id="function-buttons" style="text-align:center;">
-        <button type="submit" id="submit" data-toggle="tooltip" title="Click to preview the posts before download."class="function btn btn-default" > GO </button>
-        <button  class="function btn btn-default" id="downloadButton" onclick="downloadMulti()"> Download Zip </button>
+        <button  type="submit" id="submit" data-toggle="tooltip" data-placement="left" title="Click to preview the posts before download."class="function btn btn-default" > Get it! </button>
+        <button  class="function btn btn-default" " id="downloadButton" onclick="downloadMultiMedia()">Download</button>
       </div>
       <br>
       <div class="progress">
@@ -78,12 +78,6 @@
       </div>
     </div>
 
-<script>
-var csrf_token = '{{ csrf_token }}';
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
-</script>
 <script src="/static/js/jquery-3.2.1.min.js" charset="utf-8"></script>
 <script type='text/javascript' src='/static/js/jquery.tipsy.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -93,6 +87,22 @@ $(document).ready(function(){
 <script src="/static/js/FileSaver.js" charset="utf-8"></script>
 <script src="/static/js/multi.js" charset="utf-8"></script>
 <script src="/static/js/save.js" charset="utf-8"></script>
+
+<script>
+var csrf_token = '{{ csrf_token }}';
+$(document).ready(function(){
+
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
+$(document).on('show.bs.tooltip', function (e) {
+  setTimeout(function() {   //calls click event after a certain time
+   $('[data-toggle="tooltip"]').tooltip('hide');
+}, 4000);
+});
+
+
+</script>
+
 </body>
 
 </html>

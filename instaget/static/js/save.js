@@ -63,19 +63,45 @@ function downloadZIP(){
     console.log('hidding progress-bar');
 }
 
+
+function singleDownload(){
+    //console.log('single download');
+    $('#downloadButton').html("<img src='/static/ajax-loader.gif'> Downloading..")
+    $('#downloadButton').attr('disabled','disabled');
+    var link = document.createElement("a");
+    link.download = 'instagram';
+    link.href = selected_media[0];
+    link.click(); // no idea if it's sync or async
+    $('#downloadButton').html("Download");
+    $('#downloadButton').removeAttr('disabled');
+}
+
 function downloadUserMedia(){
     $('#progress-bar').html('0%'); // reset in case of load more and then re download
     $('#progress-bar').css('width', '0%'); 
+    selected_media = []; // reinitialisation is imp!..
     for (var i in selected_cards){
         for (var j in card_data[selected_cards[i]]){
             selected_media.push(card_data[selected_cards[i]][j]);
         }
     }
+    console.log('length of selected_media', selected_media.length);
     if(selected_media.length==0){
         alert("No media selected!");
         return;
+    }else if(selected_media.length==1){
+        singleDownload();
+    }else{
+        downloadZIP();
     }
-    downloadZIP();
+}
+
+function downloadMultiMedia(){
+    if(selected_media.length == 1){
+        singleDownload();
+    }else{
+        downloadZIP();
+    }
 }
 
 function updateProgressBar(count, total){

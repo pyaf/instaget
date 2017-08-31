@@ -40,7 +40,7 @@ function embed(type, post){
 function getUserMedia(username){
     console.log("Getting user media");
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/ajax-loader.gif'> Go");
+    $('#submit').html("<img src='/static/ajax-loader.gif'> Getting user..");
     $.ajax({
         url: '/getUserData/',
         type: 'POST',
@@ -107,7 +107,7 @@ function getUserMedia(username){
           }
           $('.alert').show();
           $('#submit').removeAttr('disabled');
-          $('#submit').html("Go");
+          $('#submit').html("Get it!");
         },
     });
 
@@ -179,9 +179,12 @@ function closeAlert(){
 
 function loadMore(){
     $('#loadMoreButton').attr('disabled','disabled');
-    $('#loadMoreButton').html("<img src='/static/ajax-loader.gif'> Loading");
+    $('#loadMoreButton').html("<img src='/static/ajax-loader.gif'> Loading..");
     console.log("loading more")
     getUserMedia(username);
 
 }
+
+
+
 

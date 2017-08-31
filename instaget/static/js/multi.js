@@ -82,31 +82,24 @@ function setMediaLinks(){
             }
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
-            $('#submit').html("Go");
+            $('#submit').html("Get it!");
             if(selected_media.length==0){
                 $('#error-msg').html('No media found!');
+                $('alert').show();
                 return;
-            }else if (selected_media.length==1){
-                // dbutton = '<a href="'+selected_media[0]+'" download class="btn btn-default">Download Now</a>';
-                // $('#function-buttons').append(dbutton);
-                $('#downloadButton').attr('onclick', 'singleDownload()');
-                $('#downloadButton').html('Download Now');
-                $('#downloadButton').show();
-                return;
-            }else{
-                $('#downloadButton').show();
             }
+            $('#downloadButton').show();
         },
         error: function(request, status, error){
           //console.log(request['status']);
           if(request['status']==500){
             $('#error-msg').html('Internal Server Error! please try after some time.');
           }else{
-          $('#error-msg').html('User not found!, please enter a valid username.');
+          $('#error-msg').html('Posts not found!, please enter a valid username.');
           }
           $('.alert').show();
           $('#submit').removeAttr('disabled');
-          $('#submit').html("Go");
+          $('#submit').html("Get it!");
         },
     });
 
@@ -140,10 +133,15 @@ $('#submit').click( function(e) {
     $('.alert').hide(); // there may be some initial alert, even though requests!=0
     requests = true;
     links = $('#multi_post_links').val();
+    console.log(links);
+    if(links==""){
+        alert('No links entered!.');
+        return;
+    }
     shortcodes = getShortCodes(links);
     //console.log(shortcodes);
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/ajax-loader.gif'> Go");
+    $('#submit').html("<img src='/static/ajax-loader.gif'> Getting posts..");
     $('#results').html('');
     for (var i in shortcodes){
         IGembed(shortcodes[i]);
@@ -170,20 +168,4 @@ function getShortCodes(links){
 function closeAlert(){
     $('.alert').hide();
     $('#error-msg').html('');
-}
-
-function singleDownload(){
-    //console.log('single download');
-    $('#downloadButton').html("<img src='/static/ajax-loader.gif'> Downloading..")
-    $('#downloadButton').attr('disabled','disabled');
-    var link = document.createElement("a");
-    link.download = 'instagram';
-    link.href = selected_media[0];
-    link.click();
-    $('#downloadButton').html("Download");
-    $('#downloadButton').removeAttr('disabled');
-
-}
-function downloadMulti(){
-    downloadZIP();
 }
