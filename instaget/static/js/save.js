@@ -55,12 +55,9 @@ function downloadZIP(){
     console.log(selected_media);
     $('#progress-bar').show();
     var count = selected_media.length;
-    // console.log('selected_media', selected_media);
     $.each(selected_media, function (i, n) {
-        // console.log(i, selected_media[i]);
         ajaxFile(selected_media[i], bufferArray, count);
     });
-    console.log('hidding progress-bar');
 }
 
 
@@ -113,4 +110,22 @@ function updateProgressBar(count, total){
         progress_bar.html(i+'%');
         progress_bar.css('width', i + '%');
     }
+}
+
+function downloadUserStory(){
+    $('#progress-bar').html('0%'); // reset in case of load more and then re download
+    $('#progress-bar').css('width', '0%'); 
+    selected_media = []; // reinitialisation is imp!..
+    for (var i in selected_cards){       
+        selected_media.push(card_data[selected_cards[i]]);
+    }
+    console.log('length of selected_media', selected_media.length);
+    if(selected_media.length==0){
+        alert("No media selected!");
+        return;
+    }else if(selected_media.length==1){
+        singleDownload();
+    }else{
+        downloadZIP();
+    }  
 }

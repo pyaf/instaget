@@ -4,8 +4,8 @@ from insta.views import *
 
 urlpatterns = [
     url(r'^$', MultiView),
-    # url(r'^multi/$', MultiView),
-    url(r'^video/$', VideoView),
+    url(r'^story/$', StoryView),
+    url(r'^getUserStory/$', GetUserStory),
     url(r'^account/$', AccountView),
     url(r'^getVideoLink/$', GetVideoLink),
     url(r'^getUserData/$', GetUserData),

@@ -4,26 +4,44 @@ import requests
 import json
 from collections import defaultdict
 # Create your views here.
-def IndexView(request):
-    template = 'index.html'
-    context = {}
-    return render(request, template, context)
+from instagram_private_api import Client
+
+username = 'riven5518'
+password = 'qwer1234'
+
+api = Client(username, password)
 
 def MultiView(request):
     template = 'multi.html'
     return render(request, template, {})
 
+def StoryView(request):
+    template = 'story.html'
+    return render(request, template, {})
 
-def VideoView(request):
-    template = 'video.html'
-    context = {}
-    return render(request, template, context)
 
 def PrivacyPolicy(request):
     template = 'privacy-policy.html'
     return render(request, template, {})
 
-
+def GetUserStory(request):
+    if request.method == "POST":
+        response_data = {}
+        username = request.POST['username']
+        print(username)
+        url = 'https://instagram.com/'+username+'/?__a=1'
+        response = requests.get(url)
+        if (response.status_code == 404):
+            response_data['status_code'] = 404
+        else:
+            user_id = response.json()['user']['id']
+            print(user_id)
+            stories = api.user_reel_media(user_id)
+            # print(stories)
+            response_data['stories'] = stories
+        return HttpResponse(json.dumps(response_data),
+                    content_type = "application/json")
+    
 def getPosts(author_name, max_id = ''):
     url = 'https://www.instagram.com/%s/media/?max_id=%s' % (author_name, max_id)
     response = requests.get(url).json()
