@@ -126,7 +126,7 @@ function downloadUserStory(){
     }
     console.log('length of selected_media', selected_media.length);
     if(selected_media.length==0){
-        alert("No media selected!");
+        alert(gettext("No media selected!"));
         return;
     }else if(selected_media.length==1){
         singleDownload();

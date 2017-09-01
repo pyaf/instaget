@@ -1,27 +1,68 @@
 from django.shortcuts import render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.translation import ugettext as _
 import requests
 import json
 from collections import defaultdict
-# Create your views here.
 from instagram_private_api import Client
+from django.contrib.gis.geoip2 import GeoIP2
+from ipware.ip import get_ip
+from django.utils.translation import get_language
+from django.utils import translation
+from instaget import settings
+geo = GeoIP2()
 
 username = 'riven5518'
 password = 'qwer1234'
 
 api = Client(username, password)
 
+
+def getLang(request):
+    try:
+        ip = get_ip(request)
+        if ip is not None:
+            geoData = geo(ip)
+            if geoData['country_name'] == 'China':
+                return 'ch'    
+    except Exception as e:
+        pass
+    return 'en'
+    
+# 3
+def setSession(request): # Set language for this user
+    lang_set = request.session.get('lang_set', None)
+    if lang_set is None:
+        lang =  getLang(request)
+        request.session['_language'] = lang
+        request.session['lang_set'] = True
+    return
+
+def langView(request):
+    setSession(request)
+    template = 'lang.html'
+    return render(request, template, {})
+
 def MultiView(request):
     template = 'multi.html'
+    setSession(request)
     return render(request, template, {})
+    
 
 def StoryView(request):
     template = 'story.html'
+    setSession(request)
+    return render(request, template, {})
+    
+def AccountView(request):
+    template = 'account.html'
+    setSession(request)
     return render(request, template, {})
 
 
 def PrivacyPolicy(request):
     template = 'privacy-policy.html'
+    setSession(request)
     return render(request, template, {})
 
 
@@ -87,9 +128,6 @@ def GetMultiPosts(request):
     else:
         return HttpResponse("Not allowed")
 
-def AccountView(request):
-    template = 'account.html'
-    return render(request, template, {})
 
 
 def GetUserData(request):
@@ -116,7 +154,14 @@ all of them to get the required ones
 
 # 2 : here new key-value is not generated in value (a dict) of
 users_posts_dict[author_name], also helps in breaking the loop.
+
+# 3:
+ setSession: for first time visitors it checks their ip, get's country, if china then sets
+ key 'lang_set' as True, and '_language' as 'ch', next time user visits then check if lang_set is True
+ if True then no need to set the lang according to geolocation, either it's been already set or user has already
+ changed his/her language through language change form ;)
 '''
+
 
 '''
 def GetVideoLink(request):

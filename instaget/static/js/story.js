@@ -10,10 +10,9 @@ var card_data = {}; // key is card id i.e., shortcode, value is list of links of
 function embed(type, link, post){
     var date = new Date(post['taken_at'] * 1000);
     // var type = link.slice(-3);
-    var html = `<div class="card" id="`+post['code']+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`
-    if(type == 'mp4'){
-        html += `
-        <video controls="controls" style="width:100%;">
+    var html = `<div class="card" id="`+post['code']+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`;
+    if(type=='mp4'){
+        html += `<video controls="controls" style="width:100%;">
         <source src="`+link+`" type="video/mp4" />
         </video>
         `
@@ -37,7 +36,7 @@ function embed(type, link, post){
 function getUserStory(user_id){
     console.log("Getting user story.");
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/ajax-loader.gif'> Wait..");
+    $('#submit').html("<img src='/static/ajax-loader.gif'> " + gettext("Wait"));
     $.ajax({
         url: '/getUserStory/',
         type: 'POST',
@@ -48,15 +47,15 @@ function getUserStory(user_id){
             console.log("Success");
             console.log(data);
             if(data['status_code']==404){
-                $('#error-msg').html('User not found!, please enter a valid username.');
+                $('#error-msg').html(gettext('User not found!, please enter a valid username.'));
                 $('.alert').show();
                 $('#submit').removeAttr('disabled');
-                $('#submit').html("Go");
+                $('#submit').html(gettext('Retry'));
                 return;
             }
             stories = data['stories']['items'];
             if(stories.length==0){
-                $('#error-msg').html('User has not uploaded any Stories!');
+                $('#error-msg').html(gettext('User has not uploaded any Stories!'));
                 $('.alert').show();
             }else{
                 
@@ -79,16 +78,18 @@ function getUserStory(user_id){
             }
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
-            $('#submit').html("Go");
+            $('#submit').html(gettext('Go'));
         },
         error: function(request, status, error){
             console.log(request['status']);
             if(request['status']==500){
-                $('#error-msg').html('Internal Server Error! please try after some time.');
+                logErr(gettext('Internal Server Error! please try after some time.'));
             }
-            $('.alert').show();
+            else{
+                logErr('Some error occured. Err code: ' + request['status'])
+            }
             $('#submit').removeAttr('disabled');
-            $('#submit').html("Go");
+            $('#submit').html(gettext('Retry'));
         },
     });
 

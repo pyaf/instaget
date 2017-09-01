@@ -19,12 +19,12 @@ function toggleCardSelection(card){
 function toggleAllCards(button, media_type){
     if($(button).hasClass('active')){
         console.log('has class');
-        $(button).html('Select all ' + $(button).text().split(' ')[2]);
+        // $(button).html('Select all ' + $(button).text().split(' ')[2]);
         $(button).removeClass('active');
         var was_active = true;
     }else{
         $(button).addClass('active');
-        $(button).html('Unselect all ' + $(button).text().split(' ')[2]);
+        // $(button).html('Unselect all ' + $(button).text().split(' ')[2]);
         var was_active = false;
     }
     var cards = $('.card');
@@ -45,7 +45,7 @@ $('#alertCloseButton').on('touchstart click', function(){
 
 
 $('.selectAll').on('touchstart click', function(){
-    console.log('toggling');
+    // console.log('toggling');
     var type = $(this).attr('type');
     toggleAllCards($(this), type); // have to pass args to do like this
     return false;
@@ -57,6 +57,6 @@ function logErr(error){
     $('#error-msg').html(error);
     $('.alert').show();
     $('#submit').removeAttr('disabled');
-    $('#submit').html("Go");
+    $('#submit').html(gettext("Go"));
     return; 
 }

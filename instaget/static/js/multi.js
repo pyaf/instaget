@@ -27,9 +27,9 @@ function IGembed(shortcode){
         error: function(request, status, error){
           //console.log(request['status']);
           if(request['status']==500){
-            $('#error-msg').html('Internal Server Error! please try after some time.');
+            $('#error-msg').html(gettext('Internal Server Error! please try after some time.'));
           }else{
-          $('#error-msg').append(post_link + ' link not found!.<br>'); // append as there may be many unfound posts
+          $('#error-msg').append(post_link + gettext(' link not found') + '!.<br>'); // append as there may be many unfound posts
           }
           $('.alert').show();
         }
@@ -40,8 +40,6 @@ function IGembed(shortcode){
 
 
 function setMediaLinks(){
-    //console.log('Preparing selected_media, calling Ajax');
-    //console.log(users_posts_dict);
     $.ajax({
         url: '/getMultiPosts/',
         type: 'POST',
@@ -50,7 +48,7 @@ function setMediaLinks(){
         success: function(posts) {
             //console.log("Got ajax response from views", posts);
             if(posts.length==0){
-                return logErr('Posts not found!');
+                return logErr(gettext('Posts not found!'));
             }else{
                 var carousel, tmp;
                 for(var i in posts){ // i is shortcode
@@ -81,21 +79,21 @@ function setMediaLinks(){
             }
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
-            $('#submit').html("Search again!");
+            $('#submit').html(gettext("Search again!"));
             if(selected_media.length==0){
-                return logErr('No media found!');
+                return logErr(gettext('No media found!'));
             }
             $('#downloadButton').show();
         },
         error: function(request, status, error){
           //console.log(request['status']);
             if(request['status']==500){
-                logErr('Internal Server Error! please try after some time.');
+                logErr(gettext('Internal Server Error! please try after some time.'));
             }else{
-                logErr('Posts not found!, please enter a valid username.');
+                logErr(gettext('Posts not found!, please enter a valid username.'));
             }
           $('#submit').removeAttr('disabled');
-          $('#submit').html("Search again!");
+          $('#submit').html(gettext("Search again!"));
         },
     });
 
@@ -135,7 +133,7 @@ $('#submit').on('touchstart click', function(e) {
         return logErr("Not a valid link!");
     }
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/ajax-loader.gif'> Getting posts..");
+    $('#submit').html("<img src='/static/ajax-loader.gif'>"+gettext("Getting posts") +" ..");
     $('#results').html('');
     for (var i in shortcodes){
         IGembed(shortcodes[i]);

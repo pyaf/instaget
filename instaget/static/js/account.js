@@ -10,8 +10,7 @@ var images_present = false;
 
 function embed(type, post){
     var date = new Date(post['created_time'] * 1000);
-    // var type = link.slice(-3);
-    var html = `<div class="card" id="`+post['code']+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`
+    var html = `<div class="card" id="`+post['code']+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`;
     if(type == 'mp4'){
         html += `
         <video controls="controls" style="width:325px;">
@@ -39,9 +38,8 @@ function embed(type, post){
 }
 
 function getUserMedia(username){
-    // console.log("Getting user media");
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/ajax-loader.gif'> Wait..");
+    $('#submit').html("<img src='/static/ajax-loader.gif'> " + gettext('Wait'));
     $.ajax({
         url: '/getUserData/',
         type: 'POST',
@@ -52,13 +50,13 @@ function getUserMedia(username){
             // console.log("Success");
             var status = data['status'];
             if (status==404){
-                return logErr('User not found!');
+                return logErr(gettext('User not found!'));
             }else if(status!=200){
                 return logErr('Error occured. Err Code: '+ status);
             }
             total_posts[requests] = data['posts'];
             if(total_posts[0].length==0){
-                return logErr('User has not uploaded any media!');
+                return logErr(gettext('User has not uploaded any media!'));
             }
             requests++;
             // console.log(data);
@@ -140,8 +138,8 @@ $('#submit').on('touchstart click', function(e) {
 
 function loadMore(){
     $('#loadMoreButton').attr('disabled','disabled');
-    $('#loadMoreButton').html("<img src='/static/ajax-loader.gif'>loading..");
-    console.log("loading more")
+    $('#loadMoreButton').html("<img src='/static/ajax-loader.gif'> " + gettext('loading'));
+    // console.log("loading more")
     getUserMedia(username);
 }
 

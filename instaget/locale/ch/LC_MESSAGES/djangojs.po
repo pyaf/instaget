@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-02 02:10+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: static/js/account.js:53
+msgid "User not found!"
+msgstr "用户未找到！"
+
+#: static/js/account.js:59
+msgid "User has not uploaded any media!"
+msgstr "用户还没有上传任何媒体！"
+
+#: static/js/account.js:141
+msgid "loading"
+msgstr "装载"
+
+#: static/js/multi.js:51
+msgid "Posts not found!"
+msgstr "帖子没有找到！"
+
+#: static/js/multi.js:82 static/js/multi.js:96
+msgid "Search again!"
+msgstr "再次搜索！"
+
+#: static/js/multi.js:84
+msgid "No media found!"
+msgstr "没有媒体发现！"
+
+#: static/js/multi.js:91 static/js/story.js:86
+msgid "Internal Server Error! please try after some time."
+msgstr "内部服务器错误！ 请过一段时间后再试。"
+
+#: static/js/multi.js:93
+msgid "Posts not found!, please enter a valid username."
+msgstr "没有发现帖子，请输入有效的用户名。"
+
+#: static/js/multi.js:136
+msgid "Getting posts"
+msgstr "获取帖子"
+
+#: static/js/save.js:129
+msgid "No media selected!"
+msgstr "没有媒体发现！"
+
+#: static/js/story.js:50
+msgid "User not found!, please enter a valid username."
+msgstr "用户未找到！请输入有效的用户名。"
+
+#: static/js/story.js:53 static/js/story.js:92
+msgid "Retry"
+msgstr "重试"
+
+#: static/js/story.js:58
+msgid "User has not uploaded any Stories!"
+msgstr "用户尚未上传任何故事"
+
+#: static/js/story.js:81 static/js/utils.js:60
+msgid "Go"
+msgstr "走"
+
+msgid "Wait"
+msgstr "等待"
