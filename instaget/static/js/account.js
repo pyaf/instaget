@@ -95,7 +95,7 @@ function getUserMedia(username){
             }
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
-            $('#submit').html("Go");
+            $('#submit').html(gettext("Go"));
             //below 2 lines useful only after 1st time load more.
             $('#loadMoreButton').removeAttr('disabled');
             $('#loadMoreButton').html("Load More");
