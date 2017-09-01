@@ -1,0 +1,31 @@
+    .ticks .fa-check{
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 30px;
+    padding-top: 7px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    }
+    .fa.fa-check.active {
+        background: #3f6df6;
+    }
+#submit{
+  width: 30%;
+}
+    .active img {
+    opacity: .65;
+    }
+    .active video {
+    opacity: .65;
+    }
+    .card{
+        cursor: pointer;
+    }
+   p{
+    margin-bottom: 0;
+  }

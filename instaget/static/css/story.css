@@ -35,8 +35,11 @@
     opacity: .65;
     }
     .card{
-        margin:auto;
-        cursor: pointer;
+
+    cursor: pointer;
+    width: 32%;
+    margin-bottom: 3%;
+    margin-left: 1%;
     }
    p{
     margin-bottom: 0;
@@ -117,7 +120,7 @@
 
 }
 video{
-	width: 302px!important;
+    width: 100%!important;
 }
   .function{
 
@@ -125,6 +128,7 @@ video{
   }
   .card{
       margin-bottom: 3%;
+      width: 100%!important;
   }
 .btn.btn-default{
   margin-top: 3%;

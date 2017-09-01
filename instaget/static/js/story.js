@@ -13,7 +13,7 @@ function embed(type, link, post){
     var html = `<div class="card" id="`+post['code']+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`
     if(type == 'mp4'){
         html += `
-        <video controls="controls" style="width:325px;">
+        <video controls="controls" style="width:100%;">
         <source src="`+link+`" type="video/mp4" />
         </video>
         `
@@ -37,20 +37,21 @@ function embed(type, link, post){
 function getUserStory(user_id){
     console.log("Getting user story.");
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/ajax-loader.gif'> wait..");
+    $('#submit').html("<img src='/static/ajax-loader.gif'> Wait..");
     $.ajax({
         url: '/getUserStory/',
         type: 'POST',
         data: {'username': username,
                 csrfmiddlewaretoken: csrf_token },
         success: function(data) {
+            requests++;
             console.log("Success");
             console.log(data);
             if(data['status_code']==404){
                 $('#error-msg').html('User not found!, please enter a valid username.');
                 $('.alert').show();
                 $('#submit').removeAttr('disabled');
-                $('#submit').html("Get it!");
+                $('#submit').html("Go");
                 return;
             }
             stories = data['stories']['items'];
@@ -87,13 +88,13 @@ function getUserStory(user_id){
             }
             $('.alert').show();
             $('#submit').removeAttr('disabled');
-            $('#submit').html("Get it!");
+            $('#submit').html("Go");
         },
     });
 
 }
 
-$('#submit').click( function(e) {
+$('#submit').on('touchstart click', function(e) {
     e.preventDefault();
     if(requests!=0){ // User is re-searching a new username, re-initialize every global var
         requests = 0;
@@ -112,52 +113,5 @@ $('#submit').click( function(e) {
     getUserStory(username);
     return;
 });
-
-
-function toggleCardSelection(card){
-    // console.log('Toggling card');
-    var code = $(card).attr('id');
-    if($(card).hasClass('active')){
-        $(card).removeClass('active');
-        $(card).children('div.ticks').children('i.fa-check').removeClass('active');
-        selected_cards.splice( $.inArray(code, selected_cards), 1 );
-        //removed link from selected_media
-    }
-    else{
-        $(card).addClass('active');
-        $(card).children('div.ticks').children('i.fa-check').addClass('active');
-        selected_cards.push(code);
-    }
- }
-
-function toggleAllCards(button, media_type){
-    // console.log($(button).text().split(' '));
-    if($(button).hasClass('active')){
-        
-        $(button).html('Select all ' + $(button).text().split(' ')[2]);
-        $(button).removeClass('active');
-        var was_active = true;
-    }else{
-        $(button).addClass('active');
-        $(button).html('Unselect all ' + $(button).text().split(' ')[2]);
-        var was_active = false;
-    }
-    var cards = $('.card');
-    for(var i=0; i<cards.length; i++){
-        var type = $(cards[i]).attr('type');
-        var selected = $(cards[i]).hasClass('active');
-        if(type==media_type && (was_active == selected)){ // go crack it B) (made a truth table for that :P)
-            toggleCardSelection(cards[i]);
-        }
-    }
-}
-
-function closeAlert(){
-    $('.alert').hide();
-    $('#error-msg').html('');
-}
-
-
-
 
 

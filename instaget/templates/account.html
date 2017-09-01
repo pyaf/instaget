@@ -11,39 +11,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/static/css/index.css">
-    <style media="screen">
-    .ticks .fa-check{
-    position: absolute;
-    left: 12px;
-    top: 12px;
-    width: 30px;
-    height: 30px;
-    background: white;
-    border-radius: 30px;
-    padding-top: 7px;
-    font-size: 14px;
-    color: white;
-    text-align: center;
-    }
-    .fa.fa-check.active {
-        background: #3f6df6;
-    }
-#submit{
-  width: 30%;
-}
-    .active img {
-    opacity: .65;
-    }
-    .active video {
-    opacity: .65;
-    }
-    .card{
-        cursor: pointer;
-    }
-   p{
-    margin-bottom: 0;
-  }
-    </style>
+  <link rel="stylesheet" type="text/css" href="/static/css/account.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
 </head>
 <body   style="background: url(/static/11.jpg) no-repeat  fixed" >
     <div class="container" >
@@ -70,7 +39,7 @@
 
             <div class="col-sm-8">
               <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
-                <button type="button" class="close" aria-label="Close" onclick="closeAlert()">
+                <button type="button" class="close" aria-label="Close" id="alertCloseButton">
                   <span aria-hidden="true" class="times">&times;</span>
                 </button>
                   <p id="error-msg"></p>
@@ -80,10 +49,10 @@
                   <label>Enter Instagram Username</label>
                   <input type="text"  id = "username" data-toggle="tooltip" title="Enter a public Username to download user content."class="form-control input-lg" name="username" placeholder="Instagram Username">
                 </div>
-              </form>
               <div style="text-align: center">
                 <button type="submit" id="submit" data-placement="left" class="btn btn-default" data-toggle="tooltip" title="Click to preview user's posts.">Go</button>
               </div>
+              </form>
               <br>
               <div class="progress">
                 <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%; display:none">0%</div>
@@ -94,16 +63,16 @@
 
       <div id="function-buttons" style="display:none;text-align:center;">
       <!-- Make sure there's no trailing spaces in text in button tags, used in js -->
-        <button class="btn btn-default" onclick="toggleAllCards(this, 'jpg')">Select all Images</button>
-        <button class="btn btn-default" onclick="toggleAllCards(this, 'mp4')">Select all Videos</button>
-        <button class="btn btn-default" id="downloadButton" onclick="downloadUserMedia()">Download</button>
+        <button class="btn btn-default selectAll" type='jpg'>Select all Images</button>
+        <button class="btn btn-default selectAll" type='mp4'>Select all Videos</button>
+        <button class="btn btn-default" id="downloadButton" type="downloadUserMedia">Download</button>
       </div>
       <br><br>
       <div class="row" >
         <div class="card-columns" id="results" ></div>
     </div>
       <div id="loadMoreButtonDiv" style="text-align: center;display: none;">
-      <button class="btn btn-info" id="loadMoreButton" onclick="loadMore()">Load More</button>
+      <button class="btn btn-default" id="loadMoreButton">Load More</button>
       </div>
       <br><br>
 </div>
@@ -116,6 +85,7 @@
 <script src="/static/js/FileSaver.js" charset="utf-8"></script>
 <script src="/static/js/save.js" charset="utf-8"></script>
 <script src="/static/js/account.js" charset="utf-8"></script>
+<script src="/static/js/utils.js" type="text/javascript" charset="utf-8" async defer></script>
 <script>
 var csrf_token = '{{ csrf_token }}';
 $(document).ready(function(){

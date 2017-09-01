@@ -106,15 +106,18 @@ function getUserMedia(username){
         error: function(request, status, error){
             console.log(request['status']);
                 if(request['status']==500){
-                    return logErr('Internal Server Error! please try after some time.');
+                    logErr('Internal Server Error! please try after some time.');
                 }else{
-                    return logErr('Error occured, Err code: ' + request['status']);
+                    logErr('Error occured, Err code: ' + request['status']);
                 }
+            $('#submit').removeAttr('disabled');
+            $('#submit').html("Search again!");
         },
     });
 }
 
-$('#submit').click( function(e) {
+$('#submit').on('touchstart click', function(e) {
+
     e.preventDefault();
     if(requests!=0){ // User is re-searching a new username, re-initialize every global var
         requests = 0;
@@ -135,64 +138,13 @@ $('#submit').click( function(e) {
 });
 
 
-function toggleCardSelection(card){
-    // console.log('Toggling card');
-    var code = $(card).attr('id');
-    if($(card).hasClass('active')){
-        $(card).removeClass('active');
-        $(card).children('div.ticks').children('i.fa-check').removeClass('active');
-        selected_cards.splice( $.inArray(code, selected_cards), 1 );
-        //removed link from selected_media
-    }
-    else{
-        $(card).addClass('active');
-        $(card).children('div.ticks').children('i.fa-check').addClass('active');
-        selected_cards.push(code);
-    }
- }
-
-function toggleAllCards(button, media_type){
-    // console.log($(button).text().split(' '));
-    if($(button).hasClass('active')){
-        
-        $(button).html('Select all ' + $(button).text().split(' ')[2]);
-        $(button).removeClass('active');
-        var was_active = true;
-    }else{
-        $(button).addClass('active');
-        $(button).html('Unselect all ' + $(button).text().split(' ')[2]);
-        var was_active = false;
-    }
-    var cards = $('.card');
-    for(var i=0; i<cards.length; i++){
-        var type = $(cards[i]).attr('type');
-        var selected = $(cards[i]).hasClass('active');
-        if(type==media_type && (was_active == selected)){ // go crack it B) (made a truth table for that :P)
-            toggleCardSelection(cards[i]);
-        }
-    }
-}
-
-function closeAlert(){
-    $('.alert').hide();
-    $('#error-msg').html('');
-}
-
 function loadMore(){
     $('#loadMoreButton').attr('disabled','disabled');
     $('#loadMoreButton').html("<img src='/static/ajax-loader.gif'>loading..");
     console.log("loading more")
     getUserMedia(username);
-
 }
 
-function logErr(error){
-    $('#error-msg').html(error);
-    $('.alert').show();
-    $('#submit').removeAttr('disabled');
-    $('#submit').html("Go");
-    return; 
-}
-
+$('#loadMoreButton').on('touchstart click', loadMore);
 
 

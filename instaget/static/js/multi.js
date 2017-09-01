@@ -50,8 +50,7 @@ function setMediaLinks(){
         success: function(posts) {
             //console.log("Got ajax response from views", posts);
             if(posts.length==0){
-                $('#error-msg').html('Posts not found!');
-                $('.alert').show();
+                return logErr('Posts not found!');
             }else{
                 var carousel, tmp;
                 for(var i in posts){ // i is shortcode
@@ -84,20 +83,17 @@ function setMediaLinks(){
             $('#submit').removeAttr('disabled');
             $('#submit').html("Search again!");
             if(selected_media.length==0){
-                $('#error-msg').html('No media found!');
-                $('alert').show();
-                return;
+                return logErr('No media found!');
             }
             $('#downloadButton').show();
         },
         error: function(request, status, error){
           //console.log(request['status']);
-          if(request['status']==500){
-            $('#error-msg').html('Internal Server Error! please try after some time.');
-          }else{
-          $('#error-msg').html('Posts not found!, please enter a valid username.');
-          }
-          $('.alert').show();
+            if(request['status']==500){
+                logErr('Internal Server Error! please try after some time.');
+            }else{
+                logErr('Posts not found!, please enter a valid username.');
+            }
           $('#submit').removeAttr('disabled');
           $('#submit').html("Search again!");
         },
@@ -116,7 +112,7 @@ $(document).ajaxStop(function () {
 });
 
 
-$('#submit').click( function(e) {
+$('#submit').on('touchstart click', function(e) {
     e.preventDefault();
     if(requests){ // User is re-searching, re-initialize every global var
         requests = false;
@@ -134,12 +130,10 @@ $('#submit').click( function(e) {
     requests = true;
     links = $('#multi_post_links').val();
     console.log(links);
-    if(links==""){
-        alert('No links entered!.');
-        return;
-    }
     shortcodes = getShortCodes(links);
-    //console.log(shortcodes);
+    if(shortcodes.length==0){
+        return logErr("Not a valid link!");
+    }
     $('#submit').attr('disabled','disabled');
     $('#submit').html("<img src='/static/ajax-loader.gif'> Getting posts..");
     $('#results').html('');
@@ -162,10 +156,4 @@ function getShortCodes(links){
         }
     }
     return link_list;
-}
-
-
-function closeAlert(){
-    $('.alert').hide();
-    $('#error-msg').html('');
 }

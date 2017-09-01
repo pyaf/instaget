@@ -48,7 +48,8 @@ function loadEnd(){
 }
 
 function getFileName(link)
-{
+{   
+    //console.log(link);
     var link  = link.split("/");
     return link[link.length - 1];
 }
@@ -77,6 +78,7 @@ function singleDownload(){
 }
 
 function downloadUserMedia(){
+    // console.log('downloadUserMedia calleed');
     $('#progress-bar').html('0%'); // reset in case of load more and then re download
     $('#progress-bar').css('width', '0%'); 
     selected_media = []; // reinitialisation is imp!..
@@ -132,3 +134,8 @@ function downloadUserStory(){
         downloadZIP();
     }  
 }
+
+$('#downloadButton').on('touchstart click', function(){
+    console.log($(this).attr('type'));
+    window[$(this).attr('type')](); // call function with name as string
+})
