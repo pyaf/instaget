@@ -19,59 +19,72 @@ msgstr ""
 
 #: static/js/account.js:53
 msgid "User not found!"
-msgstr "用户未找到！"
+msgstr "未找到此用户！"
+
 
 #: static/js/account.js:59
 msgid "User has not uploaded any media!"
-msgstr "用户还没有上传任何媒体！"
+msgstr "用户还没有上传任何帖子！"
+
 
 #: static/js/account.js:141
 msgid "loading"
-msgstr "装载"
+msgstr "加载中"
+
 
 #: static/js/multi.js:51
 msgid "Posts not found!"
-msgstr "帖子没有找到！"
+msgstr "帖子飞到外星啦"
+
 
 #: static/js/multi.js:82 static/js/multi.js:96
 msgid "Search again!"
-msgstr "再次搜索！"
+msgstr "敢不敢再搜搜"
+
 
 #: static/js/multi.js:84
 msgid "No media found!"
-msgstr "没有媒体发现！"
+msgstr "这个家伙什么鬼东西都没有发"
+
 
 #: static/js/multi.js:91 static/js/story.js:86
 msgid "Internal Server Error! please try after some time."
-msgstr "内部服务器错误！ 请过一段时间后再试。"
+msgstr "内部服务器错误！抱歉请过一段时间后再试"
+
 
 #: static/js/multi.js:93
 msgid "Posts not found!, please enter a valid username."
 msgstr "没有发现帖子，请输入有效的用户名。"
 
+
 #: static/js/multi.js:136
 msgid "Getting posts"
 msgstr "获取帖子"
+
 
 #: static/js/save.js:129
 msgid "No media selected!"
 msgstr "没有媒体发现！"
 
+
 #: static/js/story.js:50
 msgid "User not found!, please enter a valid username."
-msgstr "用户未找到！请输入有效的用户名。"
+msgstr "用户未找到！别乱输入"
+
 
 #: static/js/story.js:53 static/js/story.js:92
 msgid "Retry"
 msgstr "重试"
 
+
 #: static/js/story.js:58
 msgid "User has not uploaded any Stories!"
-msgstr "用户尚未上传任何故事"
+msgstr "用户尚未上传任何快拍"
+
 
 #: static/js/story.js:81 static/js/utils.js:60
 msgid "Go"
-msgstr "走"
+msgstr "提交"
 
 msgid "Wait"
-msgstr "等待"
+msgstr "等等吧"

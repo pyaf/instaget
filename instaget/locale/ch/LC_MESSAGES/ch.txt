@@ -1,144 +1,160 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-02 02:04+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-
 #: instaget/settings.py:62
 msgid "English"
-msgstr "英语"
-
+msgstr "英語"
 
 #: instaget/settings.py:63
 msgid "Chinese"
 msgstr "中文"
 
-
 #: templates/account.html:11 templates/story.html:11
 msgid "Download Instagram User Account"
-msgstr "下载Instagram图片和视频"
-
+msgstr "下载Instagram用户帐号"
 
 #: templates/account.html:24 templates/multi.html:25 templates/story.html:28
 msgid "Download Posts"
-msgstr "下载图片和视频"
-
+msgstr "下载文章"
 
 #: templates/account.html:27 templates/multi.html:28 templates/story.html:31
 msgid "Download Stories"
-msgstr "下载快拍"
-
+msgstr "下载故事"
 
 #: templates/account.html:30 templates/multi.html:31 templates/story.html:34
 msgid "Download Account"
-msgstr "批量下载"
-
+msgstr "下载账号"
 
 #: templates/account.html:50 templates/story.html:54
 msgid "Enter Instagram Username"
 msgstr "输入Instagram用户名"
 
-
 #: templates/account.html:51
 msgid "Enter a public Username to download user&#39;s content"
-msgstr "不能添加私有账户"
-
+msgstr "输入公共用户名下载用户的内容"
 
 #: templates/account.html:51 templates/story.html:55
 msgid "Instagram Username"
 msgstr "输入Instagram用户名"
 
-
 #: templates/account.html:54
 msgid "Click to preview user&#39;s posts"
-msgstr "预览"
-
+msgstr "点击预览用户的帖子"
 
 #: templates/account.html:54 templates/account.html:97 templates/multi.html:58
-
 #: templates/multi.html:86 templates/story.html:58 templates/story.html:98
 msgid "Go"
-msgstr "提交"
-
+msgstr "走"
 
 #: templates/account.html:67 templates/story.html:71
 msgid "Select all Images"
-msgstr "选择所有图片"
-
+msgstr "选择所有图像"
 
 #: templates/account.html:68 templates/story.html:72
 msgid "Select all Videos"
 msgstr "选择所有视频"
 
-
 #: templates/account.html:69 templates/multi.html:59 templates/story.html:73
 msgid "Download"
 msgstr "下载"
 
-
 #: templates/account.html:76
 msgid "Load More"
-msgstr "加载更多"
-
+msgstr "装载更多"
 
 #: templates/account.html:86 templates/multi.html:75 templates/story.html:87
 msgid "Choose language"
 msgstr "选择语言"
 
-
 #: templates/multi.html:11 templates/multi.html:51
 msgid "Download Instagram Posts"
 msgstr "下载Instagram的帖子"
-
 
 #: templates/multi.html:52
 msgid ""
 "You can download multiple Instagram posts just by entering links seperated "
 "by new line"
-msgstr "同时批量下载多个帖子内容，图片和视频可以混搭，每一行一条链接（通过回车键来分隔）"
-
+msgstr "您可以通过输入新行分隔的链接来下载多个Instagram的帖子"
 
 #: templates/multi.html:52
 msgid "Enter Instagram Post links"
 msgstr "输入Instagram的帖子链接"
 
-
 #: templates/multi.html:58
 msgid "Click to preview the posts before download"
-msgstr "点击预览帖子"
-
+msgstr "点击下载前预览帖子"
 
 #: templates/multi.html:59
 msgid "Click to download all posts as zip"
 msgstr "点击下载所有帖子为zip"
 
-
 #: templates/story.html:55
 msgid "Enter a public Username to download user&#39;s stories"
-msgstr "不能添加私有账户"
-
+msgstr "输入公共用户名下载用户的故事"
 
 #: templates/story.html:58
 msgid "Click to preview user&#39;s stories"
-msgstr "点击预览快拍"
-
+msgstr "点击预览用户的故事"
 
 #~ msgid "Hello"
-#~ msgstr "Hello"
-
+#~ msgstr "你好"
 
 #~ msgid "Welcome to my site."
-#~ msgstr "欢迎欢迎"
+#~ msgstr "歡迎來到我們的網頁"
+
+
+#: static/js/account.js:53
+msgid "User not found!"
+msgstr "用户未找到！"
+
+#: static/js/account.js:59
+msgid "User has not uploaded any media!"
+msgstr "用户还没有上传任何媒体！"
+
+#: static/js/account.js:141
+msgid "loading"
+msgstr "装载"
+
+#: static/js/multi.js:51
+msgid "Posts not found!"
+msgstr "帖子没有找到！"
+
+#: static/js/multi.js:82 static/js/multi.js:96
+msgid "Search again!"
+msgstr "再次搜索！"
+
+#: static/js/multi.js:84
+msgid "No media found!"
+msgstr "没有媒体发现！"
+
+#: static/js/multi.js:91 static/js/story.js:86
+msgid "Internal Server Error! please try after some time."
+msgstr "内部服务器错误！ 请过一段时间后再试。"
+
+#: static/js/multi.js:93
+msgid "Posts not found!, please enter a valid username."
+msgstr "没有发现帖子，请输入有效的用户名。"
+
+#: static/js/multi.js:136
+msgid "Getting posts"
+msgstr "获取帖子"
+
+#: static/js/save.js:129
+msgid "No media selected!"
+msgstr "没有媒体发现！"
+
+#: static/js/story.js:50
+msgid "User not found!, please enter a valid username."
+msgstr "用户未找到！请输入有效的用户名。"
+
+#: static/js/story.js:53 static/js/story.js:92
+msgid "Retry"
+msgstr "重试"
+
+#: static/js/story.js:58
+msgid "User has not uploaded any Stories!"
+msgstr "用户尚未上传任何故事"
+
+#: static/js/story.js:81 static/js/utils.js:60
+msgid "Go"
+msgstr "走"
+
+msgid "Wait"
+msgstr "等待"
