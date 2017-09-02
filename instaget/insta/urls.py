@@ -4,7 +4,7 @@ from insta.views import *
 
 urlpatterns = [
     url(r'^$', MultiView),
-    # url(r'^lang/$', langView),
+    url(r'^lang/$', langView),
     url(r'^story/$', StoryView),
     url(r'^getUserStory/$', GetUserStory),
     url(r'^account/$', AccountView),

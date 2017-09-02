@@ -10,11 +10,11 @@ from ipware.ip import get_ip
 from django.utils.translation import get_language
 from django.utils import translation
 from instaget import settings
-geo = GeoIP2()
 
 username = 'riven5518'
 password = 'qwer1234'
 
+geo = GeoIP2()
 api = Client(username, password)
 
 
@@ -22,7 +22,7 @@ def getLang(request):
     try:
         ip = get_ip(request)
         if ip is not None:
-            geoData = geo(ip)
+            geoData = geo.country(ip)
             if geoData['country_name'] == 'China':
                 return 'ch'    
     except Exception as e:
@@ -40,8 +40,17 @@ def setSession(request): # Set language for this user
 
 def langView(request):
     setSession(request)
+    context = {}
+    try:
+        ip = get_ip(request)    
+        if ip is not None:
+            context['ip'] = ip
+            data = geo.country(ip)
+            context['country_name'] =  data['country_name']
+    except Exception as e:
+        context['error'] = e
     template = 'lang.html'
-    return render(request, template, {})
+    return render(request, template, context)
 
 def MultiView(request):
     template = 'multi.html'
