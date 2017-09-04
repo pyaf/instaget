@@ -8,6 +8,7 @@
   <meta http-equiv="Cache-Control" content="no-siteapp">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  {% include 'base.html' %}
 <title>{% trans 'Privacy Policy' %}</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -20,9 +21,9 @@
 
     <div class="container" >
         <div class="row">
-            <div class="col-md-2 ">
+            <div class="col-md-3 ">
            </div>
-            <div class="col-md-6 ">
+            <div class="col-md-5 ">
             <h1 style="font-size: 60px">{% trans 'Privacy Policy' %}</h1>
             </div>
             <div class="col-md-2" id="fa-instagram">
@@ -57,11 +58,14 @@
 		<li class="list-group-item">2.下载内容<br>
 「Kissave」本身不会对 Instagram、Youtube等上的内容进行下载、存储。如您在Instagram上内容已删除，则无法通过「Kissave」对它进行访问或保存。`</li>
 		<li class="list-group-item">
-		联系我们 <br>
-		<div class="col-sm-4">
-		<img src="/static/qr.jpg">
-		</div>
+		联系我们 
 		</li>
+    <li class="list-group-item">
+      
+    <div class="center-block" style="text-align: center;">
+    <img src="/static/qr.jpg" style="height: 300px;width: 300px;padding-right:8px">
+    </div>
+    </li>
 		{%endif%}
 		</ul>
         </div>

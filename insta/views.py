@@ -87,7 +87,14 @@ def GetUserStory(request):
         else:
             user_id = response.json()['user']['id']
             print(user_id)
-            stories = api.user_reel_media(user_id)
+            try:
+                stories = api.user_reel_media(user_id)
+            except Exception as e:
+                print(e) #may be session expired, relogin
+                global api
+                api = Client(username, password)
+                stories = api.user_reel_media(user_id)
+
             # print(stories)
             response_data['stories'] = stories
         return HttpResponse(json.dumps(response_data),
