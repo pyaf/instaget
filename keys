@@ -1,6 +1,6 @@
 cliend id: d5d6412c51094511aee087b371ecc91a
 cliend secret: 464cd4b6ab86466f9e29f573c54638d0
-
+k]M8RCKcYdZj6smw
 need to get permissions for public access
 https://api.instagram.com/oauth/authorize/?client_id=d5d6412c51094511aee087b371ecc91a&redirect_uri=https://lirocks.herokuapp.com&response_type=code&scope=public_content
 

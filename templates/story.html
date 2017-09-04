@@ -36,8 +36,8 @@
             <div class="col-md-3" id="fa-instagram">
             <i class="fa fa-instagram"></i>
           </div>
-        </div><br>
-        <hr size="50">
+        </div>
+        <hr>
 
         <div class="row">
         <div class="col-md-2"></div>
@@ -77,30 +77,35 @@
     </div>
       <br><br>
 </div>
-
 <footer class="fixed-bottom">
   <div class="container">
     <div class="pull-right">
       <form action="{% url 'set_language' %}" method="post">
         <div class="form-inline">
           {% csrf_token %}
-          <label style="font-size: 20px;">{% trans 'Choose language' %}&emsp;</label>
-          <input name="next" class="form-control input-sm" type="hidden" value="{{ redirect_to }}" />
-          <select name="language" class="form-control">
-          {% get_current_language as LANGUAGE_CODE %}
-          {% get_available_languages as LANGUAGES %}
-          {% for lang in LANGUAGES %}
-            <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>
-                  {{ lang.1 }} ({{ lang.0 }})
+          <!-- <label style="font-size: 18px;">{% trans 'Choose language' %}&emsp;</label> -->
+          <input name="next"  class="lang-input" type="hidden" value="{{ redirect_to }}" />
+          <select name="language" style="width:100%!important;padding-top: 3px;" onchange="this.form.submit()" class="form-control lang-input">
+            {% if LANGUAGE_CODE == 'ch' %}
+            <option value="" disabled  selected="selected">
+                  Choose language
             </option>
-          {% endfor %}
+            {%else%}
+            <option value="" disabled  selected="selected">
+                  选择语言
+            </option> 
+            {%endif%}
+            <option value="en" >
+                  English (en)
+            </option>
+            <option value="ch" >
+                  中文 (ch)
+            </option>
           </select>&emsp;
-        <input type="submit" class="btn btn-default" value= "{% trans 'Go' %}" />
         </div>
       </form>
     </div>
   </div>
-<br><br>
 </footer>
 <script src="/static/js/jquery-3.2.1.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

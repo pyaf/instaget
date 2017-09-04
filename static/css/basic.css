@@ -1,3 +1,34 @@
 button{
 	cursor: pointer;
 }
+@media screen and (max-width: 800px) {
+    .fixed-bottom {
+    /*position: relative !important;*/
+    }
+}
+.navb{
+	width:100%;    		
+	}
+#lang{
+	width: 15%;
+	margin: auto;
+
+}
+.fa.fa-instagram{
+	margin-left:70px;
+}
+ .lang-input{
+	/*width:45%!important;*/
+
+}	
+hr{
+	    margin-top: 0px;
+	    margin-bottom:30px;
+}
+}
+select{
+	    margin-bottom: 10px;
+}
+/* .lang-input{
+	width:100!important;
+}*/

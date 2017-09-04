@@ -19,7 +19,7 @@ msgstr ""
 
 #: instaget/settings.py:62
 msgid "English"
-msgstr "英语"
+msgstr ""
 
 
 #: instaget/settings.py:63
