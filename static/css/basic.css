@@ -5,6 +5,9 @@ button{
     .fixed-bottom {
     /*position: relative !important;*/
     }
+    hr{
+    	margin-top:10px!important;
+    }
 }
 .navb{
 	width:100%;    		
