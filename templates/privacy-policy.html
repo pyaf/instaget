@@ -1,50 +1,119 @@
-
+{% load i18n %}
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Lirocks for Instagram - Privacy Policy</title>
-<style type="text/css">
-p {
-	font-family: "Helvetica Neue", Segoe, "Segoe UI", Arial, sans-serif;
-	font-size:16px;
-	font-weight:normal;
-	line-height: 1.375em;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>{% trans 'Privacy Policy' %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/privacy.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
 
-.title {
-	font-weight:bold !important;
-}
-
-a {
-	color: rgb(83, 154, 190);
-}
-</style>
 </head>
+<body   style="background: url(/static/11.jpg) no-repeat  fixed" >
 
-<body>
-<p class="title"> Lirocks for Instagram’s Privacy Policy</p>
-<p>Lirocks for Instagram is an web app providing anonymous users of Instagram to download, save, photos, videos and profile media content.</p>
-<p>No user login/signup is required, every user is anonymous on our platform.</p>
-<p>This Privacy Policy describes how and when Lirocks for Instagram collects, uses and shares your information when you use our Services.  Lirocks for Instagram receives your information through our forms.</p>
-<p>If you have any questions or comments about this Privacy Policy, please contact us at <a href="mailto:">rishabh.agrahari.eee15@iitbhu.ac.in</a>.</p>
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-2 ">
+           </div>
+            <div class="col-md-6 ">
+            <h1 style="font-size: 60px">{% trans 'Privacy Policy' %}</h1>
+            </div>
+            <div class="col-md-2" id="fa-instagram">
+            <i class="fa fa-instagram"></i>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+        <ul class="list-group">
+        {% if LANGUAGE_CODE == 'en' %}
+        <li class="list-group-item">1. You need to be responsible for all content sent to Kissave, such as: links, pictures and other information; Kissave provides online image / video saving, only for personal use (fair use); If you need to use publicly or commercially relevant content, you must obtain the relevant content. The copyright owner agrees that Kissave is not responsible for the infringement of the user's abuse of the download; Kissave is free of charge and does not provide any guarantee for the validity of the service; Kissave reserves the right to modify and terminate the service at any time; If you are the copyright owner of the relevant content, hope that we shield your relevant content, please contact us by visiting the public number;</li>
+  		
+  		<li class="list-group-item">2. Personal information: <br>Kissave does not collect, store, and analyze the user's personal information and content. Users do not have to use the Instagram account or password to use the Kissave service.</li>
 
-<p class="title">Information Collection and Use</p>
-<p>We don't collect and don't use your information to provide our Services and to measure and improve our Services from time to time.</p>
-
-<p><span class="title">Google Analytics</span>: We will also install Google Analytics in the apps, devices, or mobile apps to collect your behaviors in using our Services. </p>
-
-<p><span class="title">Log Data</span>: When you use Lirocks for Instagram, we may receive information ("Log Data") such as your IP address, device information (including device and application IDs) and search terms. Lirocks for Instagram uses Log Data to provide, understand, and improve our Services.</p>
-
-<p><span class="title">Information Sharing and Disclosure</span><br>
-We do not disclose your private personal information except in the limited circumstances described here.</p>
-
-<p><span class="title">Changes to this Policy</span><br>
-We may revise this Privacy Policy from time to time. The most current version of the policy will govern our use of your information and will always be at
-<a href="https://lirocks.herokuapp.com/privacy-policy">https://lirocks.herokuapp.com/privacy-policy</a>. If we make a change to this policy that, in our sole discretion,
- is material, we will update <a href="https://lirocks.herokuapp.com/privacy-policy">https://lirocks.herokuapp.com/privacy-policy</a>. By continuing to access or use the Services after those changes become effective, you agree to be bound by the revised Privacy Policy.</p>
-
-<p>Effective: 25th August 2017</p>
-
+  		<li class="list-group-item">3. Download content:<br>The Kissave itself does not download and store the contents of Instagram, Youtube and so on. If you have deleted the contents on Instagram, you cannot access or save it by means of Kissave.</li> 
+		<li class="list-group-item">Contact Us <br> lichen123321123467@gmail.com <br>Copyright © 2016-2017 Kissave.All rights reserved.</li>
+		{%else%}
+		<li class="list-group-item">
+			使用「Kissave」服务就表示您接受以下条款：<br>	你需对所有发至Kissave的内容负责，比如：链接、图片等信息；
+			Kissave提供的在线图片/视频保存功能，仅限于个人使用（合理使用；
+			如果你需要公开使用或者商用相关内容，必须自行获得相关内容版权所有人同意；
+			Kissave不对用户滥用下载内容造成的侵权问题负责；
+			Kissave为免费服务，不对服务的有效性提供任何保证；
+			Kissave保留随时修改、终止服务的权利；
+			如果你是相关内容版权所有人，希望我们屏蔽你的相关内容，请到关注公众号联系我们；
+		</li>
+		<li class="list-group-item">隐私政策<br>
+		1.个人信息<br>「Kissave」不会收集、存储、分析用户的个人信息及所存内容。用户使用「Kissave」服务无需用到 Instagram账号或密码。</li>
+		
+		<li class="list-group-item">2.下载内容<br>
+「Kissave」本身不会对 Instagram、Youtube等上的内容进行下载、存储。如您在Instagram上内容已删除，则无法通过「Kissave」对它进行访问或保存。`</li>
+		<li class="list-group-item">
+		联系我们 <br>
+		<div class="col-sm-4">
+		<img src="/static/qr.jpg">
+		</div>
+		</li>
+		{%endif%}
+		</ul>
+        </div>
+</div>
+<div class="row">
+	
+            <div class="col-md-3">
+           </div>
+            <div class="col-md-2 ">
+            <a href="/" class="btn btn-default navb">{% trans 'Download Posts' %}</a>
+            </div>
+            <div class="col-md-2 ">
+            <a href="/story" class="btn btn-default navb">{% trans 'Download Stories' %}</a>
+            </div>
+            <div class="col-md-2 ">
+            <a href="#" id="downloadAccountB" class="btn btn-default navb">{% trans 'Download Account' %}</a>
+            </div>
+            <div class="col-md-2"  	>
+          </div>
+</div>
+        </div>
+        </div>
+<footer class="fixed-bottom">
+  <div class="container">
+    <div class="pull-right">
+      <form action="{% url 'set_language' %}" method="post">
+        <div class="form-inline">
+          {% csrf_token %}
+          <!-- <label style="font-size: 18px;">{% trans 'Choose language' %}&emsp;</label> -->
+          <input name="next"  class="lang-input" type="hidden" value="{{ redirect_to }}" />
+          <select name="language" style="width:100%!important;padding-top: 3px;" onchange="this.form.submit()" class="form-control lang-input">
+            {% if LANGUAGE_CODE == 'ch' %}
+            <option value="" disabled  selected="selected">
+                  Choose language
+            </option>
+            {%else%}
+            <option value="" disabled  selected="selected">
+                  选择语言
+            </option> 
+            {%endif%}
+            <option value="en" >
+                  English (en)
+            </option>
+            <option value="ch" >
+                  中文 (ch)
+            </option>
+          </select>&emsp;
+        </div>
+      </form>
+    </div>
+  </div>
+</footer>
+<br><br>
 </body>
 </html>

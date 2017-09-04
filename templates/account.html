@@ -27,7 +27,7 @@
             <a href="/story" class="btn btn-default navb">{% trans 'Download Stories' %}</a>
             </div>
             <div class="col-md-2 ">
-            <a href="#" class="btn btn-default active navb">{% trans 'Download Account' %}</a>
+            <a href="#" id="downloadAccountB" class="btn btn-default active navb">{% trans 'Download Account' %}</a>
             </div>
             <div class="col-md-2" id="fa-instagram">
             <i class="fa fa-instagram"></i>
@@ -60,13 +60,14 @@
             </div>
       </div>
 
-
       <div id="function-buttons" style="display:none;text-align:center;">
       <!-- Make sure there's no trailing spaces in text in button tags, used in js -->
         <button class="btn btn-default selectAll" type='jpg'>{% trans 'Select all Images' %}</button>
         <button class="btn btn-default selectAll" type='mp4'>{% trans 'Select all Videos' %}</button>
         <button class="btn btn-default" id="downloadButton" type="downloadUserMedia">{% trans 'Download' %}</button>
       </div>
+            <br><br>
+
       <div class="row" >
         <div class="card-columns" id="results" ></div>
     </div>
@@ -74,15 +75,18 @@
       <button class="btn btn-default" id="loadMoreButton">{% trans 'Load More' %}</button>
       </div>
 </div>
-<footer class="fixed-bottom">
+
+<div class="footer" >
   <div class="container">
-    <div class="pull-right">
+  <div class="row" >    
+  <div class="col-sm-4"></div>
+    <a href="/privacy-policy" id="pp_link" style="border: none;color:white;font-size:20px">Privacy Policy</a> &emsp;
       <form action="{% url 'set_language' %}" method="post">
         <div class="form-inline">
           {% csrf_token %}
           <!-- <label style="font-size: 18px;">{% trans 'Choose language' %}&emsp;</label> -->
           <input name="next"  class="lang-input" type="hidden" value="{{ redirect_to }}" />
-          <select name="language" style="width:100%!important;padding-top: 3px;" onchange="this.form.submit()" class="form-control lang-input">
+          <select name="language" style="padding-top: 0px;height: 30px" onchange="this.form.submit()" class="form-control lang-input">
             {% if LANGUAGE_CODE == 'ch' %}
             <option value="" disabled  selected="selected">
                   Choose language
@@ -101,9 +105,11 @@
           </select>&emsp;
         </div>
       </form>
-    </div>
+      <br>
   </div>
-</footer>
+      <p>Copyright © 2016-2017 Kissave. All rights reserved.</p>
+  </div>
+</div>
 <script src="/static/js/jquery-3.2.1.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

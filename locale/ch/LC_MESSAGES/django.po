@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-02 02:04+0530\n"
+"POT-Creation-Date: 2017-09-04 19:50+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,124 +21,107 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-
 #: instaget/settings.py:63
 msgid "Chinese"
 msgstr "中文"
-
 
 #: templates/account.html:11 templates/story.html:11
 msgid "Download Instagram User Account"
 msgstr "下载Instagram图片和视频"
 
-
-#: templates/account.html:24 templates/multi.html:25 templates/story.html:28
+#: templates/account.html:24 templates/multi.html:25
+#: templates/privacy-policy.html:51 templates/story.html:28
 msgid "Download Posts"
 msgstr "下载图片和视频"
 
-
-#: templates/account.html:27 templates/multi.html:28 templates/story.html:31
+#: templates/account.html:27 templates/multi.html:28
+#: templates/privacy-policy.html:54 templates/story.html:31
 msgid "Download Stories"
 msgstr "下载快拍"
 
-
-#: templates/account.html:30 templates/multi.html:31 templates/story.html:34
+#: templates/account.html:30 templates/multi.html:31
+#: templates/privacy-policy.html:57 templates/story.html:34
 msgid "Download Account"
 msgstr "批量下载"
 
-
-#: templates/account.html:50 templates/story.html:54
+#: templates/account.html:49 templates/story.html:54
 msgid "Enter Instagram Username"
 msgstr "输入Instagram用户名"
 
-
-#: templates/account.html:51
+#: templates/account.html:50
 msgid "Enter a public Username to download user&#39;s content"
 msgstr "不能添加私有账户"
 
-
-#: templates/account.html:51 templates/story.html:55
+#: templates/account.html:50 templates/story.html:55
 msgid "Instagram Username"
 msgstr "输入Instagram用户名"
 
-
-#: templates/account.html:54
+#: templates/account.html:53
 msgid "Click to preview user&#39;s posts"
 msgstr "预览"
 
-
-#: templates/account.html:54 templates/account.html:97 templates/multi.html:58
-
-#: templates/multi.html:86 templates/story.html:58 templates/story.html:98
+#: templates/account.html:53 templates/multi.html:57 templates/story.html:58
 msgid "Go"
 msgstr "提交"
 
-
-#: templates/account.html:67 templates/story.html:71
+#: templates/account.html:65 templates/story.html:71
 msgid "Select all Images"
 msgstr "选择所有图片"
 
-
-#: templates/account.html:68 templates/story.html:72
+#: templates/account.html:66 templates/story.html:72
 msgid "Select all Videos"
 msgstr "选择所有视频"
 
-
-#: templates/account.html:69 templates/multi.html:59 templates/story.html:73
+#: templates/account.html:67 templates/multi.html:58 templates/story.html:73
 msgid "Download"
 msgstr "下载"
 
-
-#: templates/account.html:76
+#: templates/account.html:75
 msgid "Load More"
 msgstr "加载更多"
 
-
-#: templates/account.html:86 templates/multi.html:75 templates/story.html:87
+#: templates/account.html:84 templates/multi.html:74 templates/story.html:86
 msgid "Choose language"
 msgstr "选择语言"
 
-
-#: templates/multi.html:11 templates/multi.html:51
+#: templates/multi.html:11 templates/multi.html:50
 msgid "Download Instagram Posts"
 msgstr "下载Instagram的帖子"
 
-
-#: templates/multi.html:52
+#: templates/multi.html:51
 msgid ""
 "You can download multiple Instagram posts just by entering links seperated "
 "by new line"
-msgstr "同时批量下载多个帖子内容，图片和视频可以混搭，每一行一条链接（通过回车键来分隔）"
+msgstr ""
+"同时批量下载多个帖子内容，图片和视频可以混搭，每一行一条链接（通过回车键来分"
+"隔）"
 
-
-#: templates/multi.html:52
+#: templates/multi.html:51
 msgid "Enter Instagram Post links"
 msgstr "输入Instagram的帖子链接"
 
-
-#: templates/multi.html:58
+#: templates/multi.html:57
 msgid "Click to preview the posts before download"
 msgstr "点击预览帖子"
 
-
-#: templates/multi.html:59
+#: templates/multi.html:58
 msgid "Click to download all posts as zip"
 msgstr "点击下载所有帖子为zip"
 
+#: templates/privacy-policy.html:11 templates/privacy-policy.html:26
+msgid "Privacy Policy"
+msgstr "使用条款"
 
 #: templates/story.html:55
 msgid "Enter a public Username to download user&#39;s stories"
 msgstr "不能添加私有账户"
 
-
 #: templates/story.html:58
 msgid "Click to preview user&#39;s stories"
 msgstr "点击预览快拍"
 
-
 #~ msgid "Hello"
 #~ msgstr "Hello"
-
 
 #~ msgid "Welcome to my site."
 #~ msgstr "欢迎欢迎"

@@ -59,7 +59,7 @@ function getUserMedia(username){
                 return logErr(gettext('User has not uploaded any media!'));
             }
             requests++;
-            // console.log(data);
+            console.log(data);
             var posts = data['posts'];
             var tmp, carousel;
             for(var i in posts){
