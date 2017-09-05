@@ -10,10 +10,11 @@ from ipware.ip import get_ip
 from django.utils.translation import get_language
 from django.utils import translation
 from instaget import settings
+from django.utils import translation
 
 username = 'riven5518'
 password = 'qwer1234'
-global geo
+global api
 geo = GeoIP2()
 api = Client(username, password)
 
@@ -34,7 +35,8 @@ def setSession(request): # Set language for this user
     lang_set = request.session.get('lang_set', None)
     if lang_set is None:
         lang =  getLang(request)
-        request.session['_language'] = lang
+        request.session['_language'] = lang # will be set for upcomming views (not this view)
+        translation.activate(lang) # set for current view
         request.session['lang_set'] = True
     return
 
@@ -55,6 +57,7 @@ def langView(request):
 def MultiView(request):
     template = 'multi.html'
     setSession(request)
+    print(dict(request.session))
     return render(request, template, {})
     
 
@@ -76,6 +79,7 @@ def PrivacyPolicy(request):
 
 
 def GetUserStory(request):
+    global api
     if request.method == "POST":
         response_data = {}
         username = request.POST['username']
@@ -91,7 +95,7 @@ def GetUserStory(request):
                 stories = api.user_reel_media(user_id)
             except Exception as e:
                 print(e) #may be session expired, relogin
-                global api
+                
                 api = Client(username, password)
                 stories = api.user_reel_media(user_id)
 
