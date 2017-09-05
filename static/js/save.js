@@ -42,6 +42,7 @@ function loadEnd(){
         count = 0;
         bufferArr = [];
     });
+    // console.log('loadend done');
     $('#progress-bar').html('0%');
     $('#progress-bar').css('width', '0%');
     $('#progress-bar').hide();
@@ -124,7 +125,7 @@ function downloadUserStory(){
     for (var i in selected_cards){       
         selected_media.push(card_data[selected_cards[i]]);
     }
-    console.log('length of selected_media', selected_media.length);
+    // console.log('length of selected_media', selected_media.length);
     if(selected_media.length==0){
         alert(gettext("No media selected!"));
         return;
@@ -136,6 +137,7 @@ function downloadUserStory(){
 }
 
 $('#downloadButton').on('touchstart click', function(){
-    console.log($(this).attr('type'));
+    // console.log($(this).attr('type'));
     window[$(this).attr('type')](); // call function with name as string
 })
+
