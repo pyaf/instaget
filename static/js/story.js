@@ -36,7 +36,7 @@ function embed(type, link, post){
 function getUserStory(user_id){
     console.log("Getting user story.");
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/ajax-loader.gif'> " + gettext("Wait"));
+    $('#submit').html("<img src='/static/images/ajax-loader.gif'> " + gettext("Wait"));
     $.ajax({
         url: '/getUserStory/',
         type: 'POST',

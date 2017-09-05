@@ -67,7 +67,7 @@ function downloadZIP(){
 
 function singleDownload(){
     //console.log('single download');
-    // $('#downloadButton').html("<img src='/static/ajax-loader.gif'> wait..")
+    // $('#downloadButton').html("<img src='/static/images/ajax-loader.gif'> wait..")
     // $('#downloadButton').attr('disabled','disabled');
     var link = document.createElement("a");
     link.download = 'instagram';

@@ -8,21 +8,36 @@
   <meta http-equiv="Cache-Control" content="no-siteapp">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <meta name="description" content="Instagram Posts download">
+  <meta name="description" content="Instagram Images download">
+  <meta name="description" content="Instagram Videos download">
+  <meta name="description" content="Instagram Carousels download">
+  <meta name="description" content="Instagram Account Zip download">
+  <meta name="description" content="Instagram download">
+  <meta name="description" content="English Chinese Translation">
+  <meta name="description" content="China">
+
+
+
+
   {% include 'base.html' %}
-  <title>{% trans 'Download Instagram User Account' %}</title>
+  <link rel="icon" type="image/x-icon" href="/static/images/fav.png" />
+  <title>{% trans 'Download Instagram User Account' %} | kissave.com | Instagram Image Video Carousel Account Download</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/static/css/index.css">
   <link rel="stylesheet" type="text/css" href="/static/css/account.css">
   <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
 </head>
-<body   style="background: url(/static/11.jpg) no-repeat  fixed" >
+<body   style="background: url(/static/images/11.jpg) no-repeat  fixed" >
     <div class="container" >
         <div class="row">
             <div class="col-md-2 ">
            </div>
             <div class="col-md-2 ">
+            <h1>
             <a href="/" class="btn btn-default navb">{% trans 'Download Posts' %}</a>
+            </h1>
             </div>
             <div class="col-md-2 ">
             <a href="/story" class="btn btn-default navb">{% trans 'Download Stories' %}</a>
@@ -47,7 +62,7 @@
               </div>
               <form action="">
                 <div class="form-group">
-                  <label>{% trans 'Enter Instagram Username' %}</label>
+                  <label><h1>{% trans 'Enter Instagram Username' %}</h1></label>
                   <input type="text"  id = "username" data-toggle="tooltip" title="{% trans 'Enter a public Username to download user&#39;s content' %}" class="form-control input-lg" name="username" placeholder="{% trans 'Instagram Username' %}">
                 </div>
               <div style="text-align: center">

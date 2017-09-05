@@ -39,7 +39,7 @@ function embed(type, post){
 
 function getUserMedia(username){
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/ajax-loader.gif'> " + gettext('Wait'));
+    $('#submit').html("<img src='/static/images/ajax-loader.gif'> " + gettext('Wait'));
     $.ajax({
         url: '/getUserData/',
         type: 'POST',
@@ -138,7 +138,7 @@ $('#submit').on('touchstart click', function(e) {
 
 function loadMore(){
     $('#loadMoreButton').attr('disabled','disabled');
-    $('#loadMoreButton').html("<img src='/static/ajax-loader.gif'> " + gettext('loading'));
+    $('#loadMoreButton').html("<img src='/static/images/ajax-loader.gif'> " + gettext('loading'));
     // console.log("loading more")
     getUserMedia(username);
 }
