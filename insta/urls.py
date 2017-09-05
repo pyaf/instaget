@@ -10,6 +10,5 @@ urlpatterns = [
     url(r'^getUserData/$', GetUserData),
     url(r'^getMultiPosts/$', GetMultiPosts),
     url(r'^privacy-policy/$', PrivacyPolicy, name="privacy-policy"),
-    url(r'^robots.txt/$', lambda r: HttpResponse("User-agent: *\nDisallow: ", mimetype="text/plain"), name='robot.txt')
 ]
 

@@ -5,6 +5,7 @@ from django.views.i18n import javascript_catalog
 from django.views.i18n import JavaScriptCatalog
 from .sitemapsettings import StaticSitemap
 from django.contrib.sitemaps import ping_google
+from django.shortcuts import render, HttpResponse
 
 js_info_dict = {
 	'domain': 'djangojs',
@@ -20,6 +21,8 @@ urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^jsi18n/$', javascript_catalog, js_info_dict, name='javascript_catalog'),
 	url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    url(r'^robots.txt/$', lambda r: HttpResponse("User-agent: *\nDisallow: ", content_type="text/plain"), name='robot.txt')
+
 ]
 
 try:
