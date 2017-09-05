@@ -10,3 +10,6 @@ p{
       margin-left: auto;
       margin-bottom: 2%;
   }
+textarea{
+  height:100px;
+}

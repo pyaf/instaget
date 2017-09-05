@@ -73,9 +73,6 @@ function setMediaLinks(){
                         }
                     }
                 }
-                //console.log("media links set");
-                //console.log(selected_media);
-                // $('#function-buttons').css('display','block');
             }
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');

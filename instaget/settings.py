@@ -8,7 +8,7 @@ GEOIP_PATH = os.path.join(PROJECT_ROOT, GEOIP_COUNTRY)
 
 SECRET_KEY = "v=5wovo8)vwjhsqi-%q2-4!*_3$4qcqb12qodr3hfewgsb)h97"
 DEBUG = True
-
+SITE_ID = 1
 INSTALLED_APPS = [
     'insta',
     'django.contrib.admin',
@@ -18,6 +18,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+
 ]
 
 MIDDLEWARE = [

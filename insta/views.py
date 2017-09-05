@@ -13,7 +13,7 @@ from instaget import settings
 
 username = 'riven5518'
 password = 'qwer1234'
-
+global geo
 geo = GeoIP2()
 api = Client(username, password)
 
@@ -160,6 +160,7 @@ def GetUserData(request):
             )
     else:
         return HttpResponse("Bad Request")
+
 
 '''
 # 1 : given a post's shortcode, we can know username, media_id etc..

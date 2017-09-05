@@ -11,16 +11,19 @@
   <meta name="description" content="Instagram Posts download">
   <meta name="description" content="Instagram Images download">
   <meta name="description" content="Instagram Videos download">
+  <meta name="description" content="Instagram Stories download">
+
   <meta name="description" content="Instagram Carousels download">
   <meta name="description" content="Instagram Account Zip download">
   <meta name="description" content="Instagram download">
   <meta name="description" content="English Chinese Translation">
   <meta name="description" content="China">
+  <meta name="title" content="{% trans 'Download Instagram Posts' %} | Download Instagram Image Video Account">
 
 
   {% include 'base.html' %}
   <link rel="icon" type="image/x-icon" href="/static/images/fav.png" />
-  <title>{% trans 'Download Instagram Posts' %} | kissave.com | Instagram Image Video Carousel Account Download</title>
+  <title>{% trans 'Download Instagram Posts' %} | Download Instagram Image Video Stories Account </title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/tipsy.css" type="text/css" />
@@ -28,7 +31,7 @@
   <link rel="stylesheet" type="text/css" href="/static/css/multi.css">
   <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
 </head>
-<body style="background: url(/static/images/11.jpg) no-repeat fixed;">
+<body>
     <div class="container" >
         <div class="row">
             <div class="col-md-2 ">
@@ -51,7 +54,7 @@
         <div class="col-md-2">
         </div>
         <div class="col-sm-8">
-          <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" >
             <button type="button" class="close" aria-label="Close" id="alertCloseButton">
               <span aria-hidden="true" class="times">&times;</span>
             </button>
@@ -60,18 +63,18 @@
           <form action="">
             <div class="form-group">
               <label><h1>{% trans 'Download Instagram Posts' %}</h1></label>
-              <textarea required="true" data-toggle="tooltip" title="{% trans 'You can download multiple Instagram posts just by entering links seperated by new line' %}" type="text" style="height:100px" id = "multi_post_links" data-placement="top" class="form-control input-lg" placeholder="{% trans 'Enter Instagram Post links' %}"></textarea>
+              <textarea required="true" data-toggle="tooltip" title="{% trans 'You can download multiple Instagram posts just by entering links seperated by new line' %}" type="text" id = "multi_post_links" data-placement="top" class="form-control input-lg" placeholder="{% trans 'Enter Instagram Post links' %}"></textarea>
             </div>
           </form>
         </div>
       </div>
-      <div id="function-buttons" style="text-align:center;">
+      <div id="multi-function-buttons" >
         <button  type="submit" id="submit" data-toggle="tooltip" data-placement="bottom" title="{% trans 'Click to preview the posts before download' %}" class="function btn btn-default" >{% trans 'Go' %}</button>
         <button  class="function btn btn-default" data-toggle="tooltip" data-placement="bottom" title="{% trans 'Click to download all posts as zip' %}" id="downloadButton" type="downloadMultiMedia">{% trans 'Download' %}</button>
       </div>
       <br>
       <div class="progress">
-        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%; display:none">0%</div>
+        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">0%</div>
       </div>
       <br><br>
       <div class="row" id="results">
@@ -81,13 +84,13 @@
   <div class="container">
   <div class="row" >    
   <div class="col-sm-4"></div>
-    <a href="/privacy-policy" id="pp_link" style="border: none;color:white;font-size:20px">Privacy Policy</a> &emsp;
+    <a href="/privacy-policy" id="pp_link">Privacy Policy</a> &emsp;
       <form action="{% url 'set_language' %}" method="post">
         <div class="form-inline">
           {% csrf_token %}
           <!-- <label style="font-size: 18px;">{% trans 'Choose language' %}&emsp;</label> -->
           <input name="next"  class="lang-input" type="hidden" value="{{ redirect_to }}" />
-          <select name="language" style="padding-top: 0px;height: 30px" onchange="this.form.submit()" class="form-control lang-input">
+          <select name="language" onchange="this.form.submit()" class="form-control lang-input">
             {% if LANGUAGE_CODE == 'ch' %}
             <option value="" disabled  selected="selected">
                   Choose language

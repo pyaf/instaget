@@ -7,6 +7,7 @@ a{
   font-size:15px!important;
 }
 body {
+  background: url(/static/images/11.jpg) no-repeat  fixed;
   /* Margin bottom by footer height */
   margin-bottom: 70px;
 }
@@ -36,10 +37,41 @@ button{
 
 }
 #pp_link{
+      border: none;
+      color:white;
       font-size:20px!important;
     }
 #downloadAccountB{
 	width: 107%!important;
+}
+
+.fa.fa-instagram{
+  margin-left:70px;
+}
+ .lang-input{
+  /*width:45%!important;*/
+
+} 
+#lang-select{
+  padding-top: 0px;height: 30px
+}
+}
+select{
+      margin-bottom: 10px;
+}
+
+#function-buttons{
+  display:none;
+  text-align:center;
+}
+.alert{
+  display: none;
+}
+#multi-function-buttons{
+  text-align:center;
+}
+#progress-bar{
+  width: 0%; display:none
 }
 @media screen and (max-width: 800px) {
     hr{
@@ -61,17 +93,3 @@ button{
     	font-size:13px;
     }
 }
-
-.fa.fa-instagram{
-	margin-left:70px;
-}
- .lang-input{
-	/*width:45%!important;*/
-
-}	
-
-}
-select{
-	    margin-bottom: 10px;
-}
-
