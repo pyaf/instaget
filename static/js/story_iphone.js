@@ -8,8 +8,7 @@ var card_data = {}; // key is card id i.e., shortcode, value is list of links of
 
 function embed(type, link, post){
     var date = new Date(post['taken_at'] * 1000);
-    // var type = link.slice(-3);
-    var html = `<div class="card" id="`+post['code']+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`;
+    var html = `<div class="card" style="max-width: 20rem;" >`;
     if(type=='mp4'){
         html += `<video controls="controls" style="width:100%;">
         <source src="`+link+`" type="video/mp4" />
@@ -17,16 +16,13 @@ function embed(type, link, post){
         `
     }else{
         // console.log('type not mp4', post['type'], post)
-        html += `<img class="card-img-top" src="`+post['image_versions2']['candidates'][1]['url']+`" alt="Card image cap">`;
+        html += `<img class="card-img-top" src="`+post['image_versions2']['candidates'][0]['url']+`" alt="Card image cap">`;
     }
     html += `<div class="card-body">`;
     if(post['caption']!=null){
         html+= `<p class="card-text">`+ post['caption']['text']+`</p>`
         }
     html += `Created at `+ date.toLocaleString()+`
-        </div>
-        <div class="ticks">
-            <i class="fa fa-check"></i>
         </div>
         </div>`
     $('#results').append(html);
@@ -57,7 +53,11 @@ function getUserStory(user_id){
                 $('#error-msg').html(gettext('User has not uploaded any Stories!'));
                 $('.alert').show();
             }else{
-                
+                // if(stories.length==2){
+                //     // $('#results').removeClass('card-columns').addClass('card-deck');
+                //     // $('#results').css('margin-left','20%');
+
+                // }
                 for(var i in stories){
                     var links = [];
                     var type = 'jpg'; 
@@ -73,7 +73,7 @@ function getUserStory(user_id){
                     embed(type, link, stories[i]);
                 }
                 console.log("Done");
-                $('#function-buttons').css('display','block');
+                $('#results').tooltip('show');
             }
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
@@ -100,13 +100,10 @@ $('#submit').on('touchstart click', function(e) {
         requests = 0;
         max_id = null;
         total_posts = {};
-        selected_media = [];
         $('#results').html('');
-        $('#function-buttons').css('display','none');
-        $('#loadMoreButtonDiv').css('display','none'); 
-        $('#progress-bar').html('0%');
-        $('#progress-bar').css('width', '0%');
-        $('#progress-bar').hide();
+        // $('#results').removeClass('card-deck').addClass('card-columns');
+        // $('#results').css('margin-left','20%');
+
     }
     $('.alert').hide(); // there may be some initial alert, even though requests!=0
     username = $('#username').val();

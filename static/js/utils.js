@@ -60,3 +60,13 @@ function logErr(error){
     $('#submit').html(gettext("Go"));
     return; 
 }
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+$(document).on('show.bs.tooltip', function (e) {
+  setTimeout(function() {   //calls click event after a certain time
+   $('[data-toggle="tooltip"]').tooltip('hide');
+}, 4000);
+});
