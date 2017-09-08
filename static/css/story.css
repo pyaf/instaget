@@ -34,12 +34,15 @@
     .active video {
     opacity: .65;
     }
+  
     .card{
 
     cursor: pointer;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2%;
+  
     width: 32%;
-    margin-bottom: 3%;
-    margin-left: 1%;
     }
    p{
     margin-bottom: 0;

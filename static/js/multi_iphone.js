@@ -3,8 +3,32 @@ var selected_media = [];
 var requests = false; // helps in reseting all parameters in re-search
 var selected_media_set = false;
 
-// Embed all posts using IG oembed endpoint
-function IGembed(shortcode){
+function embed(type, link, post){
+    var date = new Date(post['created_time'] * 1000);
+    var html = `<div class="card" style="max-width: 20rem;" >`;
+    if(type == 'mp4'){
+        html += `
+        <video controls="controls" style="width:100%;">
+        <source src="`+link+`" type="video/mp4" />
+        </video>
+        `
+    }else{
+        html += `<img class="card-img-top" src="`+link+`" alt="Card image cap">`
+    }
+    html += `
+        <div class="card-body">
+            <span><i class="fa fa-heart"></i> `+post['likes']['count']+` likes </span>
+            <span><i class="fa fa-comment"></i> `+post['comments']['count']+` comments</span>`
+    if(post['caption']!=null){
+        html+= `<p class="card-text">`+ post['caption']['text']+`</p>`
+        }
+    html += `Created at `+ date.toLocaleString()+`
+        </div>
+        </div>`
+    $('#results').append(html);
+}
+
+function PrepareUsersPostDict(shortcode){
     var post_link = 'https://instagram.com/p/' + shortcode;
     $.ajax({
         url: 'https://api.instagram.com/oembed/?url=' + post_link,
@@ -18,11 +42,6 @@ function IGembed(shortcode){
                 users_posts_dict[data['author_name']] = {};
             }
             users_posts_dict[data['author_name']][shortcode] = 1;
-            var html = `<div class="card">`
-                        + data['html'].replace('data-instgrm-captioned','')
-                    + `</div>`;
-            $('#results').append(html);
-            window.instgrm.Embeds.process() // Note: no semi colon
         },
         error: function(request, status, error){
           //console.log(request['status']);
@@ -40,7 +59,6 @@ function IGembed(shortcode){
 
 
 function setMediaLinks(){
-    console.log("lol");
     $.ajax({
         url: '/getMultiPosts/',
         type: 'POST',
@@ -53,24 +71,24 @@ function setMediaLinks(){
             }else{
                 var carousel, tmp;
                 for(var i in posts){ // i is shortcode
-                    // console.log(posts[i]['type']);
+                    
                     if (posts[i]['type']=="image"){
-                        selected_media.push(posts[i]['images']['standard_resolution']['url']);
+                        link = posts[i]['images']['standard_resolution']['url'];
+                        embed('jpg', link, posts[i]);
                     }else if(posts[i]['type']=='video'){
-                        selected_media.push(posts[i]['videos']['standard_resolution']['url']);
+                        link = posts[i]['videos']['standard_resolution']['url'];
+                        embed('mp4', link, posts[i]);
                     }else {//carousel
                         carousel = posts[i]['carousel_media'];
                         for(var j in carousel){
-                            // console.log(carousel[j]['type']);
+                            
                             if(carousel[j]['type']=='image'){
-                                // console.log(carousel[j]['images']['standard_resolution']['url']);
-                                tmp = carousel[j]['images']['standard_resolution']['url'];
+                                link = carousel[j]['images']['standard_resolution']['url'];
+                        		embed('jpg', link, posts[i]);
                             }else{
-                                tmp = carousel[j]['videos']['standard_resolution']['url'];
-                                // console.log(carousel[j]['videos']['standard_resolution']['url']);
+                                link = carousel[j]['videos']['standard_resolution']['url'];
+                        		embed('mp4', link, posts[i]);
                             }
-                            // console.log(tmp);
-                            selected_media.push(tmp);
                         }
                     }
                 }
@@ -78,10 +96,6 @@ function setMediaLinks(){
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
             $('#submit').html(gettext("Search again!"));
-            if(selected_media.length==0){
-                return logErr(gettext('No media found!'));
-            }
-            $('#downloadButton').show();
         },
         error: function(request, status, error){
           //console.log(request['status']);
@@ -112,30 +126,23 @@ $('#submit').on('touchstart click', function(e) {
     e.preventDefault();
     if(requests){ // User is re-searching, re-initialize every global var
         requests = false;
-        links_count = 0;
-        selected_media = [];
         selected_media_set = false;
         users_posts_dict = {};
         $('#results').html('');
-        $('#downloadButton').hide();
-        $('#progress-bar').html('0%');
-        $('#progress-bar').hide();
         $('#error-msg').html('');
     }
     $('.alert').hide(); // there may be some initial alert, even though requests!=0
     requests = true;
     links = $('#multi_post_links').val();
-    console.log(links);
     shortcodes = getShortCodes(links);
     if(shortcodes.length==0){
         return logErr("Not a valid link!");
     }
-    console.log(shortcodes.length);
     $('#submit').attr('disabled','disabled');
     $('#submit').html("<img src='/static/images/ajax-loader.gif'>"+gettext("Getting posts") +" ..");
     $('#results').html('');
     for (var i in shortcodes){
-        IGembed(shortcodes[i]);
+        PrepareUsersPostDict(shortcodes[i]);
     }
     return;
 });
@@ -154,3 +161,4 @@ function getShortCodes(links){
     }
     return link_list;
 }
+

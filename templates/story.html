@@ -68,10 +68,10 @@
               <form action="">
                 <div class="form-group">
                   <label><h1>{% trans 'Enter Instagram Username' %}</h1></label>
-                  <input type="text"  id = "username" data-toggle="tooltip" title="{% trans 'Enter a public Username to download user&#39;s stories' %}"class="form-control input-lg" name="username" placeholder="{% trans 'Instagram Username' %}">
+                  <input type="text"  id = "username" data-toggle="tooltip" title="{% trans 'Enter a public Username to download user&#39;s stories' %}" class="form-control input-lg" name="username" placeholder="{% trans 'Instagram Username' %}">
                 </div>
               <div style="text-align: center">
-                <button type="submit" id="submit" data-placement="left" class="btn btn-default" data-toggle="tooltip" title="{% trans 'Click to preview user&#39;s stories' %}">{% trans 'Go' %}</button>
+                <button type="submit" id="submit" data-placement="bottom" class="btn btn-default" data-toggle="tooltip" title="{% trans 'Click to preview user&#39;s stories' %}">{% trans 'Go' %}</button>
               </div>
               </form>
               <br>
@@ -90,7 +90,7 @@
         <button class="btn btn-default" id="downloadButton" type="downloadUserStory" >{% trans 'Download' %}</button>
       </div>
       <br>
-      <div class="row" id="results" data-toggle="tooltip" title="{% trans 'Right click or tap hold and select save as to download this media story.' %}">
+      <div class="row" id="results" data-toggle="tooltip" title="{% trans 'Right click or tap hold and select save option to download this media story on your system.' %}">
     </div>
       <br><br>
 </div>
@@ -143,9 +143,13 @@ if ((/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) || (navig
   jQuery.getScript("/static/js/story_iphone.js");
   $('#progress-bar').remove();
   $('#function-buttons').remove();
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream){
+    $('#results').attr('title', gettext('As you are using an iPhone, you can only download images by holding tap and selecting "Save Image" in order to download videos, use a PC.'))
+  }
 }else{
   console.log('not ios or safari ');
   jQuery.getScript("/static/js/story.js");
+  $('#results').removeAttr('title');
 }
 
 </script>

@@ -16,7 +16,7 @@ function embed(type, link, post){
         `
     }else{
         // console.log('type not mp4', post['type'], post)
-        html += `<img class="card-img-top" src="`+post['image_versions2']['candidates'][0]['url']+`" alt="Card image cap">`;
+        html += `<img class="card-img-top" src="`+link+`" alt="Card image cap">`;
     }
     html += `<div class="card-body">`;
     if(post['caption']!=null){

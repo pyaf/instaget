@@ -83,7 +83,7 @@
             <br><br>
 
       <div class="row" >
-        <div class="card-columns" id="results" ></div>
+        <div class="card-columns" id="results" data-toggle="tooltip" title="{% trans 'Right click or tap hold and select save option to download image/video on your system.' %}"></div>
     </div>
       <div id="loadMoreButtonDiv" style="text-align: center;display: none;">
       <button class="btn btn-default" id="loadMoreButton">{% trans 'Load More' %}</button><br><br>
@@ -131,10 +131,24 @@
 <script src="/static/js/jszip.min.js" charset="utf-8"></script>
 <script src="/static/js/FileSaver.js" charset="utf-8"></script>
 <script src="/static/js/save.js" charset="utf-8"></script>
-<script src="/static/js/account.js" charset="utf-8"></script>
 <script src="/static/js/utils.js" type="text/javascript" charset="utf-8" async defer></script>
 <script>
 var csrf_token = '{{ csrf_token }}';
+if ((/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) || (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1)){
+  console.log('ios detected || safari detected');
+  jQuery.getScript("/static/js/account_iphone.js");
+  $('#progress-bar').remove();
+  $('#function-buttons').remove();
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream){
+    $('#results').attr('title', 'As you are using an iPhone, you can only download images by holding tap and selecting "Save Image" in order to download videos, use a PC.')
+  }
+}else{
+  console.log('not ios or safari ');
+  jQuery.getScript("/static/js/account.js");
+  $('#results').removeAttr('title');
+}
+  
+
 </script>
 
 </body>

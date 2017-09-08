@@ -78,7 +78,7 @@
         <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">0%</div>
       </div>
       <br><br>
-      <div class="row" id="results">
+      <div class="row" id="results" data-toggle="tooltip" title="{% trans 'Right click or tap hold and select save option to download image/video on your system.' %}">
       </div>
     </div>
 <div class="footer" >
@@ -123,13 +123,30 @@
 <script type="text/javascript" src="{% url 'javascript_catalog' %}"></script>
 <script src="/static/js/jszip.min.js" charset="utf-8"></script>
 <script src="/static/js/FileSaver.js" charset="utf-8"></script>
-<script src="/static/js/multi.js" charset="utf-8"></script>
-<script src="/static/js/save.js" charset="utf-8"></script>
-<script src="/static/js/utils.js" type="text/javascript" charset="utf-8" async defer></script>
 <script>
 var csrf_token = '{{ csrf_token }}';
+if ((/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) || (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1)){
+  console.log('ios detected || safari detected');
+  var script = document.createElement("script");
+  script.src = '/static/js/multi_iphone.js';
+  document.head.appendChild(script); 
+  $('#progress-bar').remove();
+  $('#function-buttons').remove();
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream){
+    $('#results').attr('title', 'As you are using an iPhone, you can only download images by holding tap and selecting "Save Image" in order to download videos, use a PC.');
+  }
+}else{
+  console.log('not ios or safari ');
+  var script = document.createElement("script"); 
+  script.src = '/static/js/multi.js';
+  document.head.appendChild(script);
+  $('#results').removeAttr('title');
+}
+
 
 </script>
+<script src="/static/js/save.js" charset="utf-8"></script>
+<script src="/static/js/utils.js" type="text/javascript" charset="utf-8" async defer></script>
 
 </body>
 
