@@ -96,6 +96,8 @@ function setMediaLinks(){
             //below 2 lines useful only for initial search
             $('#submit').removeAttr('disabled');
             $('#submit').html(gettext("Search again!"));
+            $('#results').tooltip('show');
+
         },
         error: function(request, status, error){
           //console.log(request['status']);

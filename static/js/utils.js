@@ -68,5 +68,5 @@ $(document).ready(function(){
 $(document).on('show.bs.tooltip', function (e) {
   setTimeout(function() {   //calls click event after a certain time
    $('[data-toggle="tooltip"]').tooltip('hide');
-}, 4000);
+}, 5000);
 });

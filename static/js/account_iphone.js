@@ -92,6 +92,7 @@ function getUserMedia(username){
             $('#loadMoreButton').removeAttr('disabled');
             $('#loadMoreButton').html("Load More");
             // console.log(max_id);
+            $('#results').tooltip('show');
         },
         error: function(request, status, error){
             console.log(request['status']);
