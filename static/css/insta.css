@@ -9,9 +9,6 @@
   z-index: 9999;
   background: url(/static/images/ajax-loader.gif) center no-repeat;
 }
-  .card{
-    opacity:0.8;
-  }
 
 #tag{
   text-align: center;
