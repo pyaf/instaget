@@ -48,7 +48,7 @@
 
 
 #results{
-  width: 90%;
+  width: 80%;
   margin: auto;
 }
  button{
@@ -73,8 +73,9 @@ a{
   margin:auto;
 }
 .navb{
-  margin-top: 5%;
-  margin:auto;
+  margin-top:auto;
+  margin-left:auto;
+  margin-right:auto;
   width:25%;
   }
 
@@ -88,7 +89,7 @@ a{
   	height: 60px;
 }
 hr{
-    margin-top: 0px;
+    margin-top: 1%;
     margin-bottom:30px;
     width: 70%;
    border: 1px solid;
