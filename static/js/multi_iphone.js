@@ -5,26 +5,21 @@ var selected_media_set = false;
 
 function embed(type, link, post){
     var date = new Date(post['created_time'] * 1000);
-    var html = `<div class="card" style="max-width: 20rem;" >`;
+    var html = '<div class="card" style="max-width: 20rem;" >';
     if(type == 'mp4'){
-        html += `
-        <video controls="controls" style="width:100%;">
-        <source src="`+link+`" type="video/mp4" />
-        </video>
-        `
+        html += '<video controls="controls" style="width:100%;">' +
+                '<source src="'+link+'" type="video/mp4" />' +
+                '</video>';
     }else{
-        html += `<img class="card-img-top" src="`+link+`" alt="Card image cap">`
+        html += '<img class="card-img-top" src="'+link+'" alt="Card image cap">';
     }
-    html += `
-        <div class="card-body">
-            <span><i class="fa fa-heart"></i> `+post['likes']['count']+` likes </span>
-            <span><i class="fa fa-comment"></i> `+post['comments']['count']+` comments</span>`
+    html += '<div class="card-body">' +
+            '<span><i class="fa fa-heart"></i> '+post['likes']['count']+' likes </span>' +
+            '<span><i class="fa fa-comment"></i> '+post['comments']['count']+' comments</span>';
     if(post['caption']!=null){
-        html+= `<p class="card-text">`+ post['caption']['text']+`</p>`
+        html+= '<p class="card-text">'+ post['caption']['text']+'</p>';
         }
-    html += `Created at `+ date.toLocaleString()+`
-        </div>
-        </div>`
+    html += 'Created at '+ date.toLocaleString() + '</div> </div>';
     $('#results').append(html);
 }
 

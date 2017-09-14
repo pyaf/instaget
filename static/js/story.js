@@ -9,26 +9,20 @@ var card_data = {}; // key is card id i.e., shortcode, value is list of links of
 function embed(type, link, post){
     var date = new Date(post['taken_at'] * 1000);
     // var type = link.slice(-3);
-    var html = `<div class="card" id="`+post['code']+`" type="`+type+`" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >`;
+    var html = '<div class="card" id="'+post['code']+'" type="'+type+'" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >';
     if(type=='mp4'){
-        html += `<video controls="controls" style="width:100%;">
-        <source src="`+link+`" type="video/mp4" />
-        </video>
-        `
+        html += '<video controls="controls" style="width:100%;">' +
+                '<source src="'+link+'" type="video/mp4" />' +
+                '</video>';
     }else{
         // console.log('type not mp4', post['type'], post)
-        html += `<img class="card-img-top" src="`+post['image_versions2']['candidates'][1]['url']+`" alt="Card image cap">`;
+        html += '<img class="card-img-top" src="'+post['image_versions2']['candidates'][1]['url']+'" alt="Card image cap">';
     }
-    html += `<div class="card-body">`;
+    html += '<div class="card-body">';
     if(post['caption']!=null){
-        html+= `<p class="card-text">`+ post['caption']['text']+`</p>`
+        html+= '<p class="card-text">'+ post['caption']['text']+'</p>';
         }
-    html += `Created at `+ date.toLocaleString()+`
-        </div>
-        <div class="ticks">
-            <i class="fa fa-check"></i>
-        </div>
-        </div>`
+    html += 'Created at '+ date.toLocaleString() +'</div><div class="ticks"><i class="fa fa-check"></i></div></div>';
     $('#results').append(html);
 }
 
