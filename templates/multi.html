@@ -28,42 +28,30 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/tipsy.css" type="text/css" />
-  <link rel="stylesheet" href="/static/css/index.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="/static/css/multi.css">
   <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
 </head>
 <body>
     <div class="container" >
-        <div class="row">
-            <div class="col-md-2 ">
-           </div>
-            <div class="col-md-2 ">
+        <div class="row" id="navbar" >
             <a href="#" class="btn btn-default active navb">{% trans 'Download Posts' %}</a>
-            </div>
-            <div class="col-md-2">
             <a href="/story" class="btn btn-default navb">{% trans 'Download Stories' %}</a>
-            </div>
-            <div class="col-md-2">
-            <a href="/account" id="downloadAccountB"  class="btn btn-default navb">{% trans 'Download Account' %}</a>
-            </div>
-            <div class="col-md-2" id="fa-instagram">
+            <a href="/account" class="btn btn-default navb">{% trans 'Download Account' %}</a>
             <i class="fa fa-instagram"></i>
-          </div>
+        </div>
         </div>
       <hr>
       <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-sm-8">
+        <div class="col-md-12">
           <div class="alert alert-danger alert-dismissible fade show" role="alert" >
             <button type="button" class="close" aria-label="Close" id="alertCloseButton">
               <span aria-hidden="true" class="times">&times;</span>
             </button>
               <p id="error-msg"></p>
           </div>
+          <h1>{% trans 'Download Instagram Posts' %}</h1>
           <form action="">
             <div class="form-group">
-              <label><h1>{% trans 'Download Instagram Posts' %}</h1></label>
               <textarea required="true" data-toggle="tooltip" title="{% trans 'You can download multiple Instagram posts just by entering links seperated by new line' %}" type="text" id = "multi_post_links" data-placement="top" class="form-control input-lg" placeholder="{% trans 'Enter Instagram Post links' %}"></textarea>
             </div>
           </form>
@@ -81,40 +69,7 @@
       <div class="row" id="results" data-toggle="tooltip" title="{% trans 'Right click or tap hold and select save option to download image/video on your system.' %}">
       </div>
     </div>
-<div class="footer" >
-  <div class="container">
-  <div class="row" >    
-  <div class="col-sm-4"></div>
-    <a href="/privacy-policy" id="pp_link">Privacy Policy</a> &emsp;
-      <form action="{% url 'set_language' %}" method="post">
-        <div class="form-inline">
-          {% csrf_token %}
-          <!-- <label style="font-size: 18px;">{% trans 'Choose language' %}&emsp;</label> -->
-          <input name="next"  class="lang-input" type="hidden" value="{{ redirect_to }}" />
-          <select name="language" onchange="this.form.submit()" class="form-control lang-input">
-            {% if LANGUAGE_CODE == 'ch' %}
-            <option value="" disabled  selected="selected">
-                  Choose language
-            </option>
-            {%else%}
-            <option value="" disabled  selected="selected">
-                  选择语言
-            </option> 
-            {%endif%}
-            <option value="en" >
-                  English (en)
-            </option>
-            <option value="ch" >
-                  中文 (ch)
-            </option>
-          </select>&emsp;
-        </div>
-      </form>
-      <br>
-  </div>
-      <p>Copyright © 2016-2017 Kissave. All rights reserved.</p>
-  </div>
-</div>
+{% include 'footer.html' %}
 <script src="/static/js/jquery-3.2.1.min.js" charset="utf-8"></script>
 <script type='text/javascript' src='/static/js/jquery.tipsy.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

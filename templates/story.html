@@ -27,7 +27,6 @@
   <title>{% trans 'Kissave.com | Download Instagram Image Video Stories Account' %} </title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/static/css/index.css">
   <link rel="stylesheet" type="text/css" href="/static/css/story.css">
   <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
 </head>
@@ -36,38 +35,26 @@
 </style>
 <body>
     <div class="container" >
-        <div class="row">
-            <div class="col-md-2 ">
-
-           </div>
-            <div class="col-md-2 ">
+        <div class="row" id="navbar" >
             <a href="/" class="btn btn-default navb">{% trans 'Download Posts' %}</a>
-            </div>
-            <div class="col-md-2">
             <a href="#" class="btn btn-default active navb">{% trans 'Download Stories' %}</a>
-            </div>
-            <div class="col-md-2">
-            <a href="/account" id="downloadAccountB" class="btn btn-default navb">{% trans 'Download Account' %}</a>
-            </div>
-            <div class="col-md-3" id="fa-instagram">
+            <a href="/account" class="btn btn-default navb">{% trans 'Download Account' %}</a>
             <i class="fa fa-instagram"></i>
-          </div>
         </div>
+    </div>
         <hr>
 
         <div class="row">
-        <div class="col-md-2"></div>
-
-            <div class="col-sm-8">
+            <div class="col-md-12">
               <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <button type="button" class="close" id="alertCloseButton" aria-label="Close">
                   <span aria-hidden="true" class="times">&times;</span>
                 </button>
                   <p id="error-msg"></p>
               </div>
+              <h1>{% trans 'Enter Instagram Username' %}</h1>
               <form action="">
                 <div class="form-group">
-                  <label><h1>{% trans 'Enter Instagram Username' %}</h1></label>
                   <input type="text"  id = "username" data-toggle="tooltip" title="{% trans 'Enter a public Username to download user&#39;s stories' %}" class="form-control input-lg" name="username" placeholder="{% trans 'Instagram Username' %}">
                 </div>
               <div style="text-align: center">
@@ -82,52 +69,21 @@
             </div>
       </div>
 
-
+      <div class="row">
       <div id="function-buttons">
       <!-- Make sure there's no trailing spaces in text in button tags, used in js -->
         <button class="btn btn-default selectAll" type='jpg'>{% trans 'Select all Images' %}</button>
         <button class="btn btn-default selectAll" type='mp4'>{% trans 'Select all Videos' %}</button>
         <button class="btn btn-default" id="downloadButton" type="downloadUserStory" >{% trans 'Download' %}</button>
       </div>
+      </div>
       <br>
-      <div class="row" id="results" data-toggle="tooltip" title="{% trans 'Right click or tap hold and select save option to download this media story on your system.' %}">
+      <div class="row" id="results_row">
+      <div class="card-columns" id="results" data-toggle="tooltip" title="{% trans 'Right click or tap hold and select save option to download this media story on your system.' %}">
     </div>
+      </div>
       <br><br>
-</div>
-<div class="footer" >
-  <div class="container">
-  <div class="row" >    
-  <div class="col-sm-4"></div>
-    <a href="/privacy-policy" id="pp_link">Privacy Policy</a> &emsp;
-      <form action="{% url 'set_language' %}" method="post">
-        <div class="form-inline">
-          {% csrf_token %}
-          <!-- <label style="font-size: 18px;">{% trans 'Choose language' %}&emsp;</label> -->
-          <input name="next"  class="lang-input" type="hidden" value="{{ redirect_to }}" />
-          <select name="language" id="lang-select" onchange="this.form.submit()" class="form-control lang-input">
-            {% if LANGUAGE_CODE == 'ch' %}
-            <option value="" disabled  selected="selected">
-                  Choose language
-            </option>
-            {%else%}
-            <option value="" disabled  selected="selected">
-                  选择语言
-            </option> 
-            {%endif%}
-            <option value="en" >
-                  English (en)
-            </option>
-            <option value="ch" >
-                  中文 (ch)
-            </option>
-          </select>&emsp;
-        </div>
-      </form>
-      <br>
-  </div>
-      <p>Copyright © 2016-2017 Kissave. All rights reserved.</p>
-  </div>
-</div>
+{% include 'footer.html' %}
 <script src="/static/js/jquery-3.2.1.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

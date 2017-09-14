@@ -26,7 +26,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/tipsy.css" type="text/css" />
-  <link rel="stylesheet" href="/static/css/index.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="/static/css/multi.css">
   <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
   <link rel="stylesheet" href="/static/css/insta.css">
@@ -34,21 +33,12 @@
 <body>
 <div class="se-pre-con" id="loader"></div>
     <div class="container" >
-        <div class="row">
-            <div class="col-md-2 ">
-           </div>
-            <div class="col-md-2 ">
-            <a href="#" class="btn btn-default active navb">{% trans 'Download Posts' %}</a>
-            </div>
-            <div class="col-md-2">
+        <div class="row" id="navbar" >
+            <a href="/" class="btn btn-default navb">{% trans 'Download Posts' %}</a>
             <a href="/story" class="btn btn-default navb">{% trans 'Download Stories' %}</a>
-            </div>
-            <div class="col-md-2">
-            <a href="/account" id="downloadAccountB"  class="btn btn-default navb">{% trans 'Download Account' %}</a>
-            </div>
-            <div class="col-md-2" id="fa-instagram">
+            <a href="/account" class="btn btn-default navb">{% trans 'Download Account' %}</a>
             <i class="fa fa-instagram"></i>
-          </div>
+        </div>
         </div>
       <hr>
       <div class="row">

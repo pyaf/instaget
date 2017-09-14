@@ -1,56 +1,49 @@
-  body{
-    color: #ffffff;
-    padding-top: 3%;
-    font-weight: bold;
-  }
-  a{
-    color: #ffffff;
-    border: 3px solid #a7a7d0;
-    font-weight: bold;
 
-  }
-    .ticks .fa-check{
-    position: absolute;
-    left: 12px;
-    top: 12px;
-    width: 30px;
-    height: 30px;
-    background: white;
-    border-radius: 30px;
-    padding-top: 7px;
-    font-size: 14px;
-    color: white;
-    text-align: center;
-    }
-    .fa.fa-check.active {
-        background: #3f6df6;
-    }
+a{
+  color: #ffffff;
+  border: 3px solid #a7a7d0;
+  font-weight: bold;
+
+}
+.ticks .fa-check{
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 30px;
+  padding-top: 7px;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+}
+.fa.fa-check.active {
+      background: #3f6df6;
+}
+
 #submit{
   width: 30%;
 }
-    .active img {
+.active img {
     opacity: .65;
-    }
-    .active video {
+}
+.active video {
     opacity: .65;
-    }
+}
   
-    .card{
-
+.card{
     cursor: pointer;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 2%;
-  
     width: 32%;
-    }
-   p{
-    margin-bottom: 0;
-  }
-  .navb{
+}
 
-  margin-top: 16%;
-  }
+p{
+    margin-bottom: 0;
+}
+
 .btn.btn-default.active{
   color:#a33385;
   background-color: white;
@@ -63,36 +56,29 @@
   background: transparent;
   border:2px solid white;
   color:white;
-
 }
 .card-body{
-     color: #5c5b5b;
-    font-size: 12px;
-￼    font-family: inherit;
+  color: #5c5b5b;
+  font-size: 12px;
+  font-family: inherit;
 }
-    .times{
+.times{
       cursor:pointer;
-    }
-   p{
-    margin-bottom: 0;
-  }
-  #post_link{
+}
+
+#post_link{
     background: transparent;
     border: 2px solid white;
-  }
-/*  .form-control {
-    color:#ffffff!important;
-  }*/
-  hr{
-    border: 1px solid;
-  }
-  label{
+}
+
+label{
     font-size: 25px;
-  }
+}
 
 .fa.fa-instagram{
   font-size: 6em;
 }
+
 @media screen and (max-width: 1200px) {
   #fa-instagram {
     visibility: hidden;
@@ -104,6 +90,7 @@
   }
 
 }
+
 @media screen and (max-width: 800px) {
  .btn.btn-default.active{
   margin-top: 3%!important;
@@ -113,11 +100,10 @@
 video{
     width: 100%!important;
 }
-  .function{
-
-      width:49%!important;
-  }
-  .card{
+.function{
+  width:49%!important;
+}
+.card{
       margin-bottom: 3%;
       width: 100%!important;
   }

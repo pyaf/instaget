@@ -1,16 +1,83 @@
+  body{
+    color: #ffffff;
+    padding-top: 3%;
+    font-weight: bold;
+    background: url(/static/images/11.jpg) no-repeat  fixed;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  }
+
+
+.btn.btn-default.active{
+  color:#a33385;
+  background-color: white;
+  text-align: center;
+  font-weight: bold;
+
+}
+.btn.btn-default{
+  font-weight: bold;
+  background: transparent;
+  border:2px solid white;
+  color:white;
+  
+}
+.card-body{
+     color: #5c5b5b;
+    font-size: 12px;
+￼    font-family: inherit;
+}
+    .times{
+      cursor:pointer;
+    }
+   p{
+    margin-bottom: 0;
+  }
+  #post_link{
+    background: transparent;
+    border: 2px solid white;
+  }
+/*  .form-control {
+    color:#ffffff!important;
+  }*/
+  
+  label{
+    font-size: 25px;
+  }
+
+
+
+#results{
+  width: 90%;
+  margin: auto;
+}
+ button{
+  width:20%;
+ }
+
 html {
   position: relative;
   min-height: 100%;
   /*overflow:hidden;*/
 }
 a{
-  font-size:15px!important;
+  font-size:15px;
+  color: #ffffff;
+  border: 3px solid #a7a7d0;
+  font-weight: bold;
+
 }
-body {
-  background: url(/static/images/11.jpg) no-repeat  fixed;
-  /* Margin bottom by footer height */
-  margin-bottom: 70px;
+#navbar{
+  text-align: center;
+  width: 70%;
+  margin:auto;
 }
+.navb{
+  margin-top: 5%;
+  margin:auto;
+  width:25%;
+  }
+
 .footer {
 	border-top:1px solid;
 	text-align: center;
@@ -18,40 +85,48 @@ body {
   	position: absolute;
   	bottom: 0;
   	width: 100%;
-  	height: 70px;
+  	height: 60px;
 }
 hr{
     margin-top: 0px;
     margin-bottom:30px;
+    width: 70%;
+   border: 1px solid;
+
 }
 button{
 	cursor: pointer;
 }
 
-.navb{
-	width:100%;    		
-	}
 #lang{
 	width: 15%;
 	margin: auto;
 
 }
+#username, #multi_post_links{
+width:60%;
+margin:auto;
+}
+.col-md-12{
+  text-align: center;
+}
 #pp_link{
-      border: none;
-      color:white;
-      font-size:20px!important;
+    text-decoration: none;
+
+  margin-left:auto;
+  border: none;
+  color:white;
+  font-size:20px!important;
     }
-#downloadAccountB{
-	width: 107%!important;
+#lang_form{
+  margin-right:auto;
 }
 
 .fa.fa-instagram{
   margin-left:70px;
+  font-size: 6em;
 }
- .lang-input{
-  /*width:45%!important;*/
 
-} 
 #lang-select{
   padding-top: 0px;height: 30px
 }
@@ -73,23 +148,82 @@ select{
 #progress-bar{
   width: 0%; display:none
 }
+@media screen and (max-width: 1200px) {
+
+  .fa-instagram {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 800px) {
+
+  hr{
+    margin-top:1%;
+  }
+  a{
+    font-size:11px!important;
+  }
+}
 @media screen and (max-width: 800px) {
+    h1{
+      font-size: 1.8rem;
+    }
+    #username,  #multi_post_links{
+      width: 90%
+    }
+    #function-buttons{
+      margin:auto;
+      width: 90%;
+    }
     hr{
-	    margin-top: 0px!important;
-	    margin-bottom:0px!important;
+      margin-top:1%;
+      width: 95%;
     }
-    #pp_link{
-    	padding-left:10%;
-    	font-size:15px;
+    #navbar{
+      width: 100%;
     }
-    #downloadAccountB{
-    	width:100%!important;
-    }
+
     body{
-  		margin-bottom: 100px!important;
+      margin-bottom: 100px!important;
+      overflow-x:hidden
+    }
+    #loadMoreButton{
+      width: 50%;
+    }
+    select{
+      padding-top:3%!important;
     }
     .footer{
-    	height: 100px!important;
-    	font-size:13px;
+      /*height: 100px!important;*/
+      font-size:13px;
     }
+ .btn.btn-default.active{
+  margin-top: 3%;
+  width:100%;
+
+  }
+  .function{
+
+      width:49%!important;
+  }
+  .card{
+      margin:auto;
+      margin-bottom:3%;
+  }
+  #multi-function-buttons{
+    margin:auto;
+    width:90%;
+  }
+  .btn.btn-default{
+  margin-top: 3%;
+  width:100%;
+  }
+  .submit{
+  padding-right: 20%;
+  }
 }
+
+

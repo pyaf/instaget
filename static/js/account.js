@@ -12,7 +12,7 @@ function embed(type, post){
     var date = new Date(post['created_time'] * 1000);
     var html = '<div class="card" id="'+post['code']+'" type="'+type+'" "style="max-width: 20rem;" onclick="toggleCardSelection(this)" >';
     if(type == 'mp4'){
-        html += '<video controls="controls" style="width:325px;">' +
+        html += '<video controls="controls" style="width:100%;">' +
                 '<source src="'+post['alt_media_url']+'" type="video/mp4" />' +
                 '</video>';
     }else{
