@@ -1,4 +1,3 @@
-
 $('#submit').click( function(e) {
     e.preventDefault();
     var post_link = $('#post_link').val();

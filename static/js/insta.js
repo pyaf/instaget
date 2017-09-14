@@ -76,8 +76,8 @@ function setMediaLinks(){
                 }
             }
             //below 2 lines useful only for initial search
-            $('#submit').removeAttr('disabled');
-            $('#submit').html(gettext("Search again!"));
+            $('#loader').remove();
+            $('.card').css('opacity',1);
             if(selected_media.length==0){
                 return logErr(gettext('No media found!'));
             }
@@ -107,50 +107,8 @@ $(document).ajaxStop(function () {
     return;
 });
 
-
-$('#submit').on('touchstart click', function(e) {
-    e.preventDefault();
-    if(requests){ // User is re-searching, re-initialize every global var
-        requests = false;
-        links_count = 0;
-        selected_media = [];
-        selected_media_set = false;
-        users_posts_dict = {};
-        $('#results').html('');
-        $('#downloadButton').hide();
-        $('#progress-bar').html('0%');
-        $('#progress-bar').hide();
-        $('#error-msg').html('');
-    }
-    $('.alert').hide(); // there may be some initial alert, even though requests!=0
-    requests = true;
-    links = $('#multi_post_links').val();
-    console.log(links);
-    shortcodes = getShortCodes(links);
-    if(shortcodes.length==0){
-        return logErr("Not a valid link!");
-    }
-    console.log(shortcodes.length);
-    $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/images/ajax-loader.gif'>  "+gettext("Getting posts") +" ..");
-    $('#results').html('');
-    for (var i in shortcodes){
-        IGembed(shortcodes[i]);
-    }
-    return;
+$(document).ready(function(){
+    IGembed(shortcode);
 });
 
 
-function getShortCodes(links){
-    links = links.replace(/[\t\f\v]/g, '').split('\n');//remove any white space, split by \n
-    // re = new RegExp('/p/(.*)/');
-    re = /\/p\/([^\/]+)\//;
-    var link_list = [];
-    for(var i in links){
-        if(links[i].slice(-1)!='/') links[i]+='/';
-        if(re.test(links[i])){
-            link_list.push(links[i].match(re)[1]);
-        }
-    }
-    return link_list;
-}

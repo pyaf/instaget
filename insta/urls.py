@@ -3,6 +3,7 @@ from insta.views import *
 
 urlpatterns = [
     url(r'^$', MultiView, name="multi"),
+    url(r'^p/(?P<shortcode>[-\w]+)/$', instaView),
     url(r'^lang/$', langView),
     url(r'^story/$', StoryView, name="story"),
     url(r'^getUserStory/$', GetUserStory),
