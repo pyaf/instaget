@@ -136,7 +136,7 @@ $('#submit').on('touchstart click', function(e) {
         return logErr("Not a valid link!");
     }
     $('#submit').attr('disabled','disabled');
-    $('#submit').html("<img src='/static/images/ajax-loader.gif'>"+gettext("Getting posts") +" ..");
+    $('#submit').html("<img src='/static/images/ajax-loader.gif'> "+gettext("Getting posts") +" ..");
     $('#results').html('');
     for (var i in shortcodes){
         PrepareUsersPostDict(shortcodes[i]);
