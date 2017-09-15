@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-15 14:54+0530\n"
+"POT-Creation-Date: 2017-09-15 14:58+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,8 +83,7 @@ msgid "Load More"
 msgstr "加载更多"
 
 #: templates/base.html:10 templates/base.html:21
-#, fuzzy
-msgid "Download Instagram Images Videos Posts Stories Accounts"
+msgid "Download Instagram Images Videos Posts Stories Account"
 msgstr "下载Instagram图片视频文章故事帐户"
 
 #: templates/insta.html:32 templates/multi.html:27
