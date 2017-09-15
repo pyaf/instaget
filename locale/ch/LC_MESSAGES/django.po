@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-05 15:30+0530\n"
+"POT-Creation-Date: 2017-09-15 14:49+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,82 +20,78 @@ msgstr ""
 #: instaget/settings.py:65
 msgid "English"
 msgstr ""
-076.15024009
+
 #: instaget/settings.py:66
 msgid "Chinese"
 msgstr "中文"
 
-#: templates/account.html:20 templates/account.html:23 templates/multi.html:21
-#: templates/multi.html:26 templates/privacy-policy.html:24
-#: templates/story.html:21 templates/story.html:25
-#, fuzzy
-msgid "Download Instagram User Account"
-msgstr "下载Instagram用户帐号"
-
-msgid "Kissave.com | Download Instagram Image Video Stories Account"
-msgstr "Kissave.com |下载Instagram图像视频故事帐户"
-
-#: templates/account.html:36 templates/multi.html:40
-#: templates/privacy-policy.html:90 templates/story.html:42
+#: templates/account.html:12 templates/insta.html:15 templates/multi.html:12
+#: templates/privacy-policy.html:64 templates/story.html:15
 msgid "Download Posts"
 msgstr "下载图片和视频"
 
-#: templates/account.html:39 templates/multi.html:43
-#: templates/privacy-policy.html:93 templates/story.html:45
+#: templates/account.html:13 templates/insta.html:16 templates/multi.html:13
+#: templates/privacy-policy.html:65 templates/story.html:16
 msgid "Download Stories"
 msgstr "下载快拍"
 
-#: templates/account.html:42 templates/multi.html:46
-#: templates/privacy-policy.html:96 templates/story.html:48
+#: templates/account.html:14 templates/insta.html:17 templates/multi.html:14
+#: templates/privacy-policy.html:66 templates/story.html:17
 msgid "Download Account"
 msgstr "批量下载"
 
-#: templates/account.html:61 templates/story.html:68
+#: templates/account.html:27 templates/story.html:31
 msgid "Enter Instagram Username"
 msgstr "输入Instagram用户名"
 
-#: templates/account.html:62
+#: templates/account.html:30
 msgid "Enter a public Username to download user&#39;s content"
 msgstr "不能添加私有账户"
 
-#: templates/account.html:62 templates/story.html:69
+#: templates/account.html:30 templates/story.html:34
 msgid "Instagram Username"
 msgstr "输入Instagram用户名"
 
-#: templates/account.html:65
+#: templates/account.html:33
 msgid "Click to preview user&#39;s posts"
 msgstr "预览"
 
-#: templates/account.html:65 templates/multi.html:72 templates/story.html:72
+#: templates/account.html:33 templates/multi.html:36 templates/story.html:37
 msgid "Go"
 msgstr "提交"
 
-#: templates/account.html:77 templates/story.html:85
+#: templates/account.html:46 templates/story.html:50
 msgid "Select all Images"
 msgstr "选择所有图片"
 
-#: templates/account.html:78 templates/story.html:86
+#: templates/account.html:47 templates/story.html:51
 msgid "Select all Videos"
 msgstr "选择所有视频"
 
-#: templates/account.html:79 templates/multi.html:73 templates/story.html:87
+#: templates/account.html:48 templates/multi.html:37 templates/story.html:52
 msgid "Download"
 msgstr "下载"
 
-#: templates/account.html:87
+#: templates/account.html:54 templates/insta.html:39 templates/multi.html:45
+msgid ""
+"Right click or tap hold and select save option to download image/video on "
+"your system."
+msgstr ""
+
+#: templates/account.html:58
 msgid "Load More"
 msgstr "加载更多"
 
-#: templates/account.html:99 templates/multi.html:91
-#: templates/privacy-policy.html:109 templates/story.html:102
-msgid "Choose language"
-msgstr "选择语言"
+#: templates/base.html:10 templates/base.html:21
+#, fuzzy
+msgid "Download Instagram Images Videos Carousels Posts Stories Accounts"
+msgstr "下载Instagram图片视频转盘文章故事帐户"
 
-#: templates/multi.html:65
+#: templates/insta.html:32 templates/multi.html:27
 msgid "Download Instagram Posts"
 msgstr "下载Instagram的帖子"
 
-#: templates/multi.html:66
+#: templates/multi.html:30
 msgid ""
 "You can download multiple Instagram posts just by entering links seperated "
 "by new line"
@@ -103,29 +99,47 @@ msgstr ""
 "同时批量下载多个帖子内容，图片和视频可以混搭，每一行一条链接（通过回车键来分"
 "隔）"
 
-#: templates/multi.html:66
+#: templates/multi.html:30
 msgid "Enter Instagram Post links"
 msgstr "输入Instagram的帖子链接"
 
-#: templates/multi.html:72
+#: templates/multi.html:36
 msgid "Click to preview the posts before download"
 msgstr "点击预览帖子"
 
-#: templates/multi.html:73
+#: templates/multi.html:37
 msgid "Click to download all posts as zip"
 msgstr "点击下载所有帖子为zip"
 
-#: templates/privacy-policy.html:20 templates/privacy-policy.html:39
+#: templates/privacy-policy.html:17
 msgid "Privacy Policy"
 msgstr "使用条款"
 
-#: templates/story.html:69
+#: templates/story.html:34
 msgid "Enter a public Username to download user&#39;s stories"
 msgstr "不能添加私有账户"
 
-#: templates/story.html:72
+#: templates/story.html:37
 msgid "Click to preview user&#39;s stories"
 msgstr "点击预览快拍"
+
+#: templates/story.html:57
+msgid ""
+"Right click or tap hold and select save option to download this media story "
+"on your system."
+msgstr ""
+
+#, fuzzy
+#~| msgid "Download Instagram Images Videos Carousels Stories Account"
+#~ msgid "Kissave.com | Download Instagram Image Video Stories Account"
+#~ msgstr "下载Instagram图像视频故事帐户"
+
+#, fuzzy
+#~ msgid "Download Instagram User Account"
+#~ msgstr "下载Instagram用户帐号"
+
+#~ msgid "Choose language"
+#~ msgstr "选择语言"
 
 #~ msgid "Download Instagram User Stories"
 #~ msgstr "下载Instagram用户故事"
