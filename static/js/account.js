@@ -51,7 +51,7 @@ function getUserMedia(username){
                 return logErr(gettext('User has not uploaded any media!'));
             }
             requests++;
-            console.log(data);
+            // console.log(data);
             var posts = data['posts'];
             var tmp, carousel;
             for(var i in posts){
@@ -94,7 +94,7 @@ function getUserMedia(username){
             // console.log(max_id);
         },
         error: function(request, status, error){
-            console.log(request['status']);
+            // console.log(request['status']);
                 if(request['status']==500){
                     logErr('Internal Server Error! please try after some time.');
                 }else{

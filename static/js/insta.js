@@ -63,7 +63,7 @@ function setMediaLinks(){
         data: {'users_posts_dict': JSON.stringify(users_posts_dict),
                 csrfmiddlewaretoken: csrf_token },
         success: function(posts) {
-            console.log("Got ajax response from views", posts);
+            // console.log("Got ajax response from views", posts);
             if(posts.length==0){
                 return logErr(gettext('Posts not found!'));
             }else{

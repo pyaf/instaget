@@ -1,10 +1,14 @@
+html{
+   overflow-x:hidden;
+}
   body{
     color: #ffffff;
-    padding-top: 3%;
+    padding-top: 1%;
     font-weight: bold;
     background: url(/static/images/11.jpg) no-repeat  fixed;
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+   overflow-x:hidden;
   }
 
 
@@ -51,9 +55,6 @@
   width: 80%;
   margin: auto;
 }
- button{
-  width:20%;
- }
 
 html {
   position: relative;
@@ -89,7 +90,7 @@ a{
   	height: 60px;
 }
 hr{
-    margin-top: 1%;
+    margin-top: 0.8%;
     margin-bottom:30px;
     width: 70%;
    border: 1px solid;
@@ -97,6 +98,7 @@ hr{
 }
 button{
 	cursor: pointer;
+  width:20%;
 }
 
 #lang{
@@ -131,6 +133,9 @@ margin:auto;
 #lang-select{
   padding-top: 0px;height: 30px
 }
+.lang-input{
+  padding-top:3%!important;
+}
 }
 select{
       margin-bottom: 10px;
@@ -148,6 +153,11 @@ select{
 }
 #progress-bar{
   width: 0%; display:none
+}
+.alert{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 @media screen and (max-width: 1200px) {
 

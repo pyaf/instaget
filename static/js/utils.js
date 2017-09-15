@@ -18,7 +18,7 @@ function toggleCardSelection(card){
 
 function toggleAllCards(button, media_type){
     if($(button).hasClass('active')){
-        console.log('has class');
+        // console.log('has class');
         // $(button).html('Select all ' + $(button).text().split(' ')[2]);
         $(button).removeClass('active');
         var was_active = true;

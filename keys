@@ -1,8 +1,7 @@
 45.63.120.119
 k]M8RCKcYdZj6smw
 
-cd /var/www/html/instaget && git pull origin master
-service apache2 restart
+cd /var/www/html/instaget && git pull origin master && service apache2 restart
 
 lennix.domonique@uiu.us
 asdf@geekforex.com

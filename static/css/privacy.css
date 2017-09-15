@@ -2,3 +2,20 @@ li{
 	color:white;
 	background: transparent!important;
 }
+
+#footbar{
+	margin:auto;
+	width: 67%;
+	margin-top:3%;
+}
+h1{
+	font-size: 50px!important;
+	margin-top:7%!important;
+	text-align: center!important;
+}
+.pp_navb{
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 32%;
+}

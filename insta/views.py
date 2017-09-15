@@ -56,13 +56,13 @@ def langView(request):
 
 def instaView(request, shortcode):
     template = 'insta.html'
+    setSession(request)
     context = {'shortcode': shortcode}
     return render(request, template, context)
 
 def MultiView(request):
     template = 'multi.html'
     setSession(request)
-    print(dict(request.session))
     return render(request, template, {})
     
 

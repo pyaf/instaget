@@ -2,29 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <meta name="description" content="Instagram Posts download">
-  <meta name="description" content="Instagram Images download">
-  <meta name="description" content="Instagram Videos download">
-  <meta name="description" content="Instagram Carousels download">
-  <meta name="description" content="Instagram Account Zip download">
-  <meta name="description" content="Instagram Stories download">
-  <meta name="description" content="Instagram download">
-  <meta name="description" content="English Chinese Translation">
-  <meta name="description" content="China">
-  <meta name="keywords" content="Instagram Post Download Pictures Videos Carousels Stories">
-  <meta name="author" content="Kissave">
-  <meta name="title" content="{% trans 'Kissave.com | Download Instagram Image Video Stories Account' %}">
   {% include 'base.html' %}
-  <link rel="icon" type="image/x-icon" href="/static/images/fav.png" />
-  <title>{% trans 'Kissave.com | Download Instagram Image Video Stories Account' %}</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/static/css/account.css">
   <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
 </head>
@@ -52,7 +30,7 @@
                   <input type="text" id = "username" data-toggle="tooltip" title="{% trans 'Enter a public Username to download user&#39;s content' %}" class="form-control input-lg" name="username" placeholder="{% trans 'Instagram Username' %}">
                 </div>
               <div style="text-align: center">
-                <button type="submit" id="submit" data-placement="left" class="btn btn-default" data-toggle="tooltip" title="{% trans 'Click to preview user&#39;s posts' %}">{% trans 'Go' %}</button>
+                <button type="submit" id="submit" data-placement="left" class="function btn btn-default" data-toggle="tooltip" title="{% trans 'Click to preview user&#39;s posts' %}">{% trans 'Go' %}</button>
               </div>
               </form>
               <br>
@@ -93,7 +71,7 @@
 <script>
 var csrf_token = '{{ csrf_token }}';
 if ((/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) || (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1)){
-  console.log('ios detected || safari detected');
+  // console.log('ios detected || safari detected');
   jQuery.getScript("/static/js/account_iphone.js");
   $('#progress-bar').remove();
   $('#function-buttons').remove();
@@ -101,7 +79,7 @@ if ((/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) || (navig
     $('#results').attr('title', 'As you are using an iPhone, you can only download images by holding tap and selecting "Save Image" in order to download videos, use a PC.')
   }
 }else{
-  console.log('not ios or safari ');
+  // console.log('not ios or safari ');
   jQuery.getScript("/static/js/account.js");
   $('#results').removeAttr('title');
 }

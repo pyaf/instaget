@@ -2,29 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <meta name="description" content="Instagram Posts download">
-  <meta name="description" content="Instagram Images download">
-  <meta name="description" content="Instagram Videos download">
-  <meta name="description" content="Instagram Stories download">
-  <meta name="description" content="Instagram Carousels download">
-  <meta name="description" content="Instagram Account Zip download">
-  <meta name="description" content="Instagram download">
-  <meta name="description" content="English Chinese Translation">
-  <meta name="description" content="China">
-  <meta name="keywords" content="Instagram Post Download Pictures Videos Carousels Stories">
-  <meta name="author" content="Kissave">
-  <meta name="title" content="{% trans 'Kissave.com | Download Instagram Image Video Stories Account' %}">
   {% include 'base.html' %}
-  <link rel="icon" type="image/x-icon" href="/static/images/fav.png" />
-  <title>{% trans 'Kissave.com | Download Instagram Image Video Stories Account' %}</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/tipsy.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="/static/css/multi.css">
   <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
@@ -61,40 +39,7 @@
       <div class="row" id="results" data-toggle="tooltip" title="{% trans 'Right click or tap hold and select save option to download image/video on your system.' %}">
       </div><br>
     </div>
-<div class="footer" >
-  <div class="container">
-  <div class="row" >    
-  <div class="col-sm-4"></div>
-    <a href="/privacy-policy" id="pp_link">Privacy Policy</a> &emsp;
-      <form action="{% url 'set_language' %}" method="post">
-        <div class="form-inline">
-          {% csrf_token %}
-          <!-- <label style="font-size: 18px;">{% trans 'Choose language' %}&emsp;</label> -->
-          <input name="next"  class="lang-input" type="hidden" value="{{ redirect_to }}" />
-          <select name="language" onchange="this.form.submit()" class="form-control lang-input">
-            {% if LANGUAGE_CODE == 'ch' %}
-            <option value="" disabled  selected="selected">
-                  Choose language
-            </option>
-            {%else%}
-            <option value="" disabled  selected="selected">
-                  选择语言
-            </option> 
-            {%endif%}
-            <option value="en" >
-                  English (en)
-            </option>
-            <option value="ch" >
-                  中文 (ch)
-            </option>
-          </select>&emsp;
-        </div>
-      </form>
-      <br>
-  </div>
-      <p>Copyright © 2016-2017 Kissave. All rights reserved.</p>
-  </div>
-</div>
+{% include 'footer.html' %}
 <script src="/static/js/jquery-3.2.1.min.js" charset="utf-8"></script>
 <script type='text/javascript' src='/static/js/jquery.tipsy.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
