@@ -35,3 +35,5 @@ function closeAlert(){
     $('.alert').hide();
     $('#error-msg').html('');
 }
+
+console.log(gettext('As you are using an iPhone, you can only download images by holding tap and selecting "Save Image" in order to download videos, use a PC.'));;

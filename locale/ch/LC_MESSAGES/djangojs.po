@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-02 02:10+0530\n"
+"POT-Creation-Date: 2017-09-16 09:15+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,74 +17,87 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: static/js/account.js:53
+#: static/js/account.js:34 static/js/account_iphone.js:33 static/js/story.js:32
+#: static/js/story_iphone.js:31
+msgid "Wait"
+msgstr "等等吧"
+
+#: static/js/account.js:45 static/js/account_iphone.js:44
 msgid "User not found!"
 msgstr "未找到此用户！"
 
-
-#: static/js/account.js:59
+#: static/js/account.js:51 static/js/account_iphone.js:50
 msgid "User has not uploaded any media!"
 msgstr "用户还没有上传任何帖子！"
 
-
-#: static/js/account.js:141
-msgid "loading"
-msgstr "加载中"
-
-
-#: static/js/multi.js:51
-msgid "Posts not found!"
-msgstr "帖子飞到外星啦"
-
-
-#: static/js/multi.js:82 static/js/multi.js:96
-msgid "Search again!"
-msgstr "敢不敢再搜搜"
-
-
-#: static/js/multi.js:84
-msgid "No media found!"
-msgstr "这个家伙什么鬼东西都没有发"
-
-
-#: static/js/multi.js:91 static/js/story.js:86
-msgid "Internal Server Error! please try after some time."
-msgstr "内部服务器错误！抱歉请过一段时间后再试"
-
-
-#: static/js/multi.js:93
-msgid "Posts not found!, please enter a valid username."
-msgstr "没有发现帖子，请输入有效的用户名。"
-
-
-#: static/js/multi.js:136
-msgid "Getting posts"
-msgstr "获取帖子"
-
-
-#: static/js/save.js:129
-msgid "No media selected!"
-msgstr "没有媒体发现！"
-
-
-#: static/js/story.js:50
-msgid "User not found!, please enter a valid username."
-msgstr "用户未找到！别乱输入"
-
-
-#: static/js/story.js:53 static/js/story.js:92
-msgid "Retry"
-msgstr "重试"
-
-
-#: static/js/story.js:58
-msgid "User has not uploaded any Stories!"
-msgstr "用户尚未上传任何快拍"
-
-
-#: static/js/story.js:81 static/js/utils.js:60
+#: static/js/account.js:90 static/js/account_iphone.js:85 static/js/story.js:74
+#: static/js/story_iphone.js:77 static/js/utils.js:60
 msgid "Go"
 msgstr "提交"
 
-msgid "Wait"
-msgstr "等等吧"
+#: static/js/account.js:133 static/js/account_iphone.js:124
+msgid "loading"
+msgstr "加载中"
+
+#: static/js/index.js:39
+msgid ""
+"As you are using an iPhone, you can only download images by holding tap and "
+"selecting \"Save Image\" in order to download videos, use a PC."
+msgstr "如果你是iphone用户，长按图片→选择保存图片。由于iphone官方不支持手机下载视频，所以请在电脑端操作下载视频"
+
+#: static/js/insta.js:45 static/js/insta.js:102 static/js/multi.js:30
+#: static/js/multi.js:89 static/js/multi_iphone.js:44
+#: static/js/multi_iphone.js:100 static/js/story.js:79
+#: static/js/story_iphone.js:82
+msgid "Internal Server Error! please try after some time."
+msgstr "内部服务器错误！抱歉请过一段时间后再试"
+
+#: static/js/insta.js:47 static/js/multi.js:32 static/js/multi_iphone.js:46
+#, fuzzy
+#| msgid "User not found!"
+msgid " link not found"
+msgstr "未找到此用户！"
+
+#: static/js/insta.js:68 static/js/multi.js:52 static/js/multi_iphone.js:65
+msgid "Posts not found!"
+msgstr "帖子飞到外星啦"
+
+#: static/js/insta.js:104
+#, fuzzy
+#| msgid "Posts not found!"
+msgid "Post not found!."
+msgstr "帖子飞到外星啦"
+
+#: static/js/multi.js:80 static/js/multi.js:94 static/js/multi_iphone.js:93
+#: static/js/multi_iphone.js:105
+msgid "Search again!"
+msgstr "敢不敢再搜搜"
+
+#: static/js/multi.js:82
+msgid "No media found!"
+msgstr "这个家伙什么鬼东西都没有发"
+
+#: static/js/multi.js:91 static/js/multi_iphone.js:102
+msgid "Posts not found!, please enter a valid username."
+msgstr "没有发现帖子，请输入有效的用户名。"
+
+#: static/js/multi.js:135 static/js/multi_iphone.js:139
+msgid "Getting posts"
+msgstr "获取帖子"
+
+#: static/js/save.js:130 static/js/save_test.js:199
+msgid "No media selected!"
+msgstr "没有媒体发现！"
+
+#: static/js/story.js:43 static/js/story_iphone.js:42
+msgid "User not found!, please enter a valid username."
+msgstr "用户未找到！别乱输入"
+
+#: static/js/story.js:46 static/js/story.js:85 static/js/story_iphone.js:45
+#: static/js/story_iphone.js:88
+msgid "Retry"
+msgstr "重试"
+
+#: static/js/story.js:51 static/js/story_iphone.js:50
+msgid "User has not uploaded any Stories!"
+msgstr "用户尚未上传任何快拍"

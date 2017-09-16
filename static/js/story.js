@@ -27,7 +27,7 @@ function embed(type, link, post){
 }
 
 function getUserStory(user_id){
-    console.log("Getting user story.");
+    // console.log("Getting user story.");
     $('#submit').attr('disabled','disabled');
     $('#submit').html("<img src='/static/images/ajax-loader.gif'> " + gettext("Wait"));
     $.ajax({
@@ -37,8 +37,8 @@ function getUserStory(user_id){
                 csrfmiddlewaretoken: csrf_token },
         success: function(data) {
             requests++;
-            console.log("Success");
-            console.log(data);
+            // console.log("Success");
+            // console.log(data);
             if(data['status_code']==404){
                 $('#error-msg').html(gettext('User not found!, please enter a valid username.'));
                 $('.alert').show();
@@ -66,7 +66,7 @@ function getUserStory(user_id){
                     card_data[stories[i]['code']] = link;
                     embed(type, link, stories[i]);
                 }
-                console.log("Done");
+                // console.log("Done");
                 $('#function-buttons').css('display','block');
             }
             //below 2 lines useful only for initial search
@@ -74,7 +74,7 @@ function getUserStory(user_id){
             $('#submit').html(gettext('Go'));
         },
         error: function(request, status, error){
-            console.log(request['status']);
+            // console.log(request['status']);
             if(request['status']==500){
                 logErr(gettext('Internal Server Error! please try after some time.'));
             }

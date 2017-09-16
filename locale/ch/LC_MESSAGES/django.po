@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-15 14:58+0530\n"
+"POT-Creation-Date: 2017-09-16 09:14+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,10 +73,11 @@ msgid "Download"
 msgstr "下载"
 
 #: templates/account.html:54 templates/insta.html:39 templates/multi.html:45
+#: templates/story.html:57
 msgid ""
 "Right click or tap hold and select save option to download image/video on "
 "your system."
-msgstr ""
+msgstr "右键点击（电脑端）或者按住图片→选择保存图片/视频"
 
 #: templates/account.html:58
 msgid "Load More"
@@ -121,12 +122,6 @@ msgstr "不能添加私有账户"
 #: templates/story.html:37
 msgid "Click to preview user&#39;s stories"
 msgstr "点击预览快拍"
-
-#: templates/story.html:57
-msgid ""
-"Right click or tap hold and select save option to download this media story "
-"on your system."
-msgstr ""
 
 #, fuzzy
 #~ msgid "Download Instagram Images Videos Carousels Posts Stories Accounts"

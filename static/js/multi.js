@@ -47,7 +47,7 @@ function setMediaLinks(){
         data: {'users_posts_dict': JSON.stringify(users_posts_dict),
                 csrfmiddlewaretoken: csrf_token },
         success: function(posts) {
-            console.log("Got ajax response from views", posts);
+            // console.log("Got ajax response from views", posts);
             if(posts.length==0){
                 return logErr(gettext('Posts not found!'));
             }else{
@@ -125,12 +125,12 @@ $('#submit').on('touchstart click', function(e) {
     $('.alert').hide(); // there may be some initial alert, even though requests!=0
     requests = true;
     links = $('#multi_post_links').val();
-    console.log(links);
+    // console.log(links);
     shortcodes = getShortCodes(links);
     if(shortcodes.length==0){
         return logErr("Not a valid link!");
     }
-    console.log(shortcodes.length);
+    // console.log(shortcodes.length);
     $('#submit').attr('disabled','disabled');
     $('#submit').html("<img src='/static/images/ajax-loader.gif'>  "+gettext("Getting posts") +" ..");
     $('#results').html('');
