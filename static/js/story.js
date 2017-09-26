@@ -51,7 +51,9 @@ function getUserStory(user_id){
                 $('#error-msg').html(gettext('User has not uploaded any Stories!'));
                 $('.alert').show();
             }else{
-                
+                if(stories.length<=3){
+                    $('#results').removeClass('card-columns').addClass('card-deck');
+                }
                 for(var i in stories){
                     var links = [];
                     var type = 'jpg'; 
@@ -101,6 +103,7 @@ $('#submit').on('touchstart click', function(e) {
         $('#progress-bar').html('0%');
         $('#progress-bar').css('width', '0%');
         $('#progress-bar').hide();
+        $('#results').removeClass('card-deck').addClass('card-columns');
     }
     $('.alert').hide(); // there may be some initial alert, even though requests!=0
     username = $('#username').val();

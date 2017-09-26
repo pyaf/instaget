@@ -119,3 +119,7 @@ video{
  button{
   width:20%;
  }
+#results_row{
+  width:90%;
+  margin:auto;
+}
