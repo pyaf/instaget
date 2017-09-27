@@ -100,7 +100,6 @@ def GetUserStory(request):
                 stories = api.user_reel_media(user_id)
             except Exception as e:
                 print(e) #may be session expired, relogin
-                
                 api = Client(username, password)
                 stories = api.user_reel_media(user_id)
 

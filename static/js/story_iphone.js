@@ -65,7 +65,7 @@ function getUserStory(user_id){
                         type = 'mp4';
                         link = stories[i]['video_versions'][0]['url'];
                     }
-                    link = link.split('?')[0];   
+                    // link = link.split('?')[0];   
                     card_data[stories[i]['code']] = link;
                     embed(type, link, stories[i]);
                 }
